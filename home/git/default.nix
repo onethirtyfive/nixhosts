@@ -28,6 +28,9 @@
     };
 
     extraConfig = {
+      core = {
+        editor = "nvim";
+      };
       filter = {
         lfs = {
           clean = "git-lfs clean -- %f";
@@ -36,6 +39,21 @@
           required = true;
         };
       };
+      user = {
+        name = "Joshua Morris"; # email intentionally omitted
+        signingKey = "FF30B1CA93CB1225";
+      };
+
+      commit.gpgSign = true;
+      rerere.enabled = true;
+      log.showsignature = false;
+      init.defaultBranch = "main";
+
+      core = {
+        whitespace = "fix,-indent-with-non-tab,trailing-space,cr-at-eol";
+      };
+
+      color.ui = "auto";
       # [diff]
       #     tool = meld
       # [difftool]
@@ -49,29 +67,13 @@
       "*.swp"
     ];
 
-    includes = [
-      {
-	contents = {
-
-          user = {
-            name = "Joshua Morris"; # email intentionally omitted
-            editor = "nvim";
-            signingKey = "FF30B1CA93CB1225";
-          };
-
-          commit.gpgSign = true;
-          rerere.enabled = true;
-          log.showsignature = false;
-          init.defaultBranch = "main";
-
-          core = {
-            whitespace = "fix,-indent-with-non-tab,trailing-space,cr-at-eol";
-          };
-
-          color.ui = "auto";
-        };
-      }
-    ];
+    # includes = [
+    #   {
+    #     contents = {
+    #
+    #     };
+    #   }
+    # ];
   };
 }
 

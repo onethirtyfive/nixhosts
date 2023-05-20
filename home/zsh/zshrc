@@ -27,3 +27,12 @@ eval "$(direnv hook bash)"
 
 unsetopt AUTO_MENU
 
+function setgpgprogram {
+  git config --global gpg.program $(which gpg)
+}
+
+
+if [ -f ~/.zshrc.local ]; then
+  source ~/.zshrc.local
+fi
+

@@ -34,7 +34,7 @@ in {
 
       window = {
         decorations = "buttonless";
-        opacity = 0.97;
+        opacity = 1; # 0.97;
       };
     };
   };

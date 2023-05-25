@@ -23,7 +23,7 @@ alias bert="bundle exec rake"
 # disable freeze on ctrl-s
 stty -ixon
 
-eval "$(direnv hook bash)"
+eval "$(direnv hook zsh)"
 
 unsetopt AUTO_MENU
 

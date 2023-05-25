@@ -14,7 +14,7 @@
   outputs = inputs@{ home-manager, darwin, ... }:
     let
       home-manager-defaults = {
-        home-manager.useGlobalPkgs = false;
+        home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
 	home-manager.verbose = true;
         home-manager.users.joshua = {

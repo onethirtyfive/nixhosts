@@ -30,6 +30,27 @@ in
     extra-platforms = x86_64-darwin aarch64-darwin
   '';
 
+  # pkgs augmentations
+  nixpkgs.overlays = [
+    (self: super: {
+      python311 = super.python311.override {
+        packageOverrides = pyself: pysuper: {
+          pylsp-mypy = pysuper.pylsp-mypy.overridePythonAttrs (_: {
+            doCheck = false;
+          });
+        };
+      };
+
+      onethirtyfive-dev-python = (self.python311.withPackages (ps: with ps; [
+        mypy
+        pylint
+        python-lsp-server
+        python-lsp-black
+        pylsp-mypy
+      ]));
+    })
+  ];
+
   environment = {
     shells = with pkgs; [ bash zsh ];
     systemPackages = [ pkgs.coreutils ];
@@ -46,11 +67,11 @@ in
       mouse_follows_focus = "off";
       window_placement    = "second_child";
       window_opacity      = "off";
-      top_padding         = 10;
-      bottom_padding      = 10;
-      left_padding        = 10;
-      right_padding       = 10;
-      window_gap          = 10;
+      top_padding         = 6;
+      bottom_padding      = 6;
+      left_padding        = 6;
+      right_padding       = 6;
+      window_gap          = 6;
       layout              = "bsp";
     };
   };

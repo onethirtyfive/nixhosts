@@ -14,6 +14,7 @@
     fd
     curl
     less
+    onethirtyfive-dev-python # from host config
   ];
 
   home.sessionVariables = {
@@ -33,27 +34,6 @@
 
   # dependencies
   programs.texlive.enable = true; # scapy runtime dep (shellout)
-
-  # pkgs augmentations
-  nixpkgs.overlays = [
-    (self: super: {
-      python311 = super.python311.override {
-        packageOverrides = pyself: pysuper: {
-          pylsp-mypy = pysuper.pylsp-mypy.overridePythonAttrs (_: {
-            doCheck = false;
-          });
-        };
-      };
-
-      onethirtyfive-dev-python = (self.python311.withPackages (ps: with ps; [
-        mypy
-        pylint
-        python-lsp-server
-        python-lsp-black
-        pylsp-mypy
-      ]));
-    })
-  ];
 
   home.stateVersion = "22.11"; # rarely changed
 }

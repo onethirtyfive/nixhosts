@@ -19,6 +19,7 @@ local on_attach = function(_, bufnr)
   require "lsp_signature".on_attach({
     bind = true, -- This is mandatory, otherwise border config won't get registered.
     handler_opts = { border = "rounded" },
+    hint_prefix = "💩";
   }, bufnr)
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')

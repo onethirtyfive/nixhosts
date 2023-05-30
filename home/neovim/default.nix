@@ -48,9 +48,12 @@ in {
       cmp-path
       cmp_luasnip
       comment-nvim
+      copilot-cmp
+      copilot-lua
       fidget-nvim
       gitsigns-nvim
       indent-blankline-nvim
+      lspkind-nvim
       lsp_signature-nvim
       lualine-nvim
       luasnip

@@ -84,7 +84,11 @@ in
 
   environment = {
     shells = with pkgs; [ bash zsh ];
-    systemPackages = [ pkgs.coreutils ];
+    systemPackages = with pkgs; [
+      coreutils
+      findutils
+      fd
+    ];
   };
 
   # Auto-upgrade nix package and the daemon service.

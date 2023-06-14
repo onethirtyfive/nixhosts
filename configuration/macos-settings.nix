@@ -24,7 +24,7 @@
   system.defaults.NSGlobalDomain.NSNavPanelExpandedStateForSaveMode2 = true;
   system.defaults.dock.appswitcher-all-displays = false;
   system.defaults.dock.autohide-delay = 0.24;
-  system.defaults.dock.orientation = "right";
+  system.defaults.dock.orientation = "bottom";
   system.defaults.".GlobalPreferences"."com.apple.sound.beep.sound" = "/System/Library/Sounds/Sosumi.aiff";
   system.defaults.NSGlobalDomain.NSAutomaticWindowAnimationsEnabled = false;
   system.defaults.NSGlobalDomain.NSScrollAnimationEnabled = true;

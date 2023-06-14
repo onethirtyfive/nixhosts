@@ -106,11 +106,11 @@ in
       window_topmost = "on";
       active_window_opacity = 1.0;
       normal_window_opacity = 0.9;
-      top_padding = 6;
-      bottom_padding = 6;
-      left_padding = 6;
-      right_padding = 6;
-      window_gap = 6;
+      top_padding = 2;
+      bottom_padding = 2;
+      left_padding = 2;
+      right_padding = 2;
+      window_gap = 2;
       layout = "bsp";
     };
   };

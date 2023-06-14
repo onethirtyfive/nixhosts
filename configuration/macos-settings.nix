@@ -22,10 +22,22 @@
   system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
   system.defaults.NSGlobalDomain.NSNavPanelExpandedStateForSaveMode = true;
   system.defaults.NSGlobalDomain.NSNavPanelExpandedStateForSaveMode2 = true;
-  system.defaults.dock.appswitcher-all-displays = false;
-  system.defaults.dock.autohide-delay = 0.24;
-  system.defaults.dock.orientation = "bottom";
-  system.defaults.".GlobalPreferences"."com.apple.sound.beep.sound" = "/System/Library/Sounds/Sosumi.aiff";
+
+  # reorg dock prefs; others to follow
+  system.defaults = {
+    dock = {
+      orientation = "left";
+      autohide = true;
+      autohide-delay = 1000.0;
+      autohide-time-modifier = 0.5;
+
+      appswitcher-all-displays = true;
+      mru-spaces = false; # do not auto-arrange spaces, thanks.
+    };
+  };
+
+  system.defaults.".GlobalPreferences"."com.apple.sound.beep.sound" = "/System/Library/Sounds/Basso.aiff";
+
   system.defaults.NSGlobalDomain.NSAutomaticWindowAnimationsEnabled = false;
   system.defaults.NSGlobalDomain.NSScrollAnimationEnabled = true;
   system.defaults.NSGlobalDomain.NSWindowResizeTime = 0.01;

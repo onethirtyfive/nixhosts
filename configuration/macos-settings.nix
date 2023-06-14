@@ -25,17 +25,15 @@
   system.defaults.dock.appswitcher-all-displays = false;
   system.defaults.dock.autohide-delay = 0.24;
   system.defaults.dock.orientation = "right";
-  system.defaults.".GlobalPreferences"."com.apple.sound.beep.sound" = "/System/Library/Sounds/basso.aiff";
+  system.defaults.".GlobalPreferences"."com.apple.sound.beep.sound" = "/System/Library/Sounds/Sosumi.aiff";
   system.defaults.NSGlobalDomain.NSAutomaticWindowAnimationsEnabled = false;
   system.defaults.NSGlobalDomain.NSScrollAnimationEnabled = true;
   system.defaults.NSGlobalDomain.NSWindowResizeTime = 0.01;
   system.defaults.NSGlobalDomain.NSTableViewDefaultSizeMode = 2;
   system.defaults.NSGlobalDomain.NSTextShowsControlCharacters = true;
   system.defaults.NSGlobalDomain.NSUseAnimatedFocusRing = false;
-  system.defaults.NSGlobalDomain."com.apple.springing.enabled" = true;
-  system.defaults.NSGlobalDomain."com.apple.springing.delay" = 0.0;
-  # system.defaults.universalaccess.reduceTransparency = true;
-  # system.defaults.universalaccess.closeViewZoomFollowsFocus = true;
+  system.defaults.NSGlobalDomain."com.apple.springing.enabled" = false;
+  system.defaults.NSGlobalDomain."com.apple.springing.delay" = 0.5;
 
   # autocorrect
   system.defaults.NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
@@ -61,9 +59,43 @@
   system.defaults.CustomUserPreferences = {
     "NSGlobalDomain" = {
       "TISRomanSwitchState" = 1;
-      "MiniaturizedOnDoubleClick" = false;
+      "MiniaturizedOnDoubleClick" = 1;
       "com.apple.trackpad.forceClick" = false;
     };
+
+    # troubleshoot these settings...
+    # in the meantime, set them manually.
+
+    # 1. disable "automatically rearrange spaces!"
+    # 2. enable "when switching, switch to a space with open..."
+    # 3. displays do not have separate spaces
+    # 4. "Keybaord Shortcuts" -> "Modifier Keys"; make "Caps Lock" "esc"
+    # 5. reduce motion in accessibility
+    # 6. green tint "color tint"; "spring", "33%" intensity
+    # 7. accessibility > disable cursor shake
+
+    # "com.apple.universalaccess" = {
+    #   "reduceMotion" = true;
+    # };
+
+    # "com.apple.Accessibility" = {
+    #   "com.apple.Accessibility.ReduceMotionEnabled" = true;
+    # };
+
+    # "Accessibility" = {
+    #   "Accessibility.MADisplayFilterSingleColorHue" = "0.3333333333333333";
+    #   "Accessibility.MADisplayFilterSingleColorIntensity" = "0.5";
+    #   "Accessibility.__Color__-MADisplayFilterCategoryEnabled" = true;
+    #   "Accessibility.__Color__-MADisplayFilterType" = 16;
+    #   "Accessibility.CGDisableCursorLocationMagnification" = true;
+    # };
+
+    # "com.apple.mediaaccessibility" = {
+    #   "com.apple.mediaaccessibility.MADisplayFilterSingleColorIntensity" = "0.5";
+    #   "com.apple.mediaaccessibility.__Color__-MADisplayFilterCategoryEnabled" = true;
+    #   "com.apple.mediaaccessibility.__Color__-MADisplayFilterType" = 16;
+    #   "com.apple.mediaaccessibility.CGDisableCursorLocationMagnification" = true;
+    # };
   };
 }
 

@@ -100,14 +100,18 @@ in
     config = {
       focus_follows_mouse = "autoraise";
       mouse_follows_focus = "off";
-      window_placement    = "second_child";
-      window_opacity      = "off";
-      top_padding         = 6;
-      bottom_padding      = 6;
-      left_padding        = 6;
-      right_padding       = 6;
-      window_gap          = 6;
-      layout              = "bsp";
+      window_placement = "second_child";
+      window_opacity = "on";
+      window_shadow = "float";
+      window_topmost = "on";
+      active_window_opacity = 1.0;
+      normal_window_opacity = 0.9;
+      top_padding = 6;
+      bottom_padding = 6;
+      left_padding = 6;
+      right_padding = 6;
+      window_gap = 6;
+      layout = "bsp";
     };
   };
 

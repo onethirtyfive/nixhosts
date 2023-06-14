@@ -12,6 +12,7 @@ alias is="env | grep -i NIX_SHELL"
 alias gs="git status"
 alias vim="nvim"
 alias rmswp="find . -name *.swp | xargs rm"
+alias strl="history -d $((HISTCMD-1))"
 
 # Ruby:
 alias be="bundle exec"

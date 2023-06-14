@@ -1,0 +1,22 @@
+tap "homebrew/cask"
+
+cask_args appdir: "~/Applications/Homebrew"
+
+cask "bitwarden"
+cask "keybase"
+cask "gpg-suite-no-mail"
+
+cask "google-chrome"
+cask "firefox"
+
+cask "discord"
+cask "slack"
+cask "zoom"
+
+cask "istat-menus"
+cask "fluor"
+
+cask "eqmac"
+cask "obs"
+cask "shureplus-motiv"
+

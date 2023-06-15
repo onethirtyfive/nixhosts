@@ -30,6 +30,8 @@
     extraConfig = {
       core = {
         editor = "nvim";
+        whitespace = "fix,-indent-with-non-tab,trailing-space,cr-at-eol";
+        pager = "less -R -F -X";
       };
       filter = {
         lfs = {
@@ -39,6 +41,7 @@
           required = true;
         };
       };
+
       user = {
         name = "Joshua Morris"; # email intentionally omitted
         signingKey = "FF30B1CA93CB1225";
@@ -49,11 +52,8 @@
       log.showsignature = false;
       init.defaultBranch = "main";
 
-      core = {
-        whitespace = "fix,-indent-with-non-tab,trailing-space,cr-at-eol";
-      };
-
       color.ui = "auto";
+
       # [diff]
       #     tool = meld
       # [difftool]

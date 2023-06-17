@@ -98,7 +98,7 @@ in
     enable = true;
 
     config = {
-      focus_follows_mouse = "autoraise";
+      focus_follows_mouse = "off";
       mouse_follows_focus = "off";
       window_placement = "second_child";
       window_opacity = "on";

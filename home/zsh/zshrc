@@ -18,6 +18,12 @@ alias strl="history -d $((HISTCMD-1))"
 alias be="bundle exec"
 alias bert="bundle exec rake"
 
+# This must be done from within the cloned nixhosts dir:
+alias initial-nixhost-switch="rm -rf ~/Applications/Home\ Manager\ Apps && nix build \".#darwinConfigurations.$(hostname -s).system\" && ./result/sw/bin/darwin-rebuild switch --flake ."
+
+# This can be done anywhere:
+alias nixhost-switch="rm -rf ~/Applications/Home\ Manager\ Apps && nix build \".#darwinConfigurations.$(hostname -s).system\" && darwin-rebuild switch --flake ."
+
 # source $HOME/.nix-profile/share/git/contrib/completion/git-prompt.sh
 # source $HOME/.nix-profile/share/git/contrib/completion/git-completion.bash
 

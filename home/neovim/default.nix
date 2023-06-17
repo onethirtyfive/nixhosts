@@ -98,6 +98,7 @@ in {
 
         sources = [
           ./init.lua
+          ./plugins/lualine.lua
           ./plugins/treesitter.lua
           ./plugins/lsp.lua
           ./plugins/cmp.lua

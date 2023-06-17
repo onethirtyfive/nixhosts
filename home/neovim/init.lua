@@ -101,17 +101,6 @@ require('nvim-tree').setup{
   },
 }
 
-require('lualine').setup {
-  sections = {
-    lualine_c = {
-      {
-        'filename',
-        path = 1,
-      }
-    },
-  },
-}
-
 -- Setup neovim lua configuration
 require('neodev').setup()
 

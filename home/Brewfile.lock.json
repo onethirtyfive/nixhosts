@@ -2,7 +2,7 @@
   "entries": {
     "tap": {
       "homebrew/cask": {
-        "revision": "9bd750d55ccc8a3ec466d5736e52db376d3c2f2c"
+        "revision": "9ea04e516a5dc88c4c7aefca2677670ee1790a0f"
       }
     },
     "cask": {
@@ -122,13 +122,22 @@
             "appdir": "~/Applications/Homebrew"
           }
         }
+      },
+      "keycastr": {
+        "version": "0.9.13",
+        "options": {
+          "full_name": "keycastr",
+          "args": {
+            "appdir": "~/Applications/Homebrew"
+          }
+        }
       }
     }
   },
   "system": {
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "4.0.22",
+        "HOMEBREW_VERSION": "4.0.23",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "14.3.1.0.1.1683849156",

@@ -12,6 +12,7 @@ cask "firefox"
 cask "discord"
 cask "slack"
 cask "zoom"
+cask "keycastr"
 
 cask "istat-menus"
 cask "fluor"

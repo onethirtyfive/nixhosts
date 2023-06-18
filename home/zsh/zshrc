@@ -19,22 +19,21 @@ alias be="bundle exec"
 alias bert="bundle exec rake"
 
 # This must be done from within the cloned nixhosts dir:
-alias initial-hm-switch="
-  rm -rf \"$HOME/Applications/Home Manager Apps\" &&
-  pushd $NIXHOSTS &&
-  nix build \".#darwinConfigurations.$(hostname -s).system\" &&
-  ./result/sw/bin/darwin-rebuild switch --flake .
-  popd
-"
+function initial-hm-switch() {
+  rm -rf "$HOME/Applications/Home Manager Apps" &&
+  echo "nixhosts: $NIXHOSTS" &&
+  nix build "$NIXHOSTS#darwinConfigurations.$(hostname -s).system" &&
+  ./result/sw/bin/darwin-rebuild switch --flake "$NIXHOSTS"
+}
 
 # This can be done anywhere:
-alias hm-switch="
-  rm -rf \"$HOME/Applications/Home Manager Apps\" &&
-  pushd $NIXHOSTS &&
-  nix build \".#darwinConfigurations.$(hostname -s).system\" &&
-  darwin-rebuild switch --flake . &&
-  popd
-"
+function hm-switch() {
+  rm -rf "$HOME/Applications/Home Manager Apps" &&
+  echo "nixhosts: $NIXHOSTS" &&
+  nix build "$NIXHOSTS#darwinConfigurations.$(hostname -s).system" &&
+  darwin-rebuild switch --flake "$NIXHOSTS"
+}
+
 # source $HOME/.nix-profile/share/git/contrib/completion/git-prompt.sh
 # source $HOME/.nix-profile/share/git/contrib/completion/git-completion.bash
 

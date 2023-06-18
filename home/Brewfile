@@ -8,10 +8,13 @@ cask "gpg-suite-no-mail"
 
 cask "google-chrome"
 cask "firefox"
+cask "microsoft-edge"
 
 cask "discord"
 cask "slack"
 cask "zoom"
+cask "signal"
+
 cask "keycastr"
 
 cask "istat-menus"

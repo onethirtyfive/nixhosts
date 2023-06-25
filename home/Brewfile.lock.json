@@ -7,7 +7,7 @@
     },
     "cask": {
       "bitwarden": {
-        "version": "2023.5.0",
+        "version": "2023.5.1",
         "options": {
           "full_name": "bitwarden",
           "args": {
@@ -43,7 +43,7 @@
         }
       },
       "firefox": {
-        "version": "114.0.1",
+        "version": "114.0.2",
         "options": {
           "full_name": "firefox",
           "args": {
@@ -52,7 +52,7 @@
         }
       },
       "microsoft-edge": {
-        "version": "114.0.1823.43",
+        "version": "114.0.1823.58,6a5ef55e-f89f-44a1-8c29-76f02b3d6b0a",
         "options": {
           "full_name": "microsoft-edge",
           "args": {
@@ -79,7 +79,7 @@
         }
       },
       "zoom": {
-        "version": "5.14.10.19202",
+        "version": "5.15.0.19644",
         "options": {
           "full_name": "zoom",
           "args": {
@@ -88,7 +88,7 @@
         }
       },
       "signal": {
-        "version": "6.21.0",
+        "version": "6.22.0",
         "options": {
           "full_name": "signal",
           "args": {
@@ -133,7 +133,7 @@
         }
       },
       "obs": {
-        "version": "29.1.2",
+        "version": "29.1.3",
         "options": {
           "full_name": "obs",
           "args": {
@@ -149,13 +149,22 @@
             "appdir": "~/Applications/Homebrew"
           }
         }
+      },
+      "keyboardcleantool": {
+        "version": "4",
+        "options": {
+          "full_name": "keyboardcleantool",
+          "args": {
+            "appdir": "~/Applications/Homebrew"
+          }
+        }
       }
     }
   },
   "system": {
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "4.0.23",
+        "HOMEBREW_VERSION": "4.0.24",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "14.3.1.0.1.1683849156",

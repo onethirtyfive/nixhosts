@@ -23,5 +23,6 @@ cask "fluor"
 cask "eqmac"
 cask "obs"
 cask "shureplus-motiv"
+cask "elgato-stream-deck"
 
 cask "keyboardcleantool"

@@ -34,7 +34,7 @@
         }
       },
       "google-chrome": {
-        "version": "114.0.5735.133",
+        "version": "114.0.5735.198",
         "options": {
           "full_name": "google-chrome",
           "args": {
@@ -52,7 +52,7 @@
         }
       },
       "microsoft-edge": {
-        "version": "114.0.1823.58,6a5ef55e-f89f-44a1-8c29-76f02b3d6b0a",
+        "version": "114.0.1823.67,47028e91-44c4-44ac-90dd-859b9bc2e475",
         "options": {
           "full_name": "microsoft-edge",
           "args": {
@@ -70,7 +70,7 @@
         }
       },
       "slack": {
-        "version": "4.32.127",
+        "version": "4.33.73",
         "options": {
           "full_name": "slack",
           "args": {
@@ -79,7 +79,7 @@
         }
       },
       "zoom": {
-        "version": "5.15.0.19644",
+        "version": "5.15.2.19786",
         "options": {
           "full_name": "zoom",
           "args": {
@@ -88,7 +88,7 @@
         }
       },
       "signal": {
-        "version": "6.22.0",
+        "version": "6.23.0",
         "options": {
           "full_name": "signal",
           "args": {
@@ -106,7 +106,7 @@
         }
       },
       "istat-menus": {
-        "version": "6.70",
+        "version": "6.71",
         "options": {
           "full_name": "istat-menus",
           "args": {
@@ -158,18 +158,27 @@
             "appdir": "~/Applications/Homebrew"
           }
         }
+      },
+      "elgato-stream-deck": {
+        "version": "6.3.0.18948",
+        "options": {
+          "full_name": "elgato-stream-deck",
+          "args": {
+            "appdir": "~/Applications/Homebrew"
+          }
+        }
       }
     }
   },
   "system": {
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "4.0.24",
+        "HOMEBREW_VERSION": "4.0.26",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "14.3.1.0.1.1683849156",
         "Xcode": "14.3",
-        "macOS": "13.4"
+        "macOS": "13.4.1"
       }
     }
   }

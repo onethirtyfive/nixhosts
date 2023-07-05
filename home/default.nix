@@ -10,11 +10,12 @@
   ];
 
   home.packages = with pkgs; [
+    lazydocker
     ripgrep
     fd
     curl
     less
-    onethirtyfive-dev-python # from host config
+    python311-joshua
   ];
 
   home.sessionVariables = {

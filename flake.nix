@@ -11,7 +11,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ home-manager, darwin, ... }:
+  outputs = { home-manager, darwin, ... }:
     let
       home-manager-defaults = {
         home-manager.useGlobalPkgs = true;

@@ -2,7 +2,7 @@
   "entries": {
     "tap": {
       "homebrew/cask": {
-        "revision": "9bd750d55ccc8a3ec466d5736e52db376d3c2f2c"
+        "revision": "9ea04e516a5dc88c4c7aefca2677670ee1790a0f"
       }
     },
     "cask": {
@@ -43,7 +43,7 @@
         }
       },
       "firefox": {
-        "version": "114.0.2",
+        "version": "115.0",
         "options": {
           "full_name": "firefox",
           "args": {
@@ -173,7 +173,7 @@
   "system": {
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "4.0.26",
+        "HOMEBREW_VERSION": "4.0.27",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "14.3.1.0.1.1683849156",

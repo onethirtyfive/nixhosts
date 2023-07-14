@@ -26,3 +26,5 @@ cask "shureplus-motiv"
 cask "elgato-stream-deck"
 
 cask "keyboardcleantool"
+
+cask "macfuse"

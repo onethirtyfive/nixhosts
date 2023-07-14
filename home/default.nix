@@ -16,6 +16,7 @@
     curl
     less
     python311-joshua
+    cc2538-bsl
   ];
 
   home.sessionVariables = {

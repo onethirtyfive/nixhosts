@@ -41,6 +41,7 @@ let
     python311-joshua = (python311-withpandasmysupport.withPackages (ps: with ps; [
       mypy
       pylint
+
       python-lsp-server
       python-lsp-black
       pylsp-mypy
@@ -50,6 +51,8 @@ let
       pandas-stubs
 
       typing-extensions
+
+      pyserial intelhex
     ]));
   };
 in{
@@ -93,6 +96,10 @@ in{
       {
         python311 = tweaked.python311-withpandasmysupport;
         python311-joshua = tweaked.python311-joshua;
+
+        cc2538-bsl = super.cc2538-bsl.override {
+          python3Packages = self.python311-joshua.pkgs;
+        };
       }
     )
   ];

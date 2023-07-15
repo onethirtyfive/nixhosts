@@ -17,6 +17,7 @@
     less
     python311-joshua
     cc2538-bsl
+    ruby_3_1
   ];
 
   home.sessionVariables = {

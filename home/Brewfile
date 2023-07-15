@@ -28,3 +28,4 @@ cask "elgato-stream-deck"
 cask "keyboardcleantool"
 
 cask "macfuse"
+cask "obsidian"

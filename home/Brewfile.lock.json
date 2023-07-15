@@ -7,7 +7,7 @@
     },
     "cask": {
       "bitwarden": {
-        "version": "2023.5.1",
+        "version": "2023.7.0",
         "options": {
           "full_name": "bitwarden",
           "args": {
@@ -16,7 +16,7 @@
         }
       },
       "keybase": {
-        "version": "6.0.4,20230113195947,6e1343b357",
+        "version": "6.2.0,20230711161513,de748ecae2",
         "options": {
           "full_name": "keybase",
           "args": {
@@ -43,7 +43,7 @@
         }
       },
       "firefox": {
-        "version": "115.0.1",
+        "version": "115.0.2",
         "options": {
           "full_name": "firefox",
           "args": {
@@ -52,7 +52,7 @@
         }
       },
       "microsoft-edge": {
-        "version": "114.0.1823.79,007545a6-2bf6-4c7c-8dfb-2c916e48a66d",
+        "version": "114.0.1823.82,c16d0e8a-caf1-41f8-aa03-7a608204add7",
         "options": {
           "full_name": "microsoft-edge",
           "args": {
@@ -61,7 +61,7 @@
         }
       },
       "discord": {
-        "version": "0.0.275",
+        "version": "0.0.276",
         "options": {
           "full_name": "discord",
           "args": {
@@ -88,7 +88,7 @@
         }
       },
       "signal": {
-        "version": "6.24.0",
+        "version": "6.25.0",
         "options": {
           "full_name": "signal",
           "args": {
@@ -172,6 +172,15 @@
         "version": "4.5.0",
         "options": {
           "full_name": "macfuse",
+          "args": {
+            "appdir": "~/Applications/Homebrew"
+          }
+        }
+      },
+      "obsidian": {
+        "version": "1.3.5",
+        "options": {
+          "full_name": "obsidian",
           "args": {
             "appdir": "~/Applications/Homebrew"
           }

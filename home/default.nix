@@ -24,6 +24,22 @@ in {
       ];
     in map withCustomPkgs paths;
 
+  home.file.".config/karabiner" =
+    let
+      configStore = stdenv.mkDerivation {
+        name = "karabiner-config-store";
+        src = ./dotconfig;
+
+        installPhase = ''
+          mkdir -p $out
+          cp -r $src/karabiner $out/.
+        '';
+      };
+    in {
+      source = builtins.trace "${configStore}/karabiner" "${configStore}/karabiner";
+      target = ".config/karabiner";
+    };
+
   home.packages = (with pkgs'; [
     curl
     fd

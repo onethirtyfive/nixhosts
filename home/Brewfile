@@ -29,3 +29,4 @@ cask "keyboardcleantool"
 
 cask "macfuse"
 cask "obsidian"
+cask "karabiner-elements"

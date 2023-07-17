@@ -1,3 +1,4 @@
+pkgs:
 { ... }:
 {
   programs.zsh = {
@@ -5,7 +6,7 @@
     prezto.enable = true;
 
     autocd = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
     initExtra = builtins.readFile ./zshrc;
 
     shellAliases = {

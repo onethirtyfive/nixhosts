@@ -1,4 +1,5 @@
-{ lib, pkgs, config, ... }:
+pkgs:
+{ lib, config, ... }:
 {
   # Copy GUI apps to "~/Applications/Home Manager Apps"
   # Based on this comment: https://github.com/nix-community/home-manager/issues/1341#issuecomment-778820334

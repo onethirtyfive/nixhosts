@@ -1,61 +1,7 @@
 { inputs, pkgs, ... }:
 let
   inherit (pkgs) lib;
-
-  # At the time of writing this, some python customization was required to get pandas working
-  # with mypy. Below is the result--please revisit after some time, this may be redundant:
-  tweakPython311 = python311-original: rec {
-    python311-withpandasmysupport = python311-original.override {
-      packageOverrides = pyself: pysuper: {
-        pylsp-mypy = pysuper.pylsp-mypy.overridePythonAttrs (_: {
-          doCheck = false;
-        });
-
-        tensorboard-data-server = pysuper.tensorboard-data-server.overridePythonAttrs (super: rec {
-          version = "0.7.0";
-          disabled = pysuper.pythonOlder "3.7";
-          src = pysuper.fetchPypi {
-            pname = "tensorboard_data_server";
-            inherit version;
-            inherit (super) format;
-            dist = "py3";
-            python = "py3";
-            hash = "sha256-dT1CFHmbMdp7bZODeVmr67xq+obmnqzx6aMXpI2qMes=";
-          };
-        });
-
-        tensorboard = pysuper.tensorboard.overridePythonAttrs (super: rec {
-          version = "2.13.0";
-          disabled = pysuper.pythonOlder "3.7";
-          src = pysuper.fetchPypi {
-            inherit version;
-            inherit (super) pname format;
-            dist = "py3";
-            python = "py3";
-            sha256 = "sha256-q2mWHr3b3cg/X6L/kjNXK9rVuIN3jDXk/pS/F5i9hIE=";
-          };
-        });
-      };
-    };
-
-    python311-joshua = (python311-withpandasmysupport.withPackages (ps: with ps; [
-      mypy
-      pylint
-
-      python-lsp-server
-      python-lsp-black
-      pylsp-mypy
-      pynvim
-
-      pandas
-      pandas-stubs
-
-      typing-extensions
-
-      pyserial intelhex
-    ]));
-  };
-in{
+in {
   nix.configureBuildUsers = true;
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
 
@@ -86,23 +32,6 @@ in{
   nixpkgs.config = {
     allowUnfree = true;
   };
-
-  # pkgs augmentations
-  nixpkgs.overlays = [
-    (self: super:
-      let
-        tweaked = tweakPython311 super.python311;
-      in
-      {
-        python311 = tweaked.python311-withpandasmysupport;
-        python311-joshua = tweaked.python311-joshua;
-
-        cc2538-bsl = super.cc2538-bsl.override {
-          python3Packages = self.python311-joshua.pkgs;
-        };
-      }
-    )
-  ];
 
   environment = {
     shells = with pkgs; [ bash zsh ];

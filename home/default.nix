@@ -1,24 +1,36 @@
-{ pkgs, ... }:
-{
-  imports = [
-    ./git
-    ./zsh
-    ./nushell
-    ./alacritty
-    ./neovim
-    ./darwin-application-activation
-  ];
+{ nixpkgs, system, ... }:
+let
+  pkgs' = import nixpkgs {
+    inherit system;
+    overlays = [ (import ./overlay) ];
 
-  home.packages = with pkgs; [
-    lazydocker
-    ripgrep
-    fd
+    config.permittedInsecurePackages = [
+      "nodejs-16.20.1"
+    ];
+  };
+
+  inherit (pkgs') stdenv;
+in {
+  imports =
+    let
+      withCustomPkgs = path: import path pkgs';
+      paths = [
+        ./alacritty
+        ./darwin-application-activation
+        ./git
+        ./neovim
+        ./nushell
+        ./zsh
+      ];
+    in map withCustomPkgs paths;
+
+  home.packages = (with pkgs'; [
     curl
+    fd
+    lazydocker
     less
-    python311-joshua
-    cc2538-bsl
-    ruby_3_1
-  ];
+    ripgrep
+  ]) ++ (with pkgs'.joshua; [ cc2538-bsl python311 ruby_3_1 ]);
 
   home.sessionVariables = {
     PAGER = "less";

@@ -9,35 +9,37 @@
 
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    home.url = "path:./home";
+    home.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { home-manager, darwin, ... }:
+  outputs = { darwin, home-manager, nixpkgs, ... }:
     let
-      home-manager-defaults = {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-	home-manager.verbose = true;
-        home-manager.users.joshua = {
-          imports = [ ./home ];
-        };
-      };
+      system = "aarch64-darwin";
 
       modules = [
         ./configuration
         ./configuration/macos-settings.nix
         home-manager.darwinModules.home-manager
-        home-manager-defaults
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.verbose = true;
+          home-manager.users.joshua = {
+            imports = [ ./home ];
+          };
+          home-manager.extraSpecialArgs = { inherit nixpkgs system; };
+        }
       ];
     in {
       darwinConfigurations = {
         thirdwave = darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          inherit modules;
+          inherit system modules;
         };
 
         trendline = darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          inherit modules;
+          inherit system modules;
         };
       };
   };

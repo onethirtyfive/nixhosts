@@ -1,4 +1,5 @@
-{ pkgs , ... }:
+pkgs:
+{ ... }:
 let
   inherit (pkgs) vimPlugins;
 in {
@@ -13,6 +14,26 @@ in {
     withNodeJs = true;
 
     plugins = with vimPlugins; [
+      neodev-nvim
+
+      # scm
+      fugitive
+      gitsigns-nvim
+      vim-rhubarb
+
+      # chrome
+      lualine-nvim
+      nvim-tree-lua
+      nvim-web-devicons
+      telescope-fzf-native-nvim
+      telescope-nvim
+      telescope-live-grep-args-nvim
+      which-key-nvim
+
+      # theme
+      nvim-solarized-lua
+
+      # lang
       (nvim-treesitter.withPlugins (
         plugins: with plugins; [
           bash
@@ -37,9 +58,27 @@ in {
           typescript
         ]
       ))
+      nvim-treesitter-textobjects
+      nvim-ts-autotag
 
-      fugitive
+      # lsp: meta
+      nvim-lspconfig
+      fidget-nvim
+
+      # lsp: utility
+      copilot-lua
+      lsp_signature-nvim
+      lspkind-nvim
+      luasnip
+
+      # text
+      comment-nvim
+      indent-blankline-nvim
+      vim-sleuth
+
+      # cmp
       nvim-cmp
+      copilot-cmp
       cmp-git
       cmp-buffer
       cmp-cmdline
@@ -47,50 +86,19 @@ in {
       cmp-nvim-lsp
       cmp-path
       cmp_luasnip
-      comment-nvim
-      copilot-cmp
-      copilot-lua
-      fidget-nvim
-      gitsigns-nvim
-      indent-blankline-nvim
-      lspkind-nvim
-      lsp_signature-nvim
-      lualine-nvim
-      luasnip
-      neodev-nvim
-      nvim-lspconfig
-      nvim-tree-lua
-      nvim-ts-autotag
-      lualine-nvim
-      plenary-nvim
-      vim-rhubarb
-      vim-sleuth
-      nvim-solarized-lua
-      telescope-nvim
-      telescope-fzf-native-nvim
-      telescope-live-grep-args-nvim
-      nvim-treesitter-textobjects
-      which-key-nvim
-      nvim-web-devicons
-      # papercolor-theme
-      # nvim-autopairs
     ];
 
     extraPackages = with pkgs; [
-      nmap
-
-      #lsp
       marksman
       nil
-      nodePackages.typescript-language-server
-      nodePackages.vscode-langservers-extracted
+      nmap
       ripgrep
-      rubyPackages.solargraph
       taplo
       terraform
       terraform-ls
       texlab
-    ];
+    ] ++ (with pkgs.joshua; [ ruby_3_1 ])
+      ++ (with pkgs.nodejs_16.pkgs; [ typescript-language-server vscode-langservers-extracted ]);
 
     extraLuaConfig =
       let
@@ -98,9 +106,9 @@ in {
 
         sources = [
           ./init.lua
+          ./plugins/lsp.lua
           ./plugins/lualine.lua
           ./plugins/treesitter.lua
-          ./plugins/lsp.lua
           ./plugins/cmp.lua
           ./plugins/telescope.lua
         ];

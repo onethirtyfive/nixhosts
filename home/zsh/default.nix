@@ -3,7 +3,12 @@ pkgs:
 {
   programs.zsh = {
     enable = true;
-    prezto.enable = true;
+    prezto = {
+      enable = true;
+      extraConfig = ''
+        zstyle ':prezto:module:utility' safe-ops 'no'.
+      '';
+    };
 
     autocd = true;
     syntaxHighlighting.enable = true;
@@ -15,7 +20,25 @@ pkgs:
 
     oh-my-zsh = {
       plugins = [
+        "aws"
+        "bundler"
+        "command-not-found"
+        "direnv"
+        "docker"
+        "docker-compose"
+        "fzf"
         "git"
+        "git-lfs"
+        "jira"
+        "keychain"
+        "kubectl"
+        "minikube"
+        "nmap"
+        "ssh-agent"
+        "sudo"
+        "thefuck"
+        "tmux"
+        "yarn"
       ];
     };
   };

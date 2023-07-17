@@ -1,3 +1,5 @@
+require "math"
+
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
 
@@ -16,12 +18,21 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc, noremap=true, })
   end
 
+  local emoji = {
+    "😀", "😁", "😂", "😃",
+    "😄", "😅", "😆", "😇",
+    "😉", "😊", "🙂", "🤣",
+    "💩"
+  }
+  local random_emoji = function()
+    return emoji[math.random(#emoji)]
+  end
+
   require "lsp_signature".on_attach({
     bind = true, -- This is mandatory, otherwise border config won't get registered.
     handler_opts = { border = "rounded" },
-    hint_prefix = "💩";
+    hint_prefix = random_emoji();
   }, bufnr)
-
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 

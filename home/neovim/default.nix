@@ -108,6 +108,7 @@ in {
           ./init.lua
           ./plugins/lsp.lua
           ./plugins/lualine.lua
+          ./plugins/ruby.lua
           ./plugins/treesitter.lua
           ./plugins/cmp.lua
           ./plugins/telescope.lua

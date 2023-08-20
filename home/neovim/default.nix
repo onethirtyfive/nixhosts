@@ -16,6 +16,9 @@ in {
     plugins = with vimPlugins; [
       neodev-nvim
 
+      # tmux
+      vim-tmux-navigator
+
       # scm
       fugitive
       gitsigns-nvim

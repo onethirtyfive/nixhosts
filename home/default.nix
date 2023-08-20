@@ -20,6 +20,7 @@ in {
         ./git
         ./neovim
         ./nushell
+        ./tmux
         ./zsh
       ];
     in map withCustomPkgs paths;

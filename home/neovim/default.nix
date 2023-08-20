@@ -69,7 +69,7 @@ in {
       fidget-nvim
 
       # lsp: utility
-      copilot-lua
+      # copilot-lua
       lsp_signature-nvim
       lspkind-nvim
       luasnip
@@ -81,7 +81,7 @@ in {
 
       # cmp
       nvim-cmp
-      copilot-cmp
+      # copilot-cmp
       cmp-git
       cmp-buffer
       cmp-cmdline

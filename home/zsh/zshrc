@@ -7,6 +7,10 @@ fi
 
 export EDITOR=vim
 
+# Alacritty won't quit on command-q:
+alias noquit="defaults write org.alacritty NSUserKeyEquivalents -dict-add \"Quit alacritty\" -string \"@~q\""
+
+
 # General usefulness:
 alias is="env | grep -i NIX_SHELL"
 alias gs="git status"
@@ -43,6 +47,8 @@ stty -ixon
 eval "$(direnv hook zsh)"
 
 unsetopt AUTO_MENU
+unsetopt correct
+setopt NO_MENU_COMPLETE BASH_AUTO_LIST
 
 function setgpgprogram {
   git config --global gpg.program $(which gpg)

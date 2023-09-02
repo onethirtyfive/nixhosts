@@ -1,3 +1,4 @@
+{ rubyPackagePath }:
 final: prev:
 let
   python311-withPandasAccommodations = prev.python311.override {
@@ -34,25 +35,13 @@ let
       });
     };
   };
-
-  basis-ruby_3_1 = prev.ruby_3_1;
-
-  standardrb = prev.buildRubyGem rec {
-    name = "standard-${version}";
-    ruby = basis-ruby_3_1;
-    gemName = "standard";
-    version = "1.30.1";
-    source = {
-      sha256="dd4378691541af8a416bdf78afa99b7cf0186833291bdffd16745af959f1c834";
-    };
-  };
 in {
   inherit python311-withPandasAccommodations;
 
   joshua = rec {
     cc2538-bsl = prev.cc2538-bsl.override { python3Packages = python311.pkgs; };
 
-    python311 = python311-withPandasAccommodations.withPackages (ps: with ps; [
+    python311 = prev.python311.withPackages (ps: with ps; [
       black
 
       mypy
@@ -64,16 +53,13 @@ in {
       pynvim
 
       pandas
-      pandas-stubs
+      # pandas-stubs
 
       typing-extensions
 
       pyserial intelhex
     ]);
 
-    ruby_3_1 = basis-ruby_3_1.withPackages (ps: with ps; [
-      solargraph
-      standardrb
-    ]);
+    ruby31 = prev.callPackage rubyPackagePath {};
   };
 }

@@ -19,6 +19,10 @@ in {
       # tmux
       vim-tmux-navigator
 
+      # projects
+      project-nvim
+      telescope-project-nvim
+
       # scm
       fugitive
       gitsigns-nvim
@@ -64,6 +68,9 @@ in {
       nvim-treesitter-textobjects
       nvim-ts-autotag
 
+      # rust
+      rust-tools-nvim
+
       # lsp: meta
       nvim-lspconfig
       fidget-nvim
@@ -89,6 +96,10 @@ in {
       cmp-nvim-lsp
       cmp-path
       cmp_luasnip
+
+      # debugging
+      nvim-dap
+      plenary-nvim
     ];
 
     extraPackages = with pkgs; [
@@ -96,11 +107,12 @@ in {
       nil
       nmap
       ripgrep
+      rust-bin.stable.latest.complete
       taplo
       terraform
       terraform-ls
       texlab
-    ] ++ (with pkgs.joshua; [ ruby_3_1 ])
+    ] ++ (with pkgs.joshua; [ ruby31.env ])
       ++ (with pkgs.nodejs_16.pkgs; [ typescript-language-server vscode-langservers-extracted ]);
 
     extraLuaConfig =

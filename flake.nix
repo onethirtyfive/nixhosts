@@ -12,9 +12,16 @@
 
     home.url = "path:./home";
     home.inputs.nixpkgs.follows = "nixpkgs";
+
+    rust-overlay.url = "github:oxalica/rust-overlay";
+
+    # https://discourse.nixos.org/t/how-to-get-codelldb-on-nixos/30401/5
+    # lldb-nix-fix = {
+    #   url = "github:mstone/nixpkgs/darwin-fix-vscode-lldb";
+    # };
   };
 
-  outputs = { darwin, home-manager, nixpkgs, ... }:
+  outputs = { darwin, home-manager, nixpkgs, rust-overlay, ... }:
     let
       system = "aarch64-darwin";
 
@@ -29,7 +36,7 @@
           home-manager.users.joshua = {
             imports = [ ./home ];
           };
-          home-manager.extraSpecialArgs = { inherit nixpkgs system; };
+          home-manager.extraSpecialArgs = { inherit nixpkgs system rust-overlay; };
         }
       ];
     in {

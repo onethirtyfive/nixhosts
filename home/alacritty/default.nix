@@ -20,12 +20,21 @@ in {
       ];
 
       key_bindings = [
-        # This screen-clearing interfered with nvim inter-pane navigation too much for comfort.
-        # {
-        #   key = "K";
-        #   mods = "Control";
-        #   chars = "\\x0c";
-        # }
+        {
+          key = "K";
+          mods = "Command|Option";
+          action = "ClearHistory";
+        }
+        {
+          key = "Q";
+          mods = "Command";
+          action = "None";
+        }
+        {
+          key = "W";
+          mods = "Command";
+          chars = "\\x04";
+        }
       ];
 
       shell = {

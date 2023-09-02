@@ -81,7 +81,6 @@ in {
   # Add ability to used TouchID for sudo authentication
   security.pam.enableSudoTouchIdAuth = true;
 
-
   users.users.joshua.home = "/Users/joshua";
 }
 

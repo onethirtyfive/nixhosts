@@ -89,7 +89,13 @@ require('which-key').setup{}
 require('Comment').setup{}
 require('nvim-ts-autotag').setup{}
 
-require('nvim-tree').setup{
+require("nvim-tree").setup({
+  sync_root_with_cwd = true,
+  respect_buf_cwd = true,
+  update_focused_file = {
+    enable = true,
+    update_root = true
+  },
   filters = {
     custom = {
       "^.git$",
@@ -99,7 +105,7 @@ require('nvim-tree').setup{
       "^.mypy_cache"
     },
   },
-}
+})
 
 -- Setup neovim lua configuration
 require('neodev').setup()
@@ -131,7 +137,23 @@ lspkind.init({
   },
 })
 
+-- nvim-projects
+require("project_nvim").setup {
+  patterns = {
+    "!^nixhosts",
+    ".git",
+    "package.json",
+    "pyproject.toml", "requirements.txt",
+    "Gemfile",
+    "Cargo.toml",
+  },
+  exclude_dirs = {
+    "~/.cargo/*"
+  }
+}
+
 -- vim-tmux-navigator
+
 vim.keymap.set('n', '<C-h>', '<cmd> TmuxNavigateLeft<CR>', { desc = 'window left' })
 vim.keymap.set('n', '<C-l>', '<cmd> TmuxNavigateRight<CR>', { desc = 'window right' })
 vim.keymap.set('n', '<C-j>', '<cmd> TmuxNavigateDown<CR>', { desc = 'window down' })

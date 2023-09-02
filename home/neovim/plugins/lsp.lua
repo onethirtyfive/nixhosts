@@ -61,22 +61,22 @@ local on_attach = function(_, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 end
 
+local lspconfig = require('lspconfig')
+local lsp_defaults = lspconfig.util.default_config
+
+lsp_defaults.capabilities = vim.tbl_deep_extend(
+  'force',
+  lsp_defaults.capabilities,
+  require('cmp_nvim_lsp').default_capabilities()
+)
+
+-- add a few misc capabilities (source?)
+lsp_defaults.capabilities.textDocument.completion.completionItem.snippetSupport = true
+lsp_defaults.capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = { "documentation", "detail", "additionalTextEdits" },
+}
+
 function configure_lsp(server_name)
-  local lspconfig = require('lspconfig')
-  local lsp_defaults = lspconfig.util.default_config
-
-  lsp_defaults.capabilities = vim.tbl_deep_extend(
-    'force',
-    lsp_defaults.capabilities,
-    require('cmp_nvim_lsp').default_capabilities()
-  )
-
-  -- add a few misc capabilities (source?)
-  lsp_defaults.capabilities.textDocument.completion.completionItem.snippetSupport = true
-  lsp_defaults.capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = { "documentation", "detail", "additionalTextEdits" },
-  }
-
   lspconfig[server_name].setup { on_attach = on_attach, }
 end
 
@@ -85,14 +85,15 @@ configure_lsp('html')
 configure_lsp('cssls')
 configure_lsp('marksman')
 configure_lsp('nil_ls')
-configure_lsp('standardrb')
-configure_lsp('solargraph')
-configure_lsp('rust_analyzer')
 configure_lsp('texlab')
 configure_lsp('terraformls')
 configure_lsp('tsserver')
+configure_lsp('standardrb')
 
 require'lspconfig'.pylsp.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = {"python"},
   settings = {
     pylsp = {
       plugins = {
@@ -104,3 +105,34 @@ require'lspconfig'.pylsp.setup{
   }
 }
 
+local rt = require'rust-tools'
+
+rt.setup{
+  server = {
+    on_attach = function(_, bufnr)
+      vim.keymap.set("n", "<C-h>", rt.hover_actions.hover_actions, { buffer = bufnr })
+      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+    end
+  },
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    ['rust-analyzer'] = {
+      cargo = {
+        allFeatures = true,
+      },
+    },
+  },
+  -- dap = {
+  --   type = "server",
+  --   port = "${port}",
+  --   executable = {
+  --       command = "codelldb",
+  --       args = { "--port", "${port}" },
+  --   },
+  -- },
+}
+
+-- require'lspconfig'.rust_analyzer.setup({
+--   root_dir = lspconfig.util.root_pattern("Cargo.toml"),
+-- })

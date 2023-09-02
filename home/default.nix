@@ -1,11 +1,14 @@
-{ nixpkgs, system, ... }:
+{ nixpkgs, system, rust-overlay, ... }:
 let
   pkgs' = import nixpkgs {
     inherit system;
-    overlays = [ (import ./overlay) ];
+    overlays = [
+      (import ./overlay { rubyPackagePath = ./ruby; })
+      rust-overlay.overlays.default
+    ];
 
     config.permittedInsecurePackages = [
-      "nodejs-16.20.1"
+      "nodejs-16.20.2"
     ];
   };
 
@@ -47,7 +50,11 @@ in {
     lazydocker
     less
     ripgrep
-  ]) ++ (with pkgs'.joshua; [ cc2538-bsl python311 ruby_3_1 ]);
+    coreutils
+    gnused
+
+    pkgs.rust-bin.stable.latest.complete
+  ]) ++ (with pkgs'.joshua; [ cc2538-bsl python311 ]);
 
   home.sessionVariables = {
     PAGER = "less";

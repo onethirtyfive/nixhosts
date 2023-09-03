@@ -63,6 +63,7 @@ in {
           terraform
           tree-sitter-tsx
           typescript
+          tree-sitter-yaml
         ]
       ))
       nvim-treesitter-textobjects

@@ -70,6 +70,7 @@ in {
       nvim-ts-autotag
 
       # rust
+      plenary-nvim
       rust-tools-nvim
 
       # lsp: meta
@@ -100,7 +101,6 @@ in {
 
       # debugging
       nvim-dap
-      plenary-nvim
     ];
 
     extraPackages = with pkgs; [

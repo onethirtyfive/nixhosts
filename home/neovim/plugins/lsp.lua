@@ -105,17 +105,21 @@ require'lspconfig'.pylsp.setup{
   }
 }
 
-local rt = require'rust-tools'
-
-rt.setup{
+require'rust-tools'.setup{
   server = {
     on_attach = function(_, bufnr)
       vim.keymap.set("n", "<C-h>", rt.hover_actions.hover_actions, { buffer = bufnr })
       vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
     end
   },
-  on_attach = on_attach,
-  capabilities = capabilities,
+  tools = {
+    inlay_hints = {
+      auto = true,
+      show_parameter_hints = false,
+      parameter_hints_prefix = "",
+      other_hints_prefix = "",
+    },
+  },
   settings = {
     ['rust-analyzer'] = {
       cargo = {
@@ -123,16 +127,5 @@ rt.setup{
       },
     },
   },
-  -- dap = {
-  --   type = "server",
-  --   port = "${port}",
-  --   executable = {
-  --       command = "codelldb",
-  --       args = { "--port", "${port}" },
-  --   },
-  -- },
 }
 
--- require'lspconfig'.rust_analyzer.setup({
---   root_dir = lspconfig.util.root_pattern("Cargo.toml"),
--- })

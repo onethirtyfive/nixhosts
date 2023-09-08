@@ -2,12 +2,12 @@
   "entries": {
     "tap": {
       "homebrew/cask": {
-        "revision": "875d57bd4abf0130277d0cb7a472488f24a39a2e"
+        "revision": "33fc4efe9f39e71951feb75316bffb865927fc99"
       }
     },
     "cask": {
       "bitwarden": {
-        "version": "2023.8.2",
+        "version": "2023.8.3",
         "options": {
           "full_name": "bitwarden",
           "args": {
@@ -34,7 +34,7 @@
         }
       },
       "google-chrome": {
-        "version": "116.0.5845.140",
+        "version": "116.0.5845.179",
         "options": {
           "full_name": "google-chrome",
           "args": {
@@ -70,7 +70,7 @@
         }
       },
       "slack": {
-        "version": "4.33.90",
+        "version": "4.34.115",
         "options": {
           "full_name": "slack",
           "args": {
@@ -79,7 +79,7 @@
         }
       },
       "zoom": {
-        "version": "5.15.11.22019",
+        "version": "5.15.12.22445",
         "options": {
           "full_name": "zoom",
           "args": {
@@ -88,7 +88,7 @@
         }
       },
       "signal": {
-        "version": "6.29.1",
+        "version": "6.30.0",
         "options": {
           "full_name": "signal",
           "args": {
@@ -142,7 +142,7 @@
         }
       },
       "shureplus-motiv": {
-        "version": "1.3.1",
+        "version": "1.5.0",
         "options": {
           "full_name": "shureplus-motiv",
           "args": {
@@ -200,12 +200,12 @@
   "system": {
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "4.1.7",
+        "HOMEBREW_VERSION": "4.1.9",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "14.3.1.0.1.1683849156",
         "Xcode": "14.3",
-        "macOS": "13.4.1"
+        "macOS": "13.5"
       }
     }
   }

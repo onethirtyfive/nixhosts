@@ -10,7 +10,6 @@ export EDITOR=vim
 # Alacritty won't quit on command-q:
 alias noquit="defaults write org.alacritty NSUserKeyEquivalents -dict-add \"Quit alacritty\" -string \"@~q\""
 
-
 # General usefulness:
 alias is="env | grep -i NIX_SHELL"
 alias gs="git status"
@@ -38,6 +37,10 @@ function hm-switch() {
   darwin-rebuild switch --flake "$NIXHOSTS"
 }
 
+function setgpgprogram {
+  git config --global gpg.program $(which gpg)
+}
+
 # source $HOME/.nix-profile/share/git/contrib/completion/git-prompt.sh
 # source $HOME/.nix-profile/share/git/contrib/completion/git-completion.bash
 
@@ -50,10 +53,7 @@ unsetopt AUTO_MENU
 unsetopt correct
 setopt NO_MENU_COMPLETE BASH_AUTO_LIST
 
-function setgpgprogram {
-  git config --global gpg.program $(which gpg)
-}
-
+unalias find
 
 if [ -f ~/.zshrc.local ]; then
   source ~/.zshrc.local

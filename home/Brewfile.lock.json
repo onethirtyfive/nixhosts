@@ -2,7 +2,7 @@
   "entries": {
     "tap": {
       "homebrew/cask": {
-        "revision": "33fc4efe9f39e71951feb75316bffb865927fc99"
+        "revision": "4b0e9d50de78e556bc1ee2780caa5b39964a8b39"
       }
     },
     "cask": {
@@ -52,7 +52,7 @@
         }
       },
       "microsoft-edge": {
-        "version": "116.0.1938.69,477dac01-7a9f-4230-bf3b-5fae4b50ca49",
+        "version": "116.0.1938.76,a989b093-c982-4d31-95d1-2c439f49b7e7",
         "options": {
           "full_name": "microsoft-edge",
           "args": {
@@ -88,7 +88,7 @@
         }
       },
       "signal": {
-        "version": "6.30.0",
+        "version": "6.30.1",
         "options": {
           "full_name": "signal",
           "args": {
@@ -200,7 +200,7 @@
   "system": {
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "4.1.9",
+        "HOMEBREW_VERSION": "4.1.10",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "14.3.1.0.1.1683849156",

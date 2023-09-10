@@ -148,7 +148,8 @@ require("project_nvim").setup {
     "Cargo.toml",
   },
   exclude_dirs = {
-    "~/.cargo/*"
+    "~/.cargo/*",
+    "rustlings/exercises",
   }
 }
 

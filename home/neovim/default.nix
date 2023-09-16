@@ -72,6 +72,7 @@ in {
       # rust
       plenary-nvim
       rust-tools-nvim
+      crates-nvim
 
       # lsp: meta
       nvim-lspconfig
@@ -122,6 +123,7 @@ in {
 
         sources = [
           ./init.lua
+          ./plugins/crates.lua
           ./plugins/lsp.lua
           ./plugins/lualine.lua
           ./plugins/ruby.lua

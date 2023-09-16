@@ -75,7 +75,9 @@ cmp.setup {
     { name = 'path' },
     { name = 'buffer' },
     { name = 'nvim_lsp_signature_help' },
-    { name = 'nvim_lsp_document_symbol' },},
+    { name = 'nvim_lsp_document_symbol' },
+    { name = 'crates' },
+  },
 
   experimental = { ghost_text = true },
 }

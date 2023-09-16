@@ -115,7 +115,7 @@ require'rust-tools'.setup{
   tools = {
     inlay_hints = {
       auto = true,
-      show_parameter_hints = false,
+      show_parameter_hints = true,
       parameter_hints_prefix = "",
       other_hints_prefix = "",
     },
@@ -124,6 +124,9 @@ require'rust-tools'.setup{
     ['rust-analyzer'] = {
       cargo = {
         allFeatures = true,
+        autoReload = true,
+      },
+      excludeDirs = {
       },
     },
   },

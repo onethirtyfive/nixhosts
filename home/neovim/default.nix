@@ -109,13 +109,11 @@ in {
       nil
       nmap
       ripgrep
-      rust-bin.stable.latest.complete
       taplo
       terraform
       terraform-ls
       texlab
-    ] ++ (with pkgs.joshua; [ ruby31.env ])
-      ++ (with pkgs.nodejs_16.pkgs; [ typescript-language-server vscode-langservers-extracted ]);
+    ] ++ (with pkgs.nodejs_16.pkgs; [ typescript-language-server vscode-langservers-extracted ]);
 
     extraLuaConfig =
       let
@@ -126,7 +124,6 @@ in {
           ./plugins/crates.lua
           ./plugins/lsp.lua
           ./plugins/lualine.lua
-          ./plugins/ruby.lua
           ./plugins/treesitter.lua
           ./plugins/cmp.lua
           ./plugins/telescope.lua

@@ -68,6 +68,20 @@ in {
   # quality of life
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
+  programs.direnv.stdlib = ''
+    #!/usr/bin/env bash
+
+    declare -A direnv_layout_dirs
+    direnv_layout_dir() {
+        local hash dir
+        echo "''${direnv_layout_dirs[$PWD]:=$(
+            hash="$(sha1sum - <<< "$PWD" | head -c40)"
+            dir="$(basename "''${PWD}")"
+            echo "''${XDG_CACHE_HOME:-''${HOME}/.cache}/direnv/layouts/''${dir}-''${hash}"
+        )}"
+    }
+  '';
+
   programs.exa.enable = true;
   programs.fzf.enable = true;
 

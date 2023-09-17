@@ -33,28 +33,41 @@ local on_attach = function(_, bufnr)
     handler_opts = { border = "rounded" },
     hint_prefix = random_emoji();
   }, bufnr)
-  nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+  nmap('<leader>rn', vim.lsp.buf.rename, '[r]e[n]ame')
+  nmap('<leader>ca', vim.lsp.buf.code_action, '[c]ode [a]ction')
 
-  nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-  nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-  nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+  nmap('gd', vim.lsp.buf.definition, '[g]oto [d]efinition')
+  nmap('gD', vim.lsp.buf.declaration, '[g]oto [D]eclaration')
+  nmap('gr', require('telescope.builtin').lsp_references, '[g]oto [r]eferences')
+  nmap('gI', vim.lsp.buf.implementation, '[g]oto [I]mplementation')
+
   nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-  nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-  nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+  nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[d]ocument [s]ymbols')
+  nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[w]orkspace [s]ymbols')
 
   -- See `:help K` for why this keymap
-  nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<leader>k', vim.lsp.buf.signature_help, 'Signature Documentation')
-  nmap('<leader>h', rt.hover_actions.hover_actions, 'Hover Actions')
+  local function show_documentation()
+    local filetype = vim.bo.filetype
+    if vim.tbl_contains({ 'vim','help' }, filetype) then
+      vim.cmd('h '..vim.fn.expand('<cword>'))
+    elseif vim.tbl_contains({ 'man' }, filetype) then
+      vim.cmd('Man '..vim.fn.expand('<cword>'))
+    elseif vim.fn.expand('%:t') == 'Cargo.toml' and require('crates').popup_available() then
+      require('crates').show_popup()
+    else
+      vim.lsp.buf.hover()
+    end
+  end
+  nmap('K', show_documentation, '[K] Hover Documentation')
+  nmap('<leader>k', vim.lsp.buf.signature_help, '[k] signature documentation')
+  nmap('<leader>H', rt.hover_actions.hover_actions, '[H]over actions')
 
   -- Lesser used LSP functionality
-  nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-  nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-  nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
+  nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[w]orkspace [a]dd folder')
+  nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[w]orkspace [r]emove folder')
   nmap('<leader>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, '[W]orkspace [L]ist Folders')
+  end, '[w]orkspace [l]ist folders')
 
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
@@ -106,11 +119,15 @@ require'lspconfig'.pylsp.setup{
   }
 }
 
+require('crates').setup()
+
 require'rust-tools'.setup{
   server = {
-    on_attach = function(_, bufnr)
-      vim.keymap.set("n", "<C-h>", rt.hover_actions.hover_actions, { buffer = bufnr })
-      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+    on_attach = function(...)
+      local rt = require('rust-tools')
+      vim.keymap.set("n", "<leader>H", rt.hover_actions.hover_actions, { silent=true, noremap=true, desc="Hover actions" })
+      vim.keymap.set("n", "<leader>cA", rt.code_action_group.code_action_group, { silent=true, noremap=true, desc = "Code [A]ction group" })
+      on_attach(...)
     end
   },
   tools = {

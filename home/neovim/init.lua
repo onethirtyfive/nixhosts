@@ -67,7 +67,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- [[ Basic Keymaps ]]
 
-vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', { silent = true })
+vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', { silent = true, desc = "Toggle vimtree" })
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -156,10 +156,10 @@ require("project_nvim").setup {
 
 -- vim-tmux-navigator
 
-vim.keymap.set('n', '<C-h>', '<cmd> TmuxNavigateLeft<CR>', { desc = 'window left' })
-vim.keymap.set('n', '<C-l>', '<cmd> TmuxNavigateRight<CR>', { desc = 'window right' })
-vim.keymap.set('n', '<C-j>', '<cmd> TmuxNavigateDown<CR>', { desc = 'window down' })
-vim.keymap.set('n', '<C-k>', '<cmd> TmuxNavigateUp<CR>', { desc = 'window up' })
+vim.keymap.set('n', '<C-h>', '<cmd> TmuxNavigateLeft<CR>', { desc = 'Window left' })
+vim.keymap.set('n', '<C-l>', '<cmd> TmuxNavigateRight<CR>', { desc = 'Window right' })
+vim.keymap.set('n', '<C-j>', '<cmd> TmuxNavigateDown<CR>', { desc = 'Window down' })
+vim.keymap.set('n', '<C-k>', '<cmd> TmuxNavigateUp<CR>', { desc = 'Window up' })
 
 -- vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
 

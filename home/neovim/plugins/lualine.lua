@@ -10,7 +10,7 @@ require('lualine').setup {
   extensions = { 'nvim-tree' },
   options = {
     -- theme = custom_solarized_dark,
-    theme = custom_theme,
+    -- theme = custom_theme,
     component_separators = '|',
     section_separators = { left = '', right = '' },
   },

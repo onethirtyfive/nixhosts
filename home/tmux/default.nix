@@ -18,7 +18,6 @@ in {
     shell = "${pkgs.zsh}/bin/zsh";
 
     plugins = with tmuxPlugins; [
-      tmux-colors-solarized
       tmux-fzf
       vim-tmux-navigator
       yank

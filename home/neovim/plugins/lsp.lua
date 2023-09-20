@@ -2,6 +2,21 @@ require "math"
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
+vim.lsp.handlers["textDocument/hover"] =
+  vim.lsp.with(
+  vim.lsp.handlers.hover,
+  {
+    border = "single"
+  }
+)
+
+vim.lsp.handlers["textDocument/signatureHelp"] =
+  vim.lsp.with(
+  vim.lsp.handlers.signature_help,
+  {
+    border = "single"
+  }
+)
 
 local on_attach = function(_, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
@@ -30,7 +45,7 @@ local on_attach = function(_, bufnr)
 
   require "lsp_signature".on_attach({
     bind = true, -- This is mandatory, otherwise border config won't get registered.
-    handler_opts = { border = "rounded" },
+    handler_opts = { border = "single" },
     hint_prefix = random_emoji();
   }, bufnr)
   nmap('<leader>rn', vim.lsp.buf.rename, '[r]e[n]ame')

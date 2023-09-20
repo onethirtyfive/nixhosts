@@ -4,8 +4,8 @@ let
   alacritty-theme = pkgs.fetchFromGitHub {
     owner = "alacritty";
     repo = "alacritty-theme";
-    rev = "981f48c9e4de2c0b657ed23a8ca425d8bf6ae0c7";
-    sha256 = "sha256-ABZFJx+TbGtAr84WVTgB2Oa6MAHhQFoORInVjbw3UGk=";
+    rev = "9f769d54eccc0b43bb1ae600575baddea15aae56";
+    sha256 = "sha256-MWXo8N19McmbQrN4IrXSp24L3elRNCOz5yDqV//Ycpo=";
   };
 in {
   programs.alacritty = {
@@ -15,8 +15,12 @@ in {
       font.normal.family = "JetBrainsMono Nerd Font";
       font.size = 14;
 
+      env = {
+        TERM = "xterm-256color";
+      };
+
       import = [
-        "${alacritty-theme}/themes/solarized_dark.yaml"
+        "${alacritty-theme}/themes/carbonfox.yaml"
       ];
 
       key_bindings = [

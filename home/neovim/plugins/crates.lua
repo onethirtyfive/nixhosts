@@ -1,6 +1,12 @@
 local crates = require('crates')
 
-vim.keymap.set('n', '<leader>vt', crates.toggle, { noremap = true, silent = true, desc = "[t]oggle crates"})
+crates.setup{
+  popup = {
+    border = "single",
+  }
+}
+
+vim.keymap.set('n', '<leader>vt', crates.toggle, { noremap = true, silent = true, desc = "[t]oggle crates" })
 vim.keymap.set('n', '<leader>vr', crates.reload, { noremap = true, silent = true, desc = "[r]eload crates" })
 
 vim.keymap.set('n', '<leader>vv', crates.show_versions_popup, { noremap = true, silent = true, desc = "Show [v]ersions popup" })

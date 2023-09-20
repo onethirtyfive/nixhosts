@@ -38,7 +38,7 @@ in {
       which-key-nvim
 
       # theme
-      nvim-solarized-lua
+      nightfox-nvim
 
       # lang
       (nvim-treesitter.withPlugins (

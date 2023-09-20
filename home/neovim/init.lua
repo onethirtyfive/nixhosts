@@ -85,11 +85,14 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { noremap = true, de
 
 require('fidget').setup{}
 require('nvim-web-devicons').setup{}
-require('which-key').setup{}
+require('which-key').setup{
+  window = {
+    border = "single",
+  }
+}
 require('Comment').setup{}
 require('nvim-ts-autotag').setup{}
 require('crates').setup{}
-
 require("nvim-tree").setup({
   sync_root_with_cwd = true,
   respect_buf_cwd = true,
@@ -164,7 +167,7 @@ vim.keymap.set('n', '<C-k>', '<cmd> TmuxNavigateUp<CR>', { desc = 'Window up' })
 -- vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
 
 vim.api.nvim_command([[
-  silent! colorscheme solarized
+  silent! colorscheme carbonfox
   silent! set bg=dark
 ]]);
 

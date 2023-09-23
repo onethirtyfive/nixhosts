@@ -7,6 +7,7 @@ pkgs:
       enable = true;
       extraConfig = ''
         zstyle ':prezto:module:utility' safe-ops 'no'.
+        zstyle ':completion:*' completer _expand _complete
       '';
     };
 
@@ -27,8 +28,7 @@ pkgs:
         "docker"
         "docker-compose"
         "fzf"
-        "git"
-        "git-lfs"
+        "gitfast"
         "jira"
         "keychain"
         "kubectl"

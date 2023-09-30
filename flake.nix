@@ -21,7 +21,7 @@
     # };
   };
 
-  outputs = { darwin, home-manager, nixpkgs, rust-overlay, ... }:
+  outputs = inputs@{ darwin, home-manager, nixpkgs, rust-overlay, ... }:
     let
       system = "aarch64-darwin";
 
@@ -42,11 +42,11 @@
     in {
       darwinConfigurations = {
         thirdwave = darwin.lib.darwinSystem {
-          inherit system modules;
+          inherit system modules inputs;
         };
 
         trendline = darwin.lib.darwinSystem {
-          inherit system modules;
+          inherit system modules inputs;
         };
       };
   };

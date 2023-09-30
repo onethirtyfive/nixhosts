@@ -2,12 +2,12 @@
   "entries": {
     "tap": {
       "homebrew/cask": {
-        "revision": "4b0e9d50de78e556bc1ee2780caa5b39964a8b39"
+        "revision": "d588ceb65f98d5730d6adbd65a032961efd40b39"
       }
     },
     "cask": {
       "bitwarden": {
-        "version": "2023.8.3",
+        "version": "2023.9.1",
         "options": {
           "full_name": "bitwarden",
           "args": {
@@ -16,8 +16,9 @@
         }
       },
       "keybase": {
-        "version": "6.2.1,20230724165206,e6160f1b9e",
+        "version": "6.2.3,20230928152642,eba57c1814",
         "options": {
+          "version": "~> 6.2",
           "full_name": "keybase",
           "args": {
             "appdir": "~/Applications/Homebrew"
@@ -34,7 +35,7 @@
         }
       },
       "google-chrome": {
-        "version": "116.0.5845.179",
+        "version": "117.0.5938.132",
         "options": {
           "full_name": "google-chrome",
           "args": {
@@ -43,7 +44,7 @@
         }
       },
       "firefox": {
-        "version": "117.0",
+        "version": "118.0.1",
         "options": {
           "full_name": "firefox",
           "args": {
@@ -52,7 +53,7 @@
         }
       },
       "microsoft-edge": {
-        "version": "116.0.1938.76,a989b093-c982-4d31-95d1-2c439f49b7e7",
+        "version": "117.0.2045.47,3bf54043-5c3d-4b78-8322-214b381a5dd0",
         "options": {
           "full_name": "microsoft-edge",
           "args": {
@@ -61,7 +62,7 @@
         }
       },
       "discord": {
-        "version": "0.0.277",
+        "version": "0.0.278",
         "options": {
           "full_name": "discord",
           "args": {
@@ -70,7 +71,7 @@
         }
       },
       "slack": {
-        "version": "4.34.115",
+        "version": "4.34.121",
         "options": {
           "full_name": "slack",
           "args": {
@@ -79,7 +80,7 @@
         }
       },
       "zoom": {
-        "version": "5.15.12.22445",
+        "version": "5.16.1.23158",
         "options": {
           "full_name": "zoom",
           "args": {
@@ -88,7 +89,7 @@
         }
       },
       "signal": {
-        "version": "6.30.1",
+        "version": "6.32.0",
         "options": {
           "full_name": "signal",
           "args": {
@@ -106,7 +107,7 @@
         }
       },
       "istat-menus": {
-        "version": "6.71",
+        "version": "6.72",
         "options": {
           "full_name": "istat-menus",
           "args": {
@@ -142,7 +143,7 @@
         }
       },
       "shureplus-motiv": {
-        "version": "1.5.0",
+        "version": "1.5.1",
         "options": {
           "full_name": "shureplus-motiv",
           "args": {
@@ -160,7 +161,7 @@
         }
       },
       "elgato-stream-deck": {
-        "version": "6.3.0.18948",
+        "version": "6.3.1.18954",
         "options": {
           "full_name": "elgato-stream-deck",
           "args": {
@@ -178,7 +179,7 @@
         }
       },
       "obsidian": {
-        "version": "1.4.5",
+        "version": "1.4.14",
         "options": {
           "full_name": "obsidian",
           "args": {
@@ -200,7 +201,7 @@
   "system": {
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "4.1.10",
+        "HOMEBREW_VERSION": "4.1.13",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "14.3.1.0.1.1683849156",

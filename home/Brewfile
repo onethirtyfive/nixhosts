@@ -3,7 +3,7 @@ tap "homebrew/cask"
 cask_args appdir: "~/Applications/Homebrew"
 
 cask "bitwarden"
-cask "keybase", '~> 6.2'
+cask "keybase", { version: '~> 6.2' }
 cask "gpg-suite-no-mail"
 
 cask "google-chrome"

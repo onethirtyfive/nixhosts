@@ -118,6 +118,7 @@ configure_lsp('texlab')
 configure_lsp('terraformls')
 configure_lsp('tsserver')
 configure_lsp('standardrb')
+configure_lsp('taplo')
 
 require'lspconfig'.pylsp.setup{
   on_attach = on_attach,

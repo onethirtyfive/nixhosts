@@ -141,7 +141,7 @@ lspkind.init({
   },
 })
 
--- nvim-projects
+-- nvim-project
 require("project_nvim").setup {
   patterns = {
     "!^nixhosts",
@@ -154,7 +154,8 @@ require("project_nvim").setup {
   exclude_dirs = {
     "~/.cargo/*",
     "rustlings/exercises",
-  }
+  },
+  ignore_lsp = { "taplo" },
 }
 
 -- vim-tmux-navigator

@@ -61,6 +61,7 @@ in {
           ruby
           rust
           terraform
+          toml
           tree-sitter-tsx
           typescript
           tree-sitter-yaml
@@ -113,6 +114,7 @@ in {
       terraform
       terraform-ls
       texlab
+      taplo
     ] ++ (with pkgs.joshua; [ ruby31.env ])
       ++ (with pkgs.nodejs_16.pkgs; [ typescript-language-server vscode-langservers-extracted ]);
 

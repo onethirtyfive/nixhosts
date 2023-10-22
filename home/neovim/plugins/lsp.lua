@@ -119,6 +119,7 @@ configure_lsp('terraformls')
 configure_lsp('tsserver')
 configure_lsp('standardrb')
 configure_lsp('taplo')
+configure_lsp('jsonls')
 
 require'lspconfig'.pylsp.setup{
   on_attach = on_attach,

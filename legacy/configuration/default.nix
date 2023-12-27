@@ -3,7 +3,7 @@ let
   inherit (pkgs) lib;
 in {
   nix.configureBuildUsers = true;
-  nix.registry.nixpkgs.flake = inputs.nixpkgs;
+  nix.registry.nixpkgs.flake = inputs.nixpkgs-unstable;
 
   nix.settings = {
     substituters = [

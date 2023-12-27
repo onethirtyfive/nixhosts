@@ -1,6 +1,6 @@
-{ nixpkgs, system, rust-overlay, ... }:
+{ nixpkgs-unstable, system, rust-overlay, ... }:
 let
-  pkgs' = import nixpkgs {
+  pkgs' = import nixpkgs-unstable {
     inherit system;
     overlays = [
       (import ./overlay { rubyPackagePath = ./ruby; })

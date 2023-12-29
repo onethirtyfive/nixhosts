@@ -28,6 +28,7 @@ in {
     ripgrep
     coreutils
     gnused
+    home-manager
     pkgs.rust-bin.stable.latest.complete
   ]) ++ (with pkgs.joshua; [ cc2538-bsl python311 ]);
 

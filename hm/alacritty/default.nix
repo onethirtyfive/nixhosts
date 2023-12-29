@@ -1,5 +1,5 @@
 pkgs:
-{ ... }:
+{ config, ... }:
 let
   alacritty-theme = pkgs.fetchFromGitHub {
     owner = "alacritty";
@@ -42,7 +42,7 @@ in {
       ];
 
       shell = {
-        program = "/etc/profiles/per-user/joshua/bin/zsh";
+        program = "${config.programs.zsh.package}/bin/zsh";
         args = [ "--login" ];
       };
 

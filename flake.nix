@@ -13,13 +13,17 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
+    alacritty-theme = {
+      url = "github:alacritty/alacritty-theme";
+      flake = false;
+    };
     # https://discourse.nixos.org/t/how-to-get-codelldb-on-nixos/30401/5
     # lldb-nix-fix = {
     #   url = "github:mstone/nixpkgs/darwin-fix-vscode-lldb";
     # };
   };
 
-  outputs = inputs@{ nixpkgs-unstable, nixpkgs, darwin, home-manager, rust-overlay, ... }: {
+  outputs = inputs@{ nixpkgs-unstable, nixpkgs, darwin, home-manager, rust-overlay, alacritty-theme, ... }: {
     darwinConfigurations =
       let
         system = "aarch64-darwin";
@@ -64,7 +68,7 @@
                 useUserPackages = true;
                 verbose = true;
                 users.joshua = joshua.managed-home;
-                extraSpecialArgs = { inherit system nixpkgs rust-overlay; };
+                extraSpecialArgs = { inherit system nixpkgs rust-overlay alacritty-theme; };
               };
             }
             (import ./hosts/neutrino)

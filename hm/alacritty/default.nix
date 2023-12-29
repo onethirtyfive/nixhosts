@@ -1,13 +1,6 @@
 pkgs:
-{ config, ... }:
-let
-  alacritty-theme = pkgs.fetchFromGitHub {
-    owner = "alacritty";
-    repo = "alacritty-theme";
-    rev = "9f769d54eccc0b43bb1ae600575baddea15aae56";
-    sha256 = "sha256-MWXo8N19McmbQrN4IrXSp24L3elRNCOz5yDqV//Ycpo=";
-  };
-in {
+{ config, alacritty-theme, ... }:
+{
   programs.alacritty = {
     enable = true;
 

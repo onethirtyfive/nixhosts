@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "alacritty-theme": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1703769120,
+        "narHash": "sha256-UBWH4Q9MliqcolFq1tZrfRdzCkUO1pRn84qvZEVw8Gg=",
+        "owner": "alacritty",
+        "repo": "alacritty-theme",
+        "rev": "b7a59c92fd54a005893b99479fb0aa466a37a4b7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alacritty",
+        "repo": "alacritty-theme",
+        "type": "github"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -124,6 +140,7 @@
     },
     "root": {
       "inputs": {
+        "alacritty-theme": "alacritty-theme",
         "darwin": "darwin",
         "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",

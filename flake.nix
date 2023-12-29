@@ -10,9 +10,7 @@
 
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
     rust-overlay.url = "github:oxalica/rust-overlay";
-
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     # https://discourse.nixos.org/t/how-to-get-codelldb-on-nixos/30401/5
@@ -21,26 +19,26 @@
     # };
   };
 
-  outputs = inputs@{ nixpkgs-unstable, darwin, home-manager, rust-overlay, ... }:
-    let
-      system = "aarch64-darwin";
+  outputs = inputs@{ nixpkgs-unstable, nixpkgs, darwin, home-manager, rust-overlay, ... }: {
+    darwinConfigurations =
+      let
+        system = "aarch64-darwin";
 
-      modules = [
-        ./legacy/configuration
-        ./legacy/configuration/macos-settings.nix
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.verbose = true;
-          home-manager.users.joshua = {
-            imports = [ ./legacy/home ];
-          };
-          home-manager.extraSpecialArgs = { inherit nixpkgs-unstable system rust-overlay; };
-        }
-      ];
-    in {
-      darwinConfigurations = {
+        modules = [
+          ./legacy/configuration
+          ./legacy/configuration/macos-settings.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.verbose = true;
+            home-manager.users.joshua = {
+              imports = [ ./legacy/home ];
+            };
+            home-manager.extraSpecialArgs = { inherit system nixpkgs-unstable rust-overlay; };
+          }
+        ];
+      in {
         thirdwave = darwin.lib.darwinSystem {
           inherit system modules inputs;
         };
@@ -49,6 +47,30 @@
           inherit system modules inputs;
         };
       };
-    };
+
+    nixosConfigurations =
+      let
+        system = "x86_64-linux";
+        joshua = import ./users/joshua;
+      in {
+        neutrino = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            joshua.system-user
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                verbose = true;
+                users.joshua = joshua.managed-home;
+                extraSpecialArgs = { inherit system nixpkgs rust-overlay; };
+              };
+            }
+            (import ./hosts/neutrino)
+          ];
+        };
+      };
+  };
 }
 

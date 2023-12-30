@@ -2,7 +2,7 @@
 {
   users.users.joshua = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "audio" ];
     initialPassword = "hellothere";
     packages = with pkgs; [
       curl

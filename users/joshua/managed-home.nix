@@ -29,6 +29,7 @@ in {
     coreutils
     gnused
     home-manager
+    pinentry
     pkgs.rust-bin.stable.latest.complete
   ]) ++ (with pkgs.joshua; [ cc2538-bsl python311 ]);
 
@@ -40,26 +41,8 @@ in {
     TERMINAL = "alacritty";
   };
 
-  # shells
+  # one-off enables for joshua
   programs.starship.enable = true;
-
-  # quality of life
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
-  programs.direnv.stdlib = ''
-    #!/usr/bin/env bash
-
-    declare -A direnv_layout_dirs
-    direnv_layout_dir() {
-        local hash dir
-        echo "''${direnv_layout_dirs[$PWD]:=$(
-            hash="$(sha1sum - <<< "$PWD" | head -c40)"
-            dir="$(basename "''${PWD}")"
-            echo "''${XDG_CACHE_HOME:-''${HOME}/.cache}/direnv/layouts/''${dir}-''${hash}"
-        )}"
-    }
-  '';
-
   programs.eza.enable = true;
   programs.fzf.enable = true;
   programs.texlive.enable = true; # scapy runtime dep (shellout)

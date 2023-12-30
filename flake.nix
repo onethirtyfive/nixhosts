@@ -17,6 +17,9 @@
       url = "github:alacritty/alacritty-theme";
       flake = false;
     };
+
+    hyprland.url = "github:hyprwm/Hyprland";
+
     # https://discourse.nixos.org/t/how-to-get-codelldb-on-nixos/30401/5
     # lldb-nix-fix = {
     #   url = "github:mstone/nixpkgs/darwin-fix-vscode-lldb";
@@ -73,6 +76,7 @@
             }
             (import ./hosts/neutrino)
           ];
+          specialArgs = { inherit inputs; };
         };
       };
   };

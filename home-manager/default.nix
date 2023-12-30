@@ -1,7 +1,7 @@
 {
-  alacritty = ./alacritty;
-  direnv = ./direnv;
-  git = ./git;
+  alacritty = ./alacritty.nix;
+  direnv = ./direnv.nix;
+  git = ./git.nix;
   neovim = ./neovim;
   nushell = ./nushell;
   tmux = ./tmux;

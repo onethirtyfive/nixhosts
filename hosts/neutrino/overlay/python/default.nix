@@ -1,5 +1,5 @@
-{ pkgs, ... }:
-pkgs.python311.withPackages (ps: with ps; [
+{ python311 }:
+python311.withPackages (ps: with ps; [
   black
 
   mypy

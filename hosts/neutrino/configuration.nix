@@ -1,14 +1,15 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ pkgs, ... }:
-let
-  nixos = import ../../nixos;
-in {
-  imports = [
-    ./hardware-configuration.nix
-  ] ++ (with nixos; [ audio hyprland locale encrypted-zfs ]);
+{ pkgs, inputs, ... }:
+{
+  imports =
+    let
+      bespoke-nixos-modules = import ../../modules/nixos;
+    in [ ./hardware-configuration.nix ] ++
+      (map
+        (path: import path)
+        (builtins.attrValues bespoke-nixos-modules));
 
   hardware.enableAllFirmware = true;
 
@@ -25,8 +26,16 @@ in {
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    warn-dirty = false;
+  };
+
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [
+    inputs.rust-overlay.overlays.default
+    (import ./overlay)
+  ];
 
   security.polkit = {
     enable = true;

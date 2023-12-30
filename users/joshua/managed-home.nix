@@ -1,26 +1,12 @@
-{ inputs, nixpkgs, system, ... }:
-let
-  pkgs = import nixpkgs {
-    inherit system;
-
-    overlays = [
-      rust-overlay.overlays.default
-      (import ./overlay {})
-    ];
-
-    permittedInsecurePackages = [ "nodejs-16.20.2" ];
-
-    config = {
-      allowUnfree = true;
-    };
-  };
-
-  inherit (inputs) rust-overlay;
-in {
+{ pkgs, ... }:
+{
   imports =
     let
-      paths = builtins.attrValues (import ../../home-manager);
-    in map (path: import path pkgs) paths;
+      bespoke-home-manager-modules = import ../../modules/home-manager;
+    in
+      (map
+        (path: import path)
+        (builtins.attrValues bespoke-home-manager-modules));
 
   home.packages = (with pkgs; [
     curl
@@ -33,7 +19,7 @@ in {
     home-manager
     pinentry
     pkgs.rust-bin.stable.latest.complete
-  ]) ++ (with pkgs.joshua; [ cc2538-bsl python311 ]);
+  ]) ++ (with pkgs.joshua; [ python311 ]);
 
   home.sessionVariables = {
     PAGER = "less";

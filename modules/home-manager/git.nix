@@ -1,5 +1,3 @@
-pkgs:
-{ ... }:
 # Git Config: https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration
 # Signing Commits: https://git-scm.com/book/en/v2/Git-Tools-Signing-Your-Work
 # rerere: https://git-scm.com/book/en/v2/Git-Tools-Rerere

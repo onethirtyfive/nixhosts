@@ -1,4 +1,3 @@
-{ rubyPackagePath ? ./ruby }:
 final: prev:
 let
   python311-withPandasAccommodations = prev.python311.override {
@@ -36,13 +35,10 @@ let
     };
   };
 in {
-  inherit python311-withPandasAccommodations;
-
-  joshua = rec {
-    cc2538-bsl = prev.cc2538-bsl.override { python3Packages = python311.pkgs; };
+  joshua = {
     inherit python311-withPandasAccommodations;
-    python311 = prev.callPackage ./python {};
-    ruby31 = prev.callPackage rubyPackagePath {};
+    python311 = prev.callPackage ./python { inherit (prev) python311; };
+    ruby31 = prev.callPackage ./ruby {};
   };
 }
 

@@ -1,4 +1,3 @@
-pkgs:
 { inputs, config, ... }:
 let
   inherit (inputs) alacritty-theme;

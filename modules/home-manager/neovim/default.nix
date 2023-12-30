@@ -1,5 +1,4 @@
-pkgs:
-{ ... }:
+{ pkgs, ... }:
 let
   inherit (pkgs) vimPlugins;
 in {

@@ -17,7 +17,7 @@ let
 in {
   imports =
     let
-      paths = builtins.attrValues (import ../../hm);
+      paths = builtins.attrValues (import ../../home-manager);
     in map (path: import path pkgs) paths;
 
   home.packages = (with pkgs; [
@@ -68,5 +68,4 @@ in {
 
   home.stateVersion = "23.11"; # rarely changed
 }
-
 

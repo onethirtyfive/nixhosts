@@ -1,4 +1,4 @@
-{ nixpkgs, system, rust-overlay, ... }:
+{ inputs, nixpkgs, system, ... }:
 let
   pkgs = import nixpkgs {
     inherit system;
@@ -14,6 +14,8 @@ let
       allowUnfree = true;
     };
   };
+
+  inherit (inputs) rust-overlay;
 in {
   imports =
     let

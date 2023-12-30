@@ -26,7 +26,7 @@
     # };
   };
 
-  outputs = inputs@{ nixpkgs-unstable, nixpkgs, darwin, home-manager, rust-overlay, alacritty-theme, ... }: {
+  outputs = inputs@{ nixpkgs-unstable, nixpkgs, darwin, home-manager, ... }: {
     darwinConfigurations =
       let
         system = "aarch64-darwin";
@@ -42,7 +42,10 @@
             home-manager.users.joshua = {
               imports = [ ./legacy/home ];
             };
-            home-manager.extraSpecialArgs = { inherit system nixpkgs-unstable rust-overlay; };
+            home-manager.extraSpecialArgs = {
+              inherit system nixpkgs-unstable;
+              inherit (inputs) rust-overlay; # compat
+            };
           }
         ];
       in {
@@ -71,7 +74,9 @@
                 useUserPackages = true;
                 verbose = true;
                 users.joshua = joshua.managed-home;
-                extraSpecialArgs = { inherit system nixpkgs rust-overlay alacritty-theme; };
+                extraSpecialArgs = {
+                  inherit inputs system nixpkgs;
+                };
               };
             }
             (import ./hosts/neutrino)

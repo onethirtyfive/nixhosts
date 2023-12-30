@@ -1,6 +1,8 @@
 pkgs:
-{ config, alacritty-theme, ... }:
-{
+{ inputs, config, ... }:
+let
+  inherit (inputs) alacritty-theme;
+in {
   programs.alacritty = {
     enable = true;
 

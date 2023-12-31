@@ -8,12 +8,7 @@ in {
   imports =
     let
       bespoke-nixos-modules = import ../../modules/nixos;
-    in [
-      ./hardware-configuration.nix
-      nixos-hardware.nixosModules.common-cpu-amd
-      nixos-hardware.nixosModules.common-gpu-amd
-      nixos-hardware.nixosModules.common-pc-ssd
-    ] ++
+    in [ ./hardware-configuration.nix ] ++
       (with bespoke-nixos-modules; [
         audio
         encrypted-zfs

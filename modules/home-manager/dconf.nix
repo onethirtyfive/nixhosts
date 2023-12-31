@@ -1,8 +1,8 @@
 { lib, ... }: with lib.hm.gvariant; {
   dconf.settings = {
     "org/gnome/desktop/input-sources" = {
-      sources = [ (mkTuple [ "xkb" "hu" ]) ];
-      xkb-options = [ "terminate:ctrl_alt_bksp" ];
+      sources = [ (mkTuple [ "xkb" "en" ]) ];
+      xkb-options = [ "terminate:ctrl_alt_bksp,caps:escape" ];
     };
 
     "org/gnome/desktop/interface" = {

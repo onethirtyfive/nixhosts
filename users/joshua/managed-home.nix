@@ -15,15 +15,12 @@
 
       # possibly universal
       browser
-      lf
 
       # linux-only
-      ags
       dconf
       hyprland
       mimelist
       packages
-      gtk-theme
     ];
 
   home.sessionVariables = {

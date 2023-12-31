@@ -33,9 +33,8 @@ in
 
     settings = {
       exec-once = [
-        "ags -b hypr"
         "hyprctl setcursor Qogir 24"
-        # "transmission-gtk"
+        "transmission-gtk"
       ];
 
       monitor = [
@@ -111,20 +110,20 @@ in
         resizeactive = binding "SUPER CTRL" "resizeactive";
         mvactive = binding "SUPER ALT" "moveactive";
         mvtows = binding "SUPER SHIFT" "movetoworkspace";
-        e = "exec, ags -b hypr";
+        # e = "exec, ags -b hypr";
         arr = [1 2 3 4 5 6 7 8 9];
         yt = pkgs.writeShellScriptBin "yt" ''
             notify-send "Opening video" "$(wl-paste)"
             mpv "$(wl-paste)"
         '';
       in [
-        "CTRL SHIFT, R,  ${e} quit; ags -b hypr"
-        "SUPER, R,       ${e} -t applauncher"
-        ", XF86PowerOff, ${e} -t powermenu"
-        "SUPER, Tab,     ${e} -t overview"
-        ", XF86Launch4,  ${e} -r 'recorder.start()'"
-        ",Print,         ${e} -r 'recorder.screenshot()'"
-        "SHIFT,Print,    ${e} -r 'recorder.screenshot(true)'"
+        # "CTRL SHIFT, R,  ${e} quit; ags -b hypr"
+        # "SUPER, R,       ${e} -t applauncher"
+        # ", XF86PowerOff, ${e} -t powermenu"
+        # "SUPER, Tab,     ${e} -t overview"
+        # ", XF86Launch4,  ${e} -r 'recorder.start()'"
+        # ",Print,         ${e} -r 'recorder.screenshot()'"
+        # "SHIFT,Print,    ${e} -r 'recorder.screenshot(true)'"
         "SUPER, Return, exec, xterm" # xterm is a symlink, not actually xterm
         "SUPER, W, exec, firefox"
         "SUPER, E, exec, alacritty"
@@ -160,23 +159,24 @@ in
       ++ (map (i: ws (toString i) (toString i)) arr)
       ++ (map (i: mvtows (toString i) (toString i)) arr);
 
-      bindle = let e = "exec, ags -b hypr -r"; in [
-        ",XF86MonBrightnessUp,   ${e} 'brightness.screen += 0.05; indicator.display()'"
-        ",XF86MonBrightnessDown, ${e} 'brightness.screen -= 0.05; indicator.display()'"
-        ",XF86KbdBrightnessUp,   ${e} 'brightness.kbd++; indicator.kbd()'"
-        ",XF86KbdBrightnessDown, ${e} 'brightness.kbd--; indicator.kbd()'"
-        ",XF86AudioRaiseVolume,  ${e} 'audio.speaker.volume += 0.05; indicator.speaker()'"
-        ",XF86AudioLowerVolume,  ${e} 'audio.speaker.volume -= 0.05; indicator.speaker()'"
-      ];
+      # bindle = let e = "exec, ags -b hypr -r"; in [
+      #   ",XF86MonBrightnessUp,   ${e} 'brightness.screen += 0.05; indicator.display()'"
+      #   ",XF86MonBrightnessDown, ${e} 'brightness.screen -= 0.05; indicator.display()'"
+      #   ",XF86KbdBrightnessUp,   ${e} 'brightness.kbd++; indicator.kbd()'"
+      #   ",XF86KbdBrightnessDown, ${e} 'brightness.kbd--; indicator.kbd()'"
+      #   ",XF86AudioRaiseVolume,  ${e} 'audio.speaker.volume += 0.05; indicator.speaker()'"
+      #   ",XF86AudioLowerVolume,  ${e} 'audio.speaker.volume -= 0.05; indicator.speaker()'"
+      # ];
 
-      bindl = let e = "exec, ags -b hypr -r"; in [
-        ",XF86AudioPlay,    ${e} 'mpris?.playPause()'"
-        ",XF86AudioStop,    ${e} 'mpris?.stop()'"
-        ",XF86AudioPause,   ${e} 'mpris?.pause()'"
-        ",XF86AudioPrev,    ${e} 'mpris?.previous()'"
-        ",XF86AudioNext,    ${e} 'mpris?.next()'"
-        ",XF86AudioMicMute, ${e} 'audio.microphone.isMuted = !audio.microphone.isMuted'"
-      ];
+      # Media keys for reference
+      # bindl = let e = "exec, ags -b hypr -r"; in [
+      #   ",XF86AudioPlay,    ${e} 'mpris?.playPause()'"
+      #   ",XF86AudioStop,    ${e} 'mpris?.stop()'"
+      #   ",XF86AudioPause,   ${e} 'mpris?.pause()'"
+      #   ",XF86AudioPrev,    ${e} 'mpris?.previous()'"
+      #   ",XF86AudioNext,    ${e} 'mpris?.next()'"
+      #   ",XF86AudioMicMute, ${e} 'audio.microphone.isMuted = !audio.microphone.isMuted'"
+      # ];
 
       bindm = [
         "ALT, mouse:273, resizewindow"

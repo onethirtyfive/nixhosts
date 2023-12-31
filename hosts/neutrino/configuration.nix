@@ -7,11 +7,24 @@
     let
       bespoke-nixos-modules = import ../../modules/nixos;
     in [ ./hardware-configuration.nix ] ++
-      (map
-        (path: import path)
-        (builtins.attrValues bespoke-nixos-modules));
+      (with bespoke-nixos-modules; [
+        audio
+        encrypted-zfs
+        # gnome
+        # hyprland
+        gnome
+        locale
+      ]);
 
   hardware.enableAllFirmware = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+    settings.General.Experimental = true; # for gnome-bluetooth percentage
+  };
+
+  boot.tmp.cleanOnBoot = true;
+  boot.supportedFilesystems = [ "zfs" "ntfs" ];
 
   boot.loader.grub = {
     enable = true;
@@ -32,6 +45,9 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-25.9.0"
+  ];
   nixpkgs.overlays = [
     inputs.rust-overlay.overlays.default
     (import ./overlay)
@@ -42,12 +58,6 @@
     debug = true;
   };
 
-  services.openssh.enable = true;
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  services.keybase.enable = true;
-
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     noto-fonts-cjk
@@ -55,6 +65,7 @@
     noto-fonts
   ];
 
+  programs.dconf.enable = true;
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
@@ -64,9 +75,27 @@
   # services.printing.enable = true;
 
   environment.systemPackages = with pkgs; [
-    vim
+    home-manager
+    neovim
+    git
     wget
   ];
+
+  services = {
+    xserver = {
+      enable = true;
+      excludePackages = [ pkgs.xterm ];
+    };
+    printing.enable = true;
+    flatpak.enable = true;
+  };
+
+  services.openssh.enable = true;
+  services.keybase.enable = true;
+
+  services.logind.extraConfig = ''
+    HandlePowerKey=suspend
+  '';
 
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "23.11";

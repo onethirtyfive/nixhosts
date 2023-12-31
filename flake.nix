@@ -19,6 +19,7 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
 
     # https://discourse.nixos.org/t/how-to-get-codelldb-on-nixos/30401/5
     # lldb-nix-fix = {
@@ -76,6 +77,7 @@
                 users.joshua = joshua.managed-home;
                 extraSpecialArgs = {
                   inherit inputs system nixpkgs;
+                  homedir = "/home/joshua";
                 };
               };
             }

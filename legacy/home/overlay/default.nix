@@ -57,7 +57,9 @@ in {
 
       typing-extensions
 
-      pyserial intelhex
+      pyserial
+      intelhex
+      python-pam
     ]);
 
     ruby31 = prev.callPackage rubyPackagePath {};

@@ -1,39 +1,68 @@
-{ pkgs, ... }:
+{ pkgs, homedir, ... }:
 {
   imports =
     let
       bespoke-home-manager-modules = import ../../modules/home-manager;
-    in
-      (map
-        (path: import path)
-        (builtins.attrValues bespoke-home-manager-modules));
+    in with bespoke-home-manager-modules; [
+      # universal
+      alacritty
+      direnv
+      git
+      neovim
+      starship
+      tmux
+      zsh
 
-  home.packages = (with pkgs; [
-    curl
-    fd
-    lazydocker
-    less
-    ripgrep
-    coreutils
-    gnused
-    home-manager
-    pinentry
-    pkgs.rust-bin.stable.latest.complete
-  ]) ++ (with pkgs.joshua; [ python311 ]);
+      # possibly universal
+      browser
+      lf
+
+      # linux-only
+      ags
+      dconf
+      hyprland
+      mimelist
+      packages
+      gtk-theme
+    ];
 
   home.sessionVariables = {
+    QT_XCB_GL_INTEGRATION = "none"; # kde-connect
+    NIXPKGS_ALLOW_UNFREE = "1";
     PAGER = "less";
     CLICLOLOR = 1;
     EDITOR = "nvim";
     BROWSER = "firefox";
     TERMINAL = "alacritty";
+    BAT_THEME = "base16";
   };
 
-  # one-off enables for joshua
-  programs.starship.enable = true;
-  programs.eza.enable = true;
-  programs.fzf.enable = true;
-  programs.texlive.enable = true; # scapy runtime dep (shellout)
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
+
+  services = {
+    kdeconnect = {
+      enable = true;
+      indicator = true;
+    };
+  };
+
+  gtk.gtk3.bookmarks = [
+    "file://${homedir}/Documents"
+    "file://${homedir}/Music"
+    "file://${homedir}/Pictures"
+    "file://${homedir}/Videos"
+    "file://${homedir}/Downloads"
+    "file://${homedir}/Desktop"
+    "file://${homedir}/Projects"
+    "file://${homedir}/Vault"
+    "file://${homedir}/Vault/School"
+    "file://${homedir}/.config Config"
+    "file://${homedir}/.local/share Local"
+  ];
+
+  news.display = "show"; # home-manager news
 
   nixpkgs.config.allowUnfree = true;
 

@@ -19,6 +19,20 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
+    ags.url = "github:Aylur/ags";
+    lf-icons = {
+      url = "github:gokcehan/lf";
+      flake = false;
+    };
+    more-waita = {
+      url = "github:somepaulo/MoreWaita";
+      flake = false;
+    };
+    firefox-gnome-theme = {
+      url = "github:rafaelmardojai/firefox-gnome-theme";
+      flake = false;
+    };
 
     # https://discourse.nixos.org/t/how-to-get-codelldb-on-nixos/30401/5
     # lldb-nix-fix = {
@@ -76,6 +90,7 @@
                 users.joshua = joshua.managed-home;
                 extraSpecialArgs = {
                   inherit inputs system nixpkgs;
+                  homedir = "/home/joshua";
                 };
               };
             }

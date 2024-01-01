@@ -62,6 +62,7 @@
     nixosConfigurations =
       let
         system = "x86_64-linux";
+        homedir = "/home/joshua";
         joshua = import ./users/joshua;
       in {
         neutrino = nixpkgs.lib.nixosSystem {
@@ -77,7 +78,8 @@
                 users.joshua = joshua.managed-home;
                 extraSpecialArgs = {
                   inherit inputs system nixpkgs;
-                  homedir = "/home/joshua";
+                  inherit homedir;
+                  ssh-identities = [ "joshua@neutrino" ];
                 };
               };
             }

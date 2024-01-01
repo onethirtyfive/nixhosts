@@ -1,4 +1,4 @@
-{ pkgs, homedir, ... }:
+{ pkgs, homedir, ssh-identities, ... }:
 {
   imports =
     let
@@ -43,6 +43,22 @@
       enable = true;
       indicator = true;
     };
+  };
+
+  programs.ssh = {
+    enable = true;
+
+    matchBlocks = {
+      gitlab = {
+        user = "git";
+        host = "gitlab.com";
+        identityFile = map (i: "${homedir}/.ssh/${i}") ssh-identities;
+      };
+    };
+
+    extraConfig = ''
+      AddKeysToAgent yes
+    '';
   };
 
   gtk.gtk3.bookmarks = [

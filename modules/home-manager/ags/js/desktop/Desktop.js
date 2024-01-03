@@ -23,11 +23,13 @@ const DesktopClock = () => Widget.Box({
                     Widget.Separator({ vpack: 'center', vexpand: true }),
                 ],
             }),
+            /*
             Clock({
                 class_name: 'clock',
                 hpack: 'center',
                 format: '%M',
             }),
+            */
         ],
     }),
 });
@@ -48,8 +50,10 @@ const Desktop = () => Widget.EventBox({
             box.setCss(`margin: ${Number(offset)}px;`);
         }]],
         children: [
+            /*
             DesktopClock(),
             Clock({ format: '%B %e. %A', class_name: 'date' }),
+            */
         ],
     }),
 });

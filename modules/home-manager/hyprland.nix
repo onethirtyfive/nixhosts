@@ -47,17 +47,19 @@ in
       general = {
         layout = "dwindle";
         resize_on_border = true;
+        no_cursor_warps = true;
       };
 
       misc = {
         layers_hog_keyboard_focus = false;
         disable_splash_rendering = true;
         force_default_wallpaper = 0;
+        mouse_move_focuses_monitor = 0;
       };
 
       input = {
         kb_layout = "us";
-        follow_mouse = 1;
+        follow_mouse = 2;
         touchpad = {
           natural_scroll = "no";
           disable_while_typing = true;
@@ -65,6 +67,9 @@ in
         };
         sensitivity = 0;
         float_switch_override_focus = 2;
+
+        repeat_rate = 60;
+        repeat_delay = 375;
       };
 
       binds = {

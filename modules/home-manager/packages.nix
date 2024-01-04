@@ -46,6 +46,7 @@
     gnused
     coreutils
     pinentry
+    git-lfs
 
     # hyprland
     wl-gammactl

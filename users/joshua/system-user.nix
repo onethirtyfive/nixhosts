@@ -7,6 +7,7 @@
       "wheel"
       "audio"
       "video"
+      "docker"
     ];
     initialPassword = "hellothere";
     packages = with pkgs; [

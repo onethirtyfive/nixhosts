@@ -22,6 +22,7 @@
     settings.General.Experimental = true; # for gnome-bluetooth percentage
   };
 
+  boot.consoleLogLevel = 3;
   boot.tmp.cleanOnBoot = true;
   boot.supportedFilesystems = [ "zfs" "ntfs" ];
 

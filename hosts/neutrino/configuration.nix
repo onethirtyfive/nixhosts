@@ -2,11 +2,18 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 { pkgs, inputs, ... }:
-{
+let
+  inherit (inputs) nixos-hardware;
+in {
   imports =
     let
       bespoke-nixos-modules = import ../../modules/nixos;
-    in [ ./hardware-configuration.nix ] ++
+    in [
+      ./hardware-configuration.nix
+      nixos-hardware.nixosModules.common-cpu-amd
+      nixos-hardware.nixosModules.common-gpu-amd
+      nixos-hardware.nixosModules.common-pc-ssd
+    ] ++
       (with bespoke-nixos-modules; [
         audio
         encrypted-zfs
@@ -25,6 +32,11 @@
   boot.consoleLogLevel = 3;
   boot.tmp.cleanOnBoot = true;
   boot.supportedFilesystems = [ "zfs" "ntfs" ];
+
+  boot.kernelParams = [
+    "video=HDMI-A-1:3840x2160@60"
+    "video=HDMI-A-2:3840x2160@60"
+  ];
 
   boot.loader.grub = {
     enable = true;

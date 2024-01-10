@@ -1,5 +1,10 @@
 { lib, ... }: with lib.hm.gvariant; {
   dconf.settings = {
+    "org/gnome/desktop/peripherals/keyboard" = {
+      repeat-interval = "30";
+      delay = "375";
+    };
+
     "org/gnome/desktop/input-sources" = {
       sources = [ (mkTuple [ "xkb" "en" ]) ];
       xkb-options = [ "terminate:ctrl_alt_bksp,caps:escape" ];
@@ -7,9 +12,11 @@
 
     "org/gnome/desktop/interface" = {
       show-battery-percentage = true;
+      enable-hot-corners = false;
     };
 
     "org/gnome/desktop/peripherals/touchpad" = {
+      natural-scroll = false;
       tap-to-click = true;
       two-finger-scrolling-enabled = true;
     };
@@ -37,6 +44,10 @@
       idle-delay = mkUint32 0;
     };
 
+    "org/gnome/shell/window-switcher" = {
+      current-workspace-only = false;
+    };
+
     "org/gnome/desktop/wm/keybindings" = {
       close = [ "<Alt>q" ];
       move-to-workspace-1 = [ "<Shift><Super>1" ];
@@ -50,6 +61,16 @@
       switch-to-workspace-4 = [ "<Super>4" ];
       switch-to-workspace-5 = [ "<Super>5" ];
       toggle-fullscreen = [ "<Super>g" ];
+      switch-applications = lib.gvariant.mkEmptyArray lib.gvariant.type.string;
+      switch-applications-backward = lib.gvariant.mkEmptyArray lib.gvariant.type.string;
+      switch-windows = [
+        "<Alt>Tab"
+        "<Super>Tab"
+      ];
+      switch-windows-backward = [
+        "<Shift><Alt>Tab"
+        "<Shift><Super>Tab"
+      ];
     };
 
     "org/gnome/shell/keybindings" = {

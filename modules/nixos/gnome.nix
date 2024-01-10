@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
@@ -52,20 +52,5 @@
       gnome-maps
       gnome-font-viewer
     ]);
-  };
-
-  programs.dconf.profiles = {
-    gdm.databases = [{
-      settings = {
-        "org/gnome/desktop/peripherals/touchpad" = {
-          natural-scroll = false;
-          tap-to-click = true;
-        };
-        "org/gnome/desktop/interface" = {
-          cursor-theme = "Qogir";
-          enable-hot-corners = false;
-        };
-      };
-    }];
   };
 }

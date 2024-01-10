@@ -54,6 +54,11 @@
         host = "gitlab.com";
         identityFile = map (i: "${homedir}/.ssh/${i}") ssh-identities;
       };
+      bitbucket = {
+        user = "git";
+        host = "bitbucket.org";
+        identityFile = map (i: "${homedir}/.ssh/${i}") ssh-identities;
+      };
     };
 
     extraConfig = ''

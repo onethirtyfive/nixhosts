@@ -70,6 +70,7 @@ in {
     noto-fonts-cjk
     noto-fonts-emoji
     noto-fonts
+    liberation_ttf
   ];
 
   programs.dconf.enable = true;

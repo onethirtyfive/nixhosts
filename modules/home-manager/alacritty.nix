@@ -7,7 +7,7 @@ in {
 
     settings = {
       font.normal.family = "JetBrainsMono Nerd Font";
-      font.size = 14;
+      font.size = 14; # change to 12 for hyprland after scaling
 
       env = {
         TERM = "xterm-256color";

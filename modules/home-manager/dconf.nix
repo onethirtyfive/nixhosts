@@ -1,8 +1,8 @@
 { lib, ... }: with lib.hm.gvariant; {
   dconf.settings = {
     "org/gnome/desktop/peripherals/keyboard" = {
-      repeat-interval = "30";
-      delay = "375";
+      repeat-interval = lib.gvariant.mkUint32 14;
+      delay = lib.gvariant.mkUint32 350;
     };
 
     "org/gnome/desktop/input-sources" = {

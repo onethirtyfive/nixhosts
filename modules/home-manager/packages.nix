@@ -62,7 +62,6 @@
     swww
 
     # fun
-    fortune
     jp2a
     pywal
     glow

@@ -71,6 +71,9 @@
         "<Shift><Alt>Tab"
         "<Shift><Super>Tab"
       ];
+      minimize = [
+        "<Super><Shift>M"
+      ];
     };
 
     "org/gnome/shell/keybindings" = {

@@ -21,6 +21,7 @@ in
         "$container"
         "$git_branch $git_status"
         "$python"
+        "$ruby"
         "$nodejs"
         "$lua"
         "$rust"

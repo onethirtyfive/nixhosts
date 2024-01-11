@@ -8,14 +8,19 @@ in {
   imports =
     let
       bespoke-nixos-modules = import ../../modules/nixos;
-    in [ ./hardware-configuration.nix ] ++
-      (with bespoke-nixos-modules; [
-        audio
-        encrypted-zfs
-        # gnome
-        hyprland
-        locale
-      ]);
+    in [
+      ./hardware-configuration.nix
+    ] ++ (with nixos-hardware.nixosModules; [
+      common-cpu-amd
+      common-gpu-amd
+      common-pc-ssd
+    ]) ++ (with bespoke-nixos-modules; [
+      audio
+      encrypted-zfs
+      # gnome
+      hyprland
+      locale
+    ]);
 
   hardware.enableAllFirmware = true;
   hardware.bluetooth = {

@@ -2,7 +2,7 @@
 {
   imports =
     let
-      bespoke-home-manager-modules = import ../../modules/home-manager;
+      bespoke-home-manager-modules = import ../../home-manager;
     in with bespoke-home-manager-modules; [
       # universal
       alacritty

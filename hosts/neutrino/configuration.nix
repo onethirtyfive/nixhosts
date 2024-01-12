@@ -7,7 +7,7 @@ let
 in {
   imports =
     let
-      bespoke-nixos-modules = import ../../modules/nixos;
+      bespoke-nixos-modules = import ../../nixos;
     in [
       ./hardware-configuration.nix
     ] ++ (with nixos-hardware.nixosModules; [

@@ -35,12 +35,12 @@ in
       exec-once = [
         "ags -b hypr"
         "hyprctl setcursor Qogir 24"
-        "transmission-gtk"
+        # "transmission-gtk"
       ];
 
       monitor = [
-        "HDMI-A-1, 3840x2160@60, 0x0, 1"
-        "HDMI-A-2, 3840x2160@60, 2560x-840, 1, transform, 3"
+        "HDMI-A-1,3840x2160@60,0x0,1.25"
+        "HDMI-A-2,3840x2160@60,3072x-672,1.25,transform,3"
         ",preferred,auto,1"
       ];
 
@@ -91,18 +91,17 @@ in
       windowrule = let
         f = regex: "float, ^(${regex})$";
       in [
-		(f "org.gnome.Calculator")
-		(f "org.gnome.Nautilus")
-		(f "pavucontrol")
-		(f "nm-connection-editor")
-		(f "blueberry.py")
-		(f "org.gnome.Settings")
-		(f "org.gnome.design.Palette")
-		(f "Color Picker")
-		(f "xdg-desktop-portal")
-		(f "xdg-desktop-portal-gnome")
-		(f "transmission-gtk")
-		(f "com.github.Aylur.ags")
+        (f "org.gnome.Calculator")
+        (f "org.gnome.Nautilus")
+        (f "pavucontrol")
+        (f "nm-connection-editor")
+        (f "blueberry.py")
+        (f "org.gnome.Settings")
+        (f "org.gnome.design.Palette")
+        (f "Color Picker")
+        (f "xdg-desktop-portal")
+        (f "xdg-desktop-portal-gnome")
+        (f "transmission-gtk")
       ];
 
       bind = let
@@ -216,19 +215,6 @@ in
       };
 
       plugin = {
-        hyprbars = {
-          bar_color = "rgb(2a2a2a)";
-          bar_height = 28;
-          col_text = "rgba(ffffffdd)";
-          bar_text_size = 11;
-          bar_text_font = "Ubuntu Nerd Font";
-
-          buttons = {
-            button_size = 0;
-            "col.maximize" = "rgba(ffffff11)";
-            "col.close" = "rgba(ff111133)";
-          };
-        };
       };
     };
   };

@@ -49,6 +49,7 @@
     git-lfs
 
     # hyprland
+    qt6.qtwayland
     wl-gammactl
     wl-clipboard
     wf-recorder

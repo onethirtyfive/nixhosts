@@ -51,11 +51,24 @@
   programs.ssh = {
     enable = true;
 
-    matchBlocks = {
+    matchBlocks =
+    let
+      identityFile = map (i: "${homedir}/.ssh/${i}") ssh-identities;
+    in {
+      github = {
+        user = "git";
+        host = "github.com";
+        inherit identityFile;
+      };
       gitlab = {
         user = "git";
         host = "gitlab.com";
-        identityFile = map (i: "${homedir}/.ssh/${i}") ssh-identities;
+        inherit identityFile;
+      };
+      bitbucket = {
+        user = "git";
+        host = "bitbucket.org";
+        inherit identityFile;
       };
     };
 

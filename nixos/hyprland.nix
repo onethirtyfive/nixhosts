@@ -1,5 +1,7 @@
 { inputs, pkgs, ... }:
-{
+let
+  inherit (pkgs) lib;
+in {
   services.xserver = {
     displayManager.startx.enable = true;
   };
@@ -12,8 +14,11 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gnome
+    ];
   };
+
 
   security = {
     polkit.enable = true;

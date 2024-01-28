@@ -18,8 +18,14 @@
       flake = false;
     };
 
+    ml4w.url = "gitlab:onethirtyfive/ml4w-dotfiles-nixos";
+    ml4w.inputs.nixpkgs.follows = "nixpkgs";
+
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
+
+    wallpapers.url = "gitlab:stephan-raabe/wallpaper";
+    wallpapers.flake = false;
 
     # https://discourse.nixos.org/t/how-to-get-codelldb-on-nixos/30401/5
     # lldb-nix-fix = {
@@ -27,7 +33,7 @@
     # };
   };
 
-  outputs = inputs@{ nixpkgs-unstable, nixpkgs, darwin, home-manager, ... }: {
+  outputs = inputs@{ nixpkgs-unstable, nixpkgs, darwin, home-manager, ml4w, wallpapers, ... }: {
     darwinConfigurations =
       let
         system = "aarch64-darwin";
@@ -41,7 +47,7 @@
             home-manager.useUserPackages = true;
             home-manager.verbose = true;
             home-manager.users.joshua = {
-              imports = [ ./legacy/home ];
+              imports = [ ./legacy/home ml4w ];
             };
             home-manager.extraSpecialArgs = {
               inherit system nixpkgs-unstable;
@@ -77,7 +83,7 @@
                 verbose = true;
                 users.joshua = joshua.managed-home;
                 extraSpecialArgs = {
-                  inherit inputs system nixpkgs;
+                  inherit inputs system nixpkgs ml4w wallpapers;
                   inherit homedir;
                   ssh-identities = [ "joshua@neutrino" ];
                 };

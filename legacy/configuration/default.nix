@@ -67,7 +67,7 @@ in {
   };
 
   programs.zsh.enable = true;
-  programs.nix-index.enable = true;
+  programs.nix-index.enable = false;
 
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [

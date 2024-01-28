@@ -69,7 +69,7 @@ eval "$(direnv hook zsh)"
 
 unsetopt AUTO_MENU
 unsetopt correct
-setopt NO_MENU_COMPLETE BASH_AUTO_LIST
+setopt NO_AUTO_MENU NO_MENU_COMPLETE BASH_AUTO_LIST NO_COMPLETE_IN_WORD
 
 unalias find
 

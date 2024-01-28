@@ -29,12 +29,11 @@ in
     package = hyprland;
     systemd.enable = true;
     xwayland.enable = true;
-    # plugins = with plugins; [ hyprbars borderspp ];
 
     settings = {
       exec-once = [
         "hyprctl setcursor Qogir 24"
-        "transmission-gtk"
+        # "transmission-gtk"
       ];
 
       monitor = [
@@ -56,20 +55,20 @@ in
         mouse_move_focuses_monitor = 0;
       };
 
-      input = {
-        kb_layout = "us";
-        follow_mouse = 2;
-        touchpad = {
-          natural_scroll = "no";
-          disable_while_typing = true;
-          drag_lock = true;
-        };
-        sensitivity = 0;
-        float_switch_override_focus = 2;
-
-        repeat_rate = 60;
-        repeat_delay = 375;
-      };
+      # input = {
+      #   kb_layout = "us";
+      #   follow_mouse = 2;
+      #   touchpad = {
+      #     natural_scroll = "no";
+      #     disable_while_typing = true;
+      #     drag_lock = true;
+      #   };
+      #   sensitivity = 0;
+      #   float_switch_override_focus = 2;
+      #
+      #   repeat_rate = 60;
+      #   repeat_delay = 375;
+      # };
 
       binds = {
         allow_workspace_cycles = true;
@@ -100,6 +99,7 @@ in
         (f "Color Picker")
         (f "xdg-desktop-portal")
         (f "xdg-desktop-portal-gnome")
+        (f "xdg-desktop-portal-hyprland")
         (f "transmission-gtk")
       ];
 
@@ -202,20 +202,17 @@ in
         };
       };
 
-      animations = {
-        enabled = "yes";
-        bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
-        animation = [
-          "windows, 1, 5, myBezier"
-          "windowsOut, 1, 7, default, popin 80%"
-          "border, 1, 10, default"
-          "fade, 1, 7, default"
-          "workspaces, 1, 6, default"
-        ];
-      };
-
-      plugin = {
-      };
+      # animations = {
+      #   enabled = "yes";
+      #   bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
+      #   animation = [
+      #     "windows, 1, 5, myBezier"
+      #     "windowsOut, 1, 7, default, popin 80%"
+      #     "border, 1, 10, default"
+      #     "fade, 1, 7, default"
+      #     "workspaces, 1, 6, default"
+      #   ];
+      # };
     };
   };
 }

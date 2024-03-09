@@ -259,7 +259,9 @@
     "ml4w": {
       "inputs": {
         "home-manager": "home-manager_2",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
         "nixpkgs-unstable": "nixpkgs-unstable",
         "wallpapers": "wallpapers"
       },
@@ -374,22 +376,6 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1706098335,
-        "narHash": "sha256-r3dWjT8P9/Ah5m5ul4WqIWD8muj5F+/gbCdjiNVBKmU=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "a77ab169a83a4175169d78684ddd2e54486ac651",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-23.11",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_5": {
-      "locked": {
         "lastModified": 1681358109,
         "narHash": "sha256-eKyxW4OohHQx9Urxi7TQlFBTDWII+F+x2hklDOQPB50=",
         "owner": "NixOS",
@@ -413,15 +399,16 @@
         "hyprland-plugins": "hyprland-plugins",
         "ml4w": "ml4w",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_3",
         "nixpkgs-unstable": "nixpkgs-unstable_2",
-        "rust-overlay": "rust-overlay"
+        "rust-overlay": "rust-overlay",
+        "wallpapers": "wallpapers_2"
       }
     },
     "rust-overlay": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs_5"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1706407941,
@@ -490,6 +477,22 @@
         "owner": "stephan-raabe",
         "repo": "wallpaper",
         "rev": "411d017e7ae4289584380490ee2ee44ab861a56e",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "stephan-raabe",
+        "repo": "wallpaper",
+        "type": "gitlab"
+      }
+    },
+    "wallpapers_2": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1706878284,
+        "narHash": "sha256-c+Ddr/59weGvU1emSC7+eipQhttQGkgKKk9uIgdHlW4=",
+        "owner": "stephan-raabe",
+        "repo": "wallpaper",
+        "rev": "39ca2dc89cb0cf23e6c8daac03723c8a1bd2ebfa",
         "type": "gitlab"
       },
       "original": {

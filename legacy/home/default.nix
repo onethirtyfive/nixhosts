@@ -1,5 +1,7 @@
-{ nixpkgs-unstable, system, rust-overlay, ... }:
+{ nixpkgs-unstable, system, inputs, ... }:
 let
+  inherit (inputs) rust-overlay;
+
   pkgs' = import nixpkgs-unstable {
     inherit system;
     overlays = [

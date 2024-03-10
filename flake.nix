@@ -18,6 +18,8 @@
       flake = false;
     };
 
+    onethirtyfive-neovim.url = "github:onethirtyfive/neovim-nix";
+
     ml4w.url = "gitlab:onethirtyfive/ml4w-dotfiles-nixos";
     ml4w.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -33,7 +35,17 @@
     # };
   };
 
-  outputs = inputs@{ nixpkgs-unstable, nixpkgs, darwin, home-manager, ml4w, wallpapers, ... }: {
+  outputs = inputs@{
+      self
+    , nixpkgs-unstable
+    , nixpkgs
+    , darwin
+    , home-manager
+    , onethirtyfive-neovim
+    , ml4w
+    , wallpapers
+    , ...
+  }: {
     darwinConfigurations =
       let
         system = "aarch64-darwin";
@@ -47,11 +59,10 @@
             home-manager.useUserPackages = true;
             home-manager.verbose = true;
             home-manager.users.joshua = {
-              imports = [ ./legacy/home ml4w ];
+              imports = [ ./legacy/home ];
             };
             home-manager.extraSpecialArgs = {
-              inherit system nixpkgs-unstable;
-              inherit (inputs) rust-overlay; # compat
+              inherit inputs system nixpkgs-unstable;
             };
           }
         ];
@@ -83,7 +94,7 @@
                 verbose = true;
                 users.joshua = joshua.managed-home;
                 extraSpecialArgs = {
-                  inherit inputs system nixpkgs ml4w wallpapers;
+                  inherit inputs system nixpkgs;
                   inherit homedir;
                   ssh-identities = [ "joshua@neutrino" ];
                 };

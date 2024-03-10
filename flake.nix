@@ -83,6 +83,29 @@
         homedir = "/home/joshua";
         joshua = import ./users/joshua;
       in rec {
+        chim-choo-ree = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            joshua.system-user
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                verbose = true;
+                users.joshua = joshua.managed-home;
+                extraSpecialArgs = {
+                  inherit inputs system nixpkgs ml4w wallpapers;
+                  inherit homedir;
+                  ssh-identities = [ "joshua@neutrino" "joshua2@neutrino" ];
+                };
+              };
+            }
+            (import ./hosts/nixos/chim-choo-ree)
+          ];
+          specialArgs = { inherit inputs; };
+        };
+
         meadowlark = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [

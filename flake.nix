@@ -95,7 +95,7 @@
                 verbose = true;
                 users.joshua = joshua.managed-home;
                 extraSpecialArgs = {
-                  inherit inputs system nixpkgs ml4w;
+                  inherit inputs system nixpkgs ml4w wallpapers;
                   inherit homedir;
                   ssh-identities = [ "joshua@neutrino" ];
                 };

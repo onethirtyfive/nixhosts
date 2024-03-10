@@ -3,7 +3,7 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 { pkgs, inputs, ... }:
 let
-  inherit (inputs) nixos-hardware;
+  inherit (inputs) ml4w nixos-hardware rust-overlay;
 in {
   imports =
     let
@@ -61,7 +61,7 @@ in {
     "electron-25.9.0"
   ];
   nixpkgs.overlays = [
-    inputs.rust-overlay.overlays.default
+    rust-overlay.overlays.default
     (import ./overlay)
   ];
 

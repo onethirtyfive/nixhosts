@@ -1,5 +1,7 @@
 { config, system, pkgs, lib, homedir, ssh-identities, ml4w, ... }:
 {
+  # disabledModules = [ "programs/waybar.nix" ];
+
   imports =
     let
       bespoke-home-manager-modules = import ../../home-manager;
@@ -31,7 +33,7 @@
       enable = true;
 
       presets = {
-        animations = "animations-fast";
+        animations = "fast";
         decorations = "rounding-opaque";
         windowing = "border-2-reverse";
       };

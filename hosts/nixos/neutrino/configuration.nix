@@ -3,11 +3,11 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 { pkgs, inputs, ... }:
 let
-  inherit (inputs) ml4w nixos-hardware rust-overlay;
+  inherit (inputs) nixos-hardware rust-overlay;
 in {
   imports =
     let
-      bespoke-nixos-modules = import ../../nixos;
+      bespoke-nixos-modules = import ./..;
     in [
       ./hardware-configuration.nix
     ] ++ (with nixos-hardware.nixosModules; [

@@ -101,7 +101,7 @@
                 };
               };
             }
-            (import ./hosts/neutrino)
+            (import ./hosts/nixos/neutrino)
           ];
           specialArgs = { inherit inputs; };
         };

@@ -82,8 +82,8 @@
         system = "x86_64-linux";
         homedir = "/home/joshua";
         joshua = import ./users/joshua;
-      in {
-        neutrino = nixpkgs.lib.nixosSystem {
+      in rec {
+        meadowlark = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
             joshua.system-user
@@ -101,10 +101,12 @@
                 };
               };
             }
-            (import ./hosts/nixos/neutrino)
+            (import ./hosts/nixos/meadowlark)
           ];
           specialArgs = { inherit inputs; };
         };
+
+        neutrino = meadowlark; # stepping stone
       };
   };
 }

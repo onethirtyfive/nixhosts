@@ -46,7 +46,7 @@ in {
     useOSProber = true;
   };
 
-  networking.hostName = "neutrino";
+  networking.hostName = "meadowlark";
   networking.hostId = "5e49a298";
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;

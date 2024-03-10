@@ -60,7 +60,7 @@ in {
           python
           ruby
           rust
-          terraform
+          # terraform
           toml
           tree-sitter-tsx
           typescript
@@ -111,8 +111,8 @@ in {
       nmap
       ripgrep
       taplo
-      terraform
-      terraform-ls
+      # terraform
+      # terraform-ls
       texlab
       taplo
     ] ++ (with pkgs.joshua; [ ruby31.env ])

@@ -18,8 +18,9 @@
       flake = false;
     };
 
+    # This does not follow nixpkgs for now.
     onethirtyfive-neovim.url = "github:onethirtyfive/neovim-nix";
-    onethirtyfive-neovim.inputs.nixpkgs.follows = "nixpkgs";
+    # onethirtyfive-neovim.inputs.nixpkgs.follows = "nixpkgs";
 
     ml4w.url = "gitlab:onethirtyfive/ml4w-dotfiles-nixos";
     ml4w.inputs.nixpkgs.follows = "nixpkgs";

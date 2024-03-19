@@ -24,26 +24,26 @@
       hyprland
       mimelist
       packages
-    ]) ++ [ "${ml4w-modules}/ml4w.nix" ];
+    ]); # ++ [ "${ml4w-modules}/ml4w.nix" ];
 
-  ml4w = {
-    enable = true;
+  # ml4w = {
+  #   enable = true;
 
-    hyprland = {
-      enable = true;
+  #   hyprland = {
+  #     enable = true;
 
-      presets = {
-        animations = "fast";
-        decorations = "rounding-opaque";
-        windowing = "border-2-reverse";
-      };
-    };
+  #     presets = {
+  #       animations = "fast";
+  #       decorations = "rounding-opaque";
+  #       windowing = "border-2-reverse";
+  #     };
+  #   };
 
-    waybar = {
-      enable = true;
-      theme = "ml4w-opaque-dark";
-    };
-  };
+  #   waybar = {
+  #     enable = true;
+  #     theme = "ml4w-opaque-dark";
+  #   };
+  # };
 
 
   home.sessionVariables = {

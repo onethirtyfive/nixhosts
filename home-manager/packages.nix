@@ -23,6 +23,7 @@
     icon-library
     dconf-editor
     figma-linux
+    signal-desktop
 
     # tools
     bat

@@ -98,7 +98,7 @@
                 extraSpecialArgs = {
                   inherit inputs system nixpkgs ml4w wallpapers;
                   inherit homedir;
-                  ssh-identities = [ "joshua@neutrino" "joshua2@neutrino" ];
+                  ssh-identities = [ "joshua@ozymandian" ];
                 };
               };
             }

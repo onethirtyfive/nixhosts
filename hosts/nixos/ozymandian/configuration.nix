@@ -46,7 +46,7 @@ in {
     useOSProber = true;
   };
 
-  networking.hostName = "chim-choo-ree";
+  networking.hostName = "ozymandian";
   networking.hostId = "8425e349";
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;

@@ -84,7 +84,7 @@
         homedir = "/home/joshua";
         joshua = import ./users/joshua;
       in rec {
-        chim-choo-ree = nixpkgs.lib.nixosSystem {
+        ozymandian = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
             joshua.system-user
@@ -102,7 +102,7 @@
                 };
               };
             }
-            (import ./hosts/nixos/chim-choo-ree)
+            (import ./hosts/nixos/ozymandian)
           ];
           specialArgs = { inherit inputs; };
         };

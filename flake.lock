@@ -181,11 +181,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1709968316,
-        "narHash": "sha256-4rZEtEDT6jcgRaqxsatBeds7x1PoEiEjb6QNGb4mNrk=",
+        "lastModified": 1712757991,
+        "narHash": "sha256-kR7C7Fqt3JP40h0mzmSZeWI5pk1iwqj4CSeGjnUbVHc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0e7f98a5f30166cbed344569426850b21e4091d4",
+        "rev": "d6b3ddd253c578a7ab98f8011e59990f21dc3932",
         "type": "github"
       },
       "original": {
@@ -215,19 +215,53 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "neovim": "neovim",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "plugin-copilot-lualine-nvim": "plugin-copilot-lualine-nvim",
+        "plugin-gp-nvim": "plugin-gp-nvim"
       },
       "locked": {
-        "lastModified": 1710814895,
-        "narHash": "sha256-yn22vRzoFUF1x7Z0ZI/98EC+5NZFG/Uj98d2tJr2cAI=",
+        "lastModified": 1716918831,
+        "narHash": "sha256-Y2u859nuMzbuAgLnu1Rb8KpkL3HzpixrukWZC0PYl0c=",
         "owner": "onethirtyfive",
         "repo": "neovim-nix",
-        "rev": "0139f8af1583c0665654e4cd6fceffdea124caf9",
+        "rev": "f49cfe4b91b51d91d5d1f571edf565cf2918a90d",
         "type": "github"
       },
       "original": {
         "owner": "onethirtyfive",
         "repo": "neovim-nix",
+        "type": "github"
+      }
+    },
+    "plugin-copilot-lualine-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1706624198,
+        "narHash": "sha256-Ma0wpY2Tg0Kr6Epu3QyGesXRjOcugyJ2NTuOUPSLvLk=",
+        "owner": "AndreM222",
+        "repo": "copilot-lualine",
+        "rev": "9e226cf8f4653e13ec282f5878d66aa435899c8c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AndreM222",
+        "repo": "copilot-lualine",
+        "type": "github"
+      }
+    },
+    "plugin-gp-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1716894041,
+        "narHash": "sha256-Cgk8zbYVpELMSQoRpg0TG75k2qtvbftNDuuu+JSPD9I=",
+        "owner": "Robitx",
+        "repo": "gp.nvim",
+        "rev": "486a061d95a50e3c9a2e7c0309464fd32e3df590",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Robitx",
+        "repo": "gp.nvim",
         "type": "github"
       }
     },

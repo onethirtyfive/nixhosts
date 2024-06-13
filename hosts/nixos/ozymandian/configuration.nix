@@ -15,6 +15,7 @@ in {
       common-gpu-amd
       common-pc-ssd
     ]) ++ (with bespoke-nixos-modules; [
+      apps
       audio
       encrypted-zfs
       firmware

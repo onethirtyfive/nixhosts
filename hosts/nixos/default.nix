@@ -1,4 +1,5 @@
 {
+  apps = ./apps.nix;
   audio = ./audio.nix;
   encrypted-zfs = ./encrypted-zfs.nix;
   firmware = ./firmware.nix;

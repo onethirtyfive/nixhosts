@@ -17,23 +17,25 @@ in {
         "${alacritty-theme}/themes/carbonfox.yaml"
       ];
 
-      key_bindings = [
-        {
-          key = "K";
-          mods = "Command|Option";
-          action = "ClearHistory";
-        }
-        {
-          key = "Q";
-          mods = "Command";
-          action = "None";
-        }
-        {
-          key = "W";
-          mods = "Command";
-          chars = "\\x04";
-        }
-      ];
+      keyboard = {
+        bindings = [
+          {
+            key = "K";
+            mods = "Command|Option";
+            action = "ClearHistory";
+          }
+          {
+            key = "Q";
+            mods = "Command";
+            action = "None";
+          }
+          {
+            key = "W";
+            mods = "Command";
+            chars = "\\\\x04";
+          }
+        ];
+      };
 
       shell = {
         program = "${config.programs.zsh.package}/bin/zsh";

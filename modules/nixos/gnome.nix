@@ -19,6 +19,7 @@
     ];
 
     systemPackages = (with pkgs; [
+      gedit
       gnome-extension-manager
       nautilus-open-any-terminal
       qogir-icon-theme
@@ -38,7 +39,6 @@
     ]) ++ (with pkgs.gnome; [
       cheese # webcam tool
       gnome-music
-      gedit # text editor
       epiphany # web browser
       geary # email reader
       evince # document viewer

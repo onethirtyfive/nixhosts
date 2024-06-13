@@ -12,10 +12,8 @@
     wireplumber.enable = true;
   };
 
-  environment.etc = let
-    json = pkgs.formats.json {};
-  in {
-    "pipewire/pipewire.conf.d/92-low-latency.conf".text = ''
+  services.pipewire.extraConfig.pipewire = {
+    "92-low-latency.conf".text = ''
       context.properties = {
         default.clock.rate = 48000
         default.clock.quantum = 32
@@ -23,8 +21,12 @@
         default.clock.max-quantum = 32
       }
     '';
+  };
 
-    "pipewire/pipewire-pulse.conf.d/92-low-latency.conf".source = json.generate "92-low-latency.conf" {
+  services.pipewire.extraConfig.pipewire-pulse = let
+    json = pkgs.formats.json {};
+  in {
+    "92-low-latency.conf".source = json.generate "92-low-latency.conf" {
       context.modules = [
         {
           name = "libpipewire-module-protocol-pulse";

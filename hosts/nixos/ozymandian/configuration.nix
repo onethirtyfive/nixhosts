@@ -1,20 +1,18 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-{ pkgs, inputs, lib, ... }:
+{ pkgs, inputs, lib, nixosModules,... }:
 let
   inherit (inputs) nixos-hardware rust-overlay;
 in {
   imports =
-    let
-      bespoke-nixos-modules = import ./..;
-    in [
+    [
       ./hardware-configuration.nix
     ] ++ (with nixos-hardware.nixosModules; [
       common-cpu-amd
       common-gpu-amd
       common-pc-ssd
-    ]) ++ (with bespoke-nixos-modules; [
+    ]) ++ (with nixosModules; [
       apps
       audio
       encrypted-zfs

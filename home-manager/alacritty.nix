@@ -7,7 +7,7 @@ in {
 
     settings = {
       font.normal.family = "JetBrainsMono Nerd Font";
-      font.size = 14;
+      font.size = 12;
 
       env = {
         TERM = "xterm-256color";

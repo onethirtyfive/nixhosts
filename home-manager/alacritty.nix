@@ -44,6 +44,7 @@ in {
         decorations = "None";
         opacity = 0.97;
         option_as_alt = "Both";
+        startup_mode = "Maximized";
       };
     };
   };

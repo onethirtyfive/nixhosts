@@ -1,10 +1,10 @@
 {
-  audio = ./audio.nix;
-  encrypted-zfs = ./encrypted-zfs.nix;
-  firmware = ./firmware.nix;
-  fonts = ./fonts.nix;
-  gnome = ./gnome.nix;
-  locale = ./locale.nix;
-  packages = ./packages.nix;
+  audio = import ./audio.nix;
+  encrypted-zfs = import ./encrypted-zfs.nix;
+  firmware = import ./firmware.nix;
+  fonts = import ./fonts.nix;
+  gnome = import ./gnome.nix;
+  locale = import ./locale.nix;
+  packages = import ./packages.nix;
 }
 

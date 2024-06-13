@@ -37,7 +37,8 @@
     , onethirtyfive-neovim
     , ...
   }: let
-    nixosModules = import ./modules/nixos;
+    modules = import ./modules;
+    overlays = import ./overlays;
   in {
     darwinConfigurations =
       let
@@ -70,6 +71,8 @@
         system = "x86_64-linux";
         homedir = "/home/joshua";
         joshua = import ./users/joshua;
+
+        bespoke = { inherit modules overlays; };
       in rec {
         ozymandian = nixpkgs.lib.nixosSystem {
           inherit system;
@@ -91,7 +94,7 @@
             }
             (import ./hosts/nixos/ozymandian)
           ];
-          specialArgs = { inherit inputs nixosModules; };
+          specialArgs = { inherit inputs bespoke; };
         };
 
         meadowlark = nixpkgs.lib.nixosSystem {
@@ -114,7 +117,7 @@
             }
             (import ./hosts/nixos/meadowlark)
           ];
-          specialArgs = { inherit inputs nixosModules; };
+          specialArgs = { inherit inputs bespoke; };
         };
 
         neutrino = meadowlark; # stepping stone

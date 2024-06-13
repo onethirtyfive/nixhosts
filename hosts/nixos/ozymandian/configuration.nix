@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-{ pkgs, inputs, lib, nixosModules,... }:
+{ pkgs, inputs, lib, bespoke,... }:
 let
   inherit (inputs) nixos-hardware rust-overlay;
 in {
@@ -12,7 +12,7 @@ in {
       common-cpu-amd
       common-gpu-amd
       common-pc-ssd
-    ]) ++ (with nixosModules; [
+    ]) ++ (with bespoke.modules.nixos; [
       audio
       encrypted-zfs
       firmware
@@ -62,6 +62,7 @@ in {
   ];
   nixpkgs.overlays = [
     rust-overlay.overlays.default
+    bespoke.overlays.joshua-devenv
   ];
 
   security.polkit = {

@@ -4,7 +4,6 @@
   dconf = ./dconf.nix;
   direnv = ./direnv.nix;
   git = ./git.nix;
-  hyprland = ./hyprland.nix;
   mimelist = ./mimelist.nix;
   neovim = ./neovim;
   nushell = ./nushell;

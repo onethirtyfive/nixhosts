@@ -18,7 +18,6 @@ in {
       firmware
       fonts
       gnome
-      # hyprland
       locale
       packages
     ]);

@@ -1,6 +1,7 @@
 cask_args appdir: "~/Applications/Homebrew"
 
 cask "bitwarden"
+cask "signal"
 cask "gpg-suite-no-mail"
 cask "nordvpn"
 
@@ -15,3 +16,4 @@ cask "obsidian"
 cask "karabiner-elements"
 
 cask "keybase"
+cask "microsoft-edge"

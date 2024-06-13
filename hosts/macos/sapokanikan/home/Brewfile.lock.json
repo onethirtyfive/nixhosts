@@ -90,13 +90,31 @@
             "appdir": "~/Applications/Homebrew"
           }
         }
+      },
+      "signal": {
+        "version": "7.7.0",
+        "options": {
+          "full_name": "signal",
+          "args": {
+            "appdir": "~/Applications/Homebrew"
+          }
+        }
+      },
+      "microsoft-edge": {
+        "version": "124.0.2478.67,8325266a-e5ef-4b92-b110-6e387417723c",
+        "options": {
+          "full_name": "microsoft-edge",
+          "args": {
+            "appdir": "~/Applications/Homebrew"
+          }
+        }
       }
     }
   },
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.2.19",
+        "HOMEBREW_VERSION": "4.2.20",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.3.0.0.1.1708646388",

@@ -2,7 +2,7 @@
   "entries": {
     "cask": {
       "bitwarden": {
-        "version": "2024.4.1",
+        "version": "2024.6.0",
         "options": {
           "full_name": "bitwarden",
           "args": {
@@ -20,7 +20,7 @@
         }
       },
       "keycastr": {
-        "version": "0.9.16",
+        "version": "0.9.17",
         "options": {
           "full_name": "keycastr",
           "args": {
@@ -56,7 +56,7 @@
         }
       },
       "obsidian": {
-        "version": "1.5.12",
+        "version": "1.6.3",
         "options": {
           "full_name": "obsidian",
           "args": {
@@ -74,7 +74,7 @@
         }
       },
       "nordvpn": {
-        "version": "8.18.1",
+        "version": "8.21.0",
         "options": {
           "full_name": "nordvpn",
           "args": {
@@ -83,7 +83,7 @@
         }
       },
       "keybase": {
-        "version": "6.2.8,20240305171439,e38523abbe",
+        "version": "6.3.0,20240528152652,16b027d126",
         "options": {
           "full_name": "keybase",
           "args": {
@@ -92,7 +92,7 @@
         }
       },
       "signal": {
-        "version": "7.7.0",
+        "version": "7.12.0",
         "options": {
           "full_name": "signal",
           "args": {
@@ -101,7 +101,7 @@
         }
       },
       "microsoft-edge": {
-        "version": "124.0.2478.67,8325266a-e5ef-4b92-b110-6e387417723c",
+        "version": "125.0.2535.92,33da2bdd-7e25-481e-8d3b-def84868f604",
         "options": {
           "full_name": "microsoft-edge",
           "args": {
@@ -114,12 +114,12 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.2.20",
+        "HOMEBREW_VERSION": "4.3.5",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.3.0.0.1.1708646388",
-        "Xcode": "15.1",
-        "macOS": "14.4.1"
+        "Xcode": "15.4",
+        "macOS": "14.5"
       }
     }
   }

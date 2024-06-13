@@ -13,13 +13,13 @@ in {
       common-gpu-amd
       common-pc-ssd
     ]) ++ (with nixosModules; [
-      apps
       audio
       encrypted-zfs
       fonts
       gnome
       firmware
       locale
+      packages
     ]);
 
   hardware.enableAllFirmware = true;

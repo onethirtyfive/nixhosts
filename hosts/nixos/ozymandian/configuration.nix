@@ -13,7 +13,6 @@ in {
       common-gpu-amd
       common-pc-ssd
     ]) ++ (with nixosModules; [
-      apps
       audio
       encrypted-zfs
       firmware
@@ -21,6 +20,7 @@ in {
       gnome
       # hyprland
       locale
+      packages
     ]);
 
   hardware.enableAllFirmware = true;

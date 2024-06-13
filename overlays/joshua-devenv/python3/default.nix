@@ -1,5 +1,5 @@
-{ python311 }:
-python311.withPackages (ps: with ps; [
+{ python3, ... }:
+python3.withPackages (ps: with ps; [
   black
 
   mypy
@@ -10,11 +10,5 @@ python311.withPackages (ps: with ps; [
   pylsp-mypy
   pynvim
 
-  pandas
-  # pandas-stubs
-
   typing-extensions
-
-  pyserial intelhex
 ])
-

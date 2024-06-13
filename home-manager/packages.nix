@@ -27,6 +27,6 @@
     coreutils
     pinentry
     git-lfs
-  ] ++ (with pkgs.joshua; [ python311 ]);
+  ] ++ (with pkgs.joshua-devenv; [ python3 ruby ]);
 }
 

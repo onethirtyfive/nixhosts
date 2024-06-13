@@ -63,7 +63,7 @@ in {
 
   nixpkgs.overlays = [
     rust-overlay.overlays.default
-    (import ../../../overlays/nixos)
+    (import ../../../overlays).default
   ];
 
   security.polkit = {

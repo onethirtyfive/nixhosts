@@ -114,7 +114,7 @@ in {
       # terraform-ls
       texlab
       taplo
-    ] ++ (with pkgs.joshua; [ ruby31.env ])
+    ] ++ (with pkgs.joshua-devenv; [ python3 ruby ])
       ++ (with pkgs.nodejs.pkgs; [ typescript-language-server vscode-langservers-extracted ]);
 
     extraLuaConfig =

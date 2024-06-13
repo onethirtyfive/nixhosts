@@ -1,7 +1,7 @@
-{ bundlerEnv, ruby_3_1 }:
+{ bundlerEnv, ruby }:
 let
   joshua-dev-ruby = bundlerEnv {
-    ruby = ruby_3_1;
+    ruby = ruby;
     name = "joshua-dev-ruby";
     gemdir = ./.;
   };

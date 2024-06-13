@@ -60,9 +60,10 @@ in {
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
   ];
+
   nixpkgs.overlays = [
     rust-overlay.overlays.default
-    (import ./overlay)
+    (import ../../../overlays/nixos)
   ];
 
   security.polkit = {

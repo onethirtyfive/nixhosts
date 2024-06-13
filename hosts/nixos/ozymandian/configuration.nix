@@ -17,6 +17,7 @@ in {
     ]) ++ (with bespoke-nixos-modules; [
       audio
       encrypted-zfs
+      firmware
       gnome
       # hyprland
       locale

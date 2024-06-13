@@ -18,7 +18,7 @@ in {
       audio
       encrypted-zfs
       gnome
-      # hyprland
+      firmware
       locale
     ]);
 

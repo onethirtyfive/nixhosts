@@ -18,6 +18,7 @@ in {
       audio
       encrypted-zfs
       firmware
+      fonts
       gnome
       # hyprland
       locale
@@ -70,16 +71,6 @@ in {
     enable = true;
     debug = true;
   };
-
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraCode" ]; })
-    fira
-    font-awesome
-    noto-fonts-cjk
-    noto-fonts-emoji
-    noto-fonts
-    liberation_ttf
-  ];
 
   programs.gnupg.agent = {
     enable = true;

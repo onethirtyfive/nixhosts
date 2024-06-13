@@ -45,26 +45,26 @@ in {
   # Auto-upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
-  services.yabai = {
-    enable = true;
-
-    config = {
-      focus_follows_mouse = "off";
-      mouse_follows_focus = "off";
-      window_placement = "second_child";
-      window_opacity = "on";
-      window_shadow = "float";
-      window_topmost = "on";
-      active_window_opacity = 1.0;
-      normal_window_opacity = 0.9;
-      top_padding = 2;
-      bottom_padding = 2;
-      left_padding = 2;
-      right_padding = 2;
-      window_gap = 2;
-      layout = "bsp";
-    };
-  };
+  # services.yabai = {
+  #   enable = true;
+  #
+  #   config = {
+  #     focus_follows_mouse = "off";
+  #     mouse_follows_focus = "off";
+  #     window_placement = "second_child";
+  #     window_opacity = "on";
+  #     window_shadow = "float";
+  #     window_topmost = "on";
+  #     active_window_opacity = 1.0;
+  #     normal_window_opacity = 0.9;
+  #     top_padding = 2;
+  #     bottom_padding = 2;
+  #     left_padding = 2;
+  #     right_padding = 2;
+  #     window_gap = 2;
+  #     layout = "bsp";
+  #   };
+  # };
 
   programs.zsh.enable = true;
   programs.nix-index.enable = false;
@@ -81,6 +81,6 @@ in {
   # Add ability to used TouchID for sudo authentication
   security.pam.enableSudoTouchIdAuth = true;
 
-  users.users.joshua.home = "/Users/joshua";
+  users.users."joshua".home = "/Users/joshua";
 }
 

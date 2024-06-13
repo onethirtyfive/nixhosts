@@ -1,0 +1,4 @@
+export PATH="$PATH:/Users/joshua/Library/Application Support/JetBrains/Toolbox/scripts"
+
+export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+

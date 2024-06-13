@@ -1,6 +1,6 @@
 { nixpkgs-unstable, system, inputs, ... }:
 let
-  inherit (inputs) rust-overlay;
+  inherit (inputs) onethirtyfive-neovim rust-overlay;
 
   pkgs' = import nixpkgs-unstable {
     inherit system;
@@ -10,8 +10,6 @@ let
     ];
 
     config.permittedInsecurePackages = [
-      "nodejs-16.20.2"
-      "electron-25.9.0"
     ];
   };
 
@@ -24,8 +22,6 @@ in {
         ./alacritty
         ./darwin-application-activation
         ./git
-        ./neovim
-        ./nushell
         ./tmux
         ./zsh
       ];
@@ -43,7 +39,7 @@ in {
         '';
       };
     in {
-      source = builtins.trace "${configStore}/karabiner" "${configStore}/karabiner";
+      source = "${configStore}/karabiner";
       target = ".config/karabiner";
     };
 
@@ -57,7 +53,7 @@ in {
     gnused
 
     pkgs.rust-bin.stable.latest.complete
-  ]) ++ (with pkgs'.joshua; [ cc2538-bsl python311 ]);
+  ]) ++ (with pkgs'.joshua; [ ]);
 
   home.sessionVariables = {
     PAGER = "less";
@@ -87,9 +83,10 @@ in {
 
   programs.eza.enable = true;
   programs.fzf.enable = true;
-
-  # dependencies
-  programs.texlive.enable = true; # scapy runtime dep (shellout)
+  programs.neovim = {
+    enable = true;
+    package = onethirtyfive-neovim.packages.${system}.default;
+  };
 
   home.stateVersion = "22.11"; # rarely changed
 }

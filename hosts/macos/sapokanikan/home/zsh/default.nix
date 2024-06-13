@@ -3,6 +3,9 @@ pkgs:
 {
   programs.zsh = {
     enable = true;
+
+    dotDir = ".zsh-custom";
+
     prezto = {
       enable = true;
       extraConfig = ''
@@ -13,7 +16,10 @@ pkgs:
 
     autocd = true;
     syntaxHighlighting.enable = true;
+
     initExtra = builtins.readFile ./zshrc;
+    loginExtra = builtins.readFile ./zlogin;
+    profileExtra = builtins.readFile ./zprofile;
 
     shellAliases = {
       gs = "git status";

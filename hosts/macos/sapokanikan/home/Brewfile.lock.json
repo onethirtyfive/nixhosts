@@ -1,0 +1,108 @@
+{
+  "entries": {
+    "cask": {
+      "bitwarden": {
+        "version": "2024.4.1",
+        "options": {
+          "full_name": "bitwarden",
+          "args": {
+            "appdir": "~/Applications/Homebrew"
+          }
+        }
+      },
+      "gpg-suite-no-mail": {
+        "version": "2023.3",
+        "options": {
+          "full_name": "gpg-suite-no-mail",
+          "args": {
+            "appdir": "~/Applications/Homebrew"
+          }
+        }
+      },
+      "keycastr": {
+        "version": "0.9.16",
+        "options": {
+          "full_name": "keycastr",
+          "args": {
+            "appdir": "~/Applications/Homebrew"
+          }
+        }
+      },
+      "istat-menus": {
+        "version": "6.73",
+        "options": {
+          "full_name": "istat-menus",
+          "args": {
+            "appdir": "~/Applications/Homebrew"
+          }
+        }
+      },
+      "fluor": {
+        "version": "2.5.1",
+        "options": {
+          "full_name": "fluor",
+          "args": {
+            "appdir": "~/Applications/Homebrew"
+          }
+        }
+      },
+      "keyboardcleantool": {
+        "version": "6",
+        "options": {
+          "full_name": "keyboardcleantool",
+          "args": {
+            "appdir": "~/Applications/Homebrew"
+          }
+        }
+      },
+      "obsidian": {
+        "version": "1.5.12",
+        "options": {
+          "full_name": "obsidian",
+          "args": {
+            "appdir": "~/Applications/Homebrew"
+          }
+        }
+      },
+      "karabiner-elements": {
+        "version": "14.13.0",
+        "options": {
+          "full_name": "karabiner-elements",
+          "args": {
+            "appdir": "~/Applications/Homebrew"
+          }
+        }
+      },
+      "nordvpn": {
+        "version": "8.18.1",
+        "options": {
+          "full_name": "nordvpn",
+          "args": {
+            "appdir": "~/Applications/Homebrew"
+          }
+        }
+      },
+      "keybase": {
+        "version": "6.2.8,20240305171439,e38523abbe",
+        "options": {
+          "full_name": "keybase",
+          "args": {
+            "appdir": "~/Applications/Homebrew"
+          }
+        }
+      }
+    }
+  },
+  "system": {
+    "macos": {
+      "sonoma": {
+        "HOMEBREW_VERSION": "4.2.19",
+        "HOMEBREW_PREFIX": "/opt/homebrew",
+        "Homebrew/homebrew-core": "api",
+        "CLT": "15.3.0.0.1.1708646388",
+        "Xcode": "15.1",
+        "macOS": "14.4.1"
+      }
+    }
+  }
+}

@@ -39,10 +39,10 @@ pkgs:
 
       user = {
         name = "Joshua Morris"; # email intentionally omitted
-        signingKey = "FF30B1CA93CB1225";
+        email = "joshua.morris@hey.com";
       };
 
-      commit.gpgSign = true;
+      # commit.gpgSign = true;
       rerere.enabled = true;
       log.showsignature = false;
       init.defaultBranch = "main";
@@ -61,6 +61,11 @@ pkgs:
       ".DS_Store"
       "*.swp"
     ];
+
+    signing = {
+      signByDefault = true;
+      key = "FF30B1CA93CB1225";
+    };
 
     # includes = [
     #   {

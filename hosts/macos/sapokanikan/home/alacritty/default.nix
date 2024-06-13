@@ -13,7 +13,7 @@ in {
 
     settings = {
       font.normal.family = "JetBrainsMono Nerd Font";
-      font.size = 14;
+      font.size = 16;
 
       env = {
         TERM = "xterm-256color";
@@ -47,9 +47,10 @@ in {
       };
 
       window = {
-        decorations = "buttonless";
+        decorations = "Full";
         opacity = 0.97;
         option_as_alt = "Both";
+        startup_mode = "Maximized";
       };
     };
   };

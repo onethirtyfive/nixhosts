@@ -51,30 +51,26 @@
     darwinConfigurations =
       let
         system = "aarch64-darwin";
-
-        modules = [
-          ./legacy/configuration
-          ./legacy/configuration/macos-settings.nix
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.verbose = true;
-            home-manager.users.joshua = {
-              imports = [ ./legacy/home ];
-            };
-            home-manager.extraSpecialArgs = {
-              inherit inputs system nixpkgs-unstable;
-            };
-          }
-        ];
       in {
-        thirdwave = darwin.lib.darwinSystem {
-          inherit system modules inputs;
-        };
+        sapokanikan = darwin.lib.darwinSystem {
+          inherit system inputs;
 
-        trendline = darwin.lib.darwinSystem {
-          inherit system modules inputs;
+          modules = [
+            ./hosts/macos/sapokanikan/configuration
+            ./hosts/macos/sapokanikan/configuration/macos-settings.nix
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.verbose = true;
+              home-manager.users.joshua = {
+                imports = [ ./hosts/macos/sapokanikan/home ];
+              };
+              home-manager.extraSpecialArgs = {
+                inherit inputs system nixpkgs-unstable;
+              };
+            }
+          ];
         };
       };
 

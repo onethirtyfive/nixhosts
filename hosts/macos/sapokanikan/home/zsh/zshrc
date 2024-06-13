@@ -1,3 +1,4 @@
+export GPG_TTY=$(tty)
 export GIT_PROMPT_THEME=BlackOrWhite
 export GIT_PROMPT_FETCH_REMOTE_STATUS=0
 
@@ -38,12 +39,12 @@ function test-truecolor-support() {
       printf "\n";
   }'
 }
-#
+
 # This must be done from within the cloned nixhosts dir:
 function initial-hm-switch() {
   rm -rf "$HOME/Applications/Home Manager Apps" &&
   echo "nixhosts: $NIXHOSTS" &&
-  nix build "$NIXHOSTS#darwinConfigurations.$(hostname -s).system" &&
+  nix build ".#darwinConfigurations.$(hostname -s).system" &&
   ./result/sw/bin/darwin-rebuild switch --flake "$NIXHOSTS"
 }
 
@@ -54,13 +55,6 @@ function hm-switch() {
   nix build "$NIXHOSTS#darwinConfigurations.$(hostname -s).system" &&
   darwin-rebuild switch --flake "$NIXHOSTS"
 }
-
-function setgpgprogram {
-  git config --global gpg.program $(which gpg)
-}
-
-# source $HOME/.nix-profile/share/git/contrib/completion/git-prompt.sh
-# source $HOME/.nix-profile/share/git/contrib/completion/git-completion.bash
 
 # disable freeze on ctrl-s
 stty -ixon

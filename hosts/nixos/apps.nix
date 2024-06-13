@@ -20,11 +20,6 @@
     slides
     charm
 
-    # gnome-ish
-    d-spy
-    icon-library
-    gnome.dconf-editor
-
     # languages (relocate?)
     rust-bin.stable.latest.complete
   ];

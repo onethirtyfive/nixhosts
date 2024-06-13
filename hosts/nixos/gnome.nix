@@ -18,12 +18,16 @@
       "/share/nautilus-python/extensions"
     ];
 
-    systemPackages = with pkgs; [
+    systemPackages = (with pkgs; [
       gnome-extension-manager
       nautilus-open-any-terminal
       qogir-icon-theme
-      gnome.nautilus-python
-    ];
+      d-spy
+      icon-library
+    ]) ++ (with pkgs.gnome; [
+      nautilus-python
+      dconf-editor
+    ]);
 
     gnome.excludePackages = (with pkgs; [
       gnome-text-editor
@@ -31,7 +35,7 @@
       gnome-photos
       gnome-tour
       gnome-connections
-      snapshot
+      # snapshot
     ]) ++ (with pkgs.gnome; [
       cheese # webcam tool
       gnome-music

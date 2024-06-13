@@ -92,7 +92,8 @@ in {
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
+    microsoft-edge
   ];
 
   services = {

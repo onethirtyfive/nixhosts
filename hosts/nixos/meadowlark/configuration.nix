@@ -78,11 +78,7 @@ in {
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    home-manager
-    neovim
-    git
-    wget
+  environment.systemPackages = [
   ];
 
   services = {

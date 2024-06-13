@@ -22,6 +22,10 @@
 
     # languages (relocate?)
     rust-bin.stable.latest.complete
+
+    # utils
+    home-manager
+    git
+    wget
   ];
 }
-

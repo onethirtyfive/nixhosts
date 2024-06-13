@@ -22,15 +22,6 @@
     onethirtyfive-neovim.url = "github:onethirtyfive/neovim-nix";
     # onethirtyfive-neovim.inputs.nixpkgs.follows = "nixpkgs";
 
-    ml4w.url = "gitlab:onethirtyfive/ml4w-dotfiles-nixos";
-    ml4w.inputs.nixpkgs.follows = "nixpkgs";
-
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
-
-    wallpapers.url = "gitlab:stephan-raabe/wallpaper";
-    wallpapers.flake = false;
-
     # https://discourse.nixos.org/t/how-to-get-codelldb-on-nixos/30401/5
     # lldb-nix-fix = {
     #   url = "github:mstone/nixpkgs/darwin-fix-vscode-lldb";
@@ -44,8 +35,6 @@
     , darwin
     , home-manager
     , onethirtyfive-neovim
-    , ml4w
-    , wallpapers
     , ...
   }: {
     darwinConfigurations =
@@ -92,7 +81,7 @@
                 verbose = true;
                 users.joshua = joshua.managed-home;
                 extraSpecialArgs = {
-                  inherit inputs system nixpkgs ml4w wallpapers;
+                  inherit inputs system nixpkgs;
                   inherit homedir;
                   ssh-identities = [ "joshua@ozymandian" ];
                 };
@@ -115,7 +104,7 @@
                 verbose = true;
                 users.joshua = joshua.managed-home;
                 extraSpecialArgs = {
-                  inherit inputs system nixpkgs ml4w wallpapers;
+                  inherit inputs system nixpkgs;
                   inherit homedir;
                   ssh-identities = [ "joshua@neutrino" ];
                 };

@@ -1,11 +1,8 @@
-{ config, system, pkgs, lib, homedir, ssh-identities, ml4w, ... }:
+{ config, system, pkgs, lib, homedir, ssh-identities, ... }:
 {
-  # disabledModules = [ "programs/waybar.nix" ];
-
   imports =
     let
       bespoke-home-manager-modules = import ../../home-manager;
-      ml4w-modules = ml4w.defaultPackage.${system}.outPath;
     in (with bespoke-home-manager-modules; [
       # universal
       alacritty
@@ -21,30 +18,9 @@
 
       # linux-only
       dconf
-      hyprland
       mimelist
       packages
-    ]); # ++ [ "${ml4w-modules}/ml4w.nix" ];
-
-  # ml4w = {
-  #   enable = true;
-
-  #   hyprland = {
-  #     enable = true;
-
-  #     presets = {
-  #       animations = "fast";
-  #       decorations = "rounding-opaque";
-  #       windowing = "border-2-reverse";
-  #     };
-  #   };
-
-  #   waybar = {
-  #     enable = true;
-  #     theme = "ml4w-opaque-dark";
-  #   };
-  # };
-
+    ]);
 
   home.sessionVariables = {
     QT_XCB_GL_INTEGRATION = "none"; # kde-connect

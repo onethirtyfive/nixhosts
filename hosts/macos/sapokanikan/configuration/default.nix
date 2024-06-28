@@ -17,15 +17,24 @@ in {
     ];
 
     trusted-users = [
-      "@admin"
+      "root" "joshua"
     ];
+
+    netrc-file = "/etc/nix/netrc";
+
+    extra-sandbox-paths = [
+      "/etc/nix/netrc"
+      "/etc/nix/secrets.toml"
+    ];
+
+    experimental-features = [ "nix-command" "flakes" ];
+
+    warn-dirty = false;
+    auto-optimise-store = false;
   };
 
   # Enable experimental nix command and flakes
-  nix.extraOptions = ''
-    auto-optimise-store = true
-    experimental-features = nix-command flakes
-  '' + lib.optionalString (pkgs.system == "aarch64-darwin") ''
+  nix.extraOptions = lib.optionalString (pkgs.system == "aarch64-darwin") ''
     extra-platforms = x86_64-darwin aarch64-darwin
   '';
 

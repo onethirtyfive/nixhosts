@@ -1,8 +1,8 @@
-{ nixpkgs-unstable, system, inputs, ... }:
+{ system, inputs, ... }:
 let
-  inherit (inputs) onethirtyfive-neovim rust-overlay;
+  inherit (inputs) nixpkgs-darwin onethirtyfive-neovim rust-overlay;
 
-  pkgs' = import nixpkgs-unstable {
+  pkgs' = import nixpkgs-darwin {
     inherit system;
     overlays = [
       (import ./overlay { rubyPackagePath = ./ruby; })

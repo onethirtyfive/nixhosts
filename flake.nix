@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     darwin.url = "github:lnl7/nix-darwin";
@@ -31,6 +32,7 @@
   outputs = inputs@{
       self
     , nixpkgs-unstable
+    , nixpkgs-darwin
     , nixpkgs
     , darwin
     , home-manager
@@ -51,6 +53,9 @@
             ./hosts/macos/sapokanikan/configuration
             ./hosts/macos/sapokanikan/configuration/macos-settings.nix
             home-manager.darwinModules.home-manager
+            {
+              nix.registry.nixpkgs.flake = inputs.nixpkgs-darwin;
+            }
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;

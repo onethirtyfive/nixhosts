@@ -1,9 +1,9 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 let
   inherit (pkgs) lib;
 in {
   nix.configureBuildUsers = true;
-  nix.registry.nixpkgs.flake = inputs.nixpkgs-unstable;
+  nix.package = pkgs.nixVersions.nix_2_22;
 
   nix.settings = {
     substituters = [

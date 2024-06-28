@@ -17,3 +17,5 @@ cask "karabiner-elements"
 
 cask "keybase"
 cask "microsoft-edge"
+
+cask "docker"

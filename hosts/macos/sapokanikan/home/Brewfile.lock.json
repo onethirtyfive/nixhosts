@@ -2,7 +2,7 @@
   "entries": {
     "cask": {
       "bitwarden": {
-        "version": "2024.6.0",
+        "version": "2024.6.3",
         "options": {
           "full_name": "bitwarden",
           "args": {
@@ -20,7 +20,7 @@
         }
       },
       "keycastr": {
-        "version": "0.9.17",
+        "version": "0.9.18",
         "options": {
           "full_name": "keycastr",
           "args": {
@@ -56,7 +56,7 @@
         }
       },
       "obsidian": {
-        "version": "1.6.3",
+        "version": "1.6.5",
         "options": {
           "full_name": "obsidian",
           "args": {
@@ -74,7 +74,7 @@
         }
       },
       "nordvpn": {
-        "version": "8.21.0",
+        "version": "8.22.0",
         "options": {
           "full_name": "nordvpn",
           "args": {
@@ -92,7 +92,7 @@
         }
       },
       "signal": {
-        "version": "7.12.0",
+        "version": "7.14.0",
         "options": {
           "full_name": "signal",
           "args": {
@@ -101,9 +101,18 @@
         }
       },
       "microsoft-edge": {
-        "version": "125.0.2535.92,33da2bdd-7e25-481e-8d3b-def84868f604",
+        "version": "126.0.2592.81,a0b6d78d-4cd2-4c69-87fb-576f175b83ab",
         "options": {
           "full_name": "microsoft-edge",
+          "args": {
+            "appdir": "~/Applications/Homebrew"
+          }
+        }
+      },
+      "docker": {
+        "version": "4.31.0,153195",
+        "options": {
+          "full_name": "docker",
           "args": {
             "appdir": "~/Applications/Homebrew"
           }
@@ -114,7 +123,7 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.3.5",
+        "HOMEBREW_VERSION": "4.3.7",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.3.0.0.1.1708646388",

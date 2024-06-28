@@ -3,7 +3,7 @@
   # keyboard function
   system.defaults.NSGlobalDomain.InitialKeyRepeat = 10;
   system.defaults.NSGlobalDomain.KeyRepeat = 1;
-  system.defaults.NSGlobalDomain."com.apple.keyboard.fnState" = true;
+  system.defaults.NSGlobalDomain."com.apple.keyboard.fnState" = false;
 
   # mouse function
   system.defaults.NSGlobalDomain.AppleEnableMouseSwipeNavigateWithScrolls = false;

@@ -8,7 +8,6 @@
       alacritty
       direnv
       git
-      neovim
       starship
       tmux
       zsh

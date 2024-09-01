@@ -5,7 +5,6 @@
   direnv = ./direnv.nix;
   git = ./git.nix;
   mimelist = ./mimelist.nix;
-  neovim = ./neovim;
   nushell = ./nushell;
   packages = ./packages.nix;
   starship = ./starship.nix;

@@ -14,10 +14,8 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
-    alacritty-theme = {
-      url = "github:alacritty/alacritty-theme";
-      flake = false;
-    };
+    alacritty-theme.url = "github:alacritty/alacritty-theme";
+    alacritty-theme.flake = false;
 
     # This does not follow nixpkgs for now.
     onethirtyfive-neovim.url = "github:onethirtyfive/neovim-nix";

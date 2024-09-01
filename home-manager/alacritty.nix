@@ -14,7 +14,7 @@ in {
       };
 
       import = [
-        "${alacritty-theme}/themes/carbonfox.yaml"
+        "${alacritty-theme}/themes/carbonfox.toml"
       ];
 
       keyboard = {

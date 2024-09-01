@@ -20,26 +20,28 @@ in {
       };
 
       import = [
-        "${alacritty-theme}/themes/carbonfox.yaml"
+        "${alacritty-theme}/themes/carbonfox.toml"
       ];
 
-      key_bindings = [
-        {
-          key = "K";
-          mods = "Command|Option";
-          action = "ClearHistory";
-        }
-        {
-          key = "Q";
-          mods = "Command";
-          action = "None";
-        }
-        {
-          key = "W";
-          mods = "Command";
-          chars = "\\x04";
-        }
-      ];
+      keyboard = {
+        bindings = [
+          {
+            key = "K";
+            mods = "Command|Option";
+            action = "ClearHistory";
+          }
+          {
+            key = "Q";
+            mods = "Command";
+            action = "None";
+          }
+          # {
+          #   key = "W";
+          #   mods = "Command";
+          #   chars = "\\x04";
+          # }
+        ];
+      };
 
       shell = {
         program = "/etc/profiles/per-user/joshua/bin/zsh";

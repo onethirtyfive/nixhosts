@@ -852,6 +852,27 @@
         "type": "github"
       }
     },
+    "home-manager-darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-darwin"
+        ]
+      },
+      "locked": {
+        "lastModified": 1726818100,
+        "narHash": "sha256-z2V74f5vXqkN5Q+goFlhbFXY/dNaBAyeLpr2bxu4Eic=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "1bbc1a5a1f4de7401c92db85b2119ed21bb4139d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "release-24.05",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "indent-blankline-nvim": {
       "flake": false,
       "locked": {
@@ -1632,6 +1653,7 @@
         "alacritty-theme": "alacritty-theme",
         "darwin": "darwin",
         "home-manager": "home-manager",
+        "home-manager-darwin": "home-manager-darwin",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-darwin": [

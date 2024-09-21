@@ -7,6 +7,8 @@
 
     darwin.url = "github:lnl7/nix-darwin";
     nixpkgs-darwin.follows = "darwin/nixpkgs";
+    home-manager-darwin.url = "github:nix-community/home-manager/release-24.05";
+    home-manager-darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
 
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -33,6 +35,7 @@
     , nixpkgs
     , darwin
     , home-manager
+    , home-manager-darwin
     , onethirtyfive-neovim
     , ...
   }: let
@@ -49,7 +52,7 @@
           modules = [
             ./hosts/macos/sapokanikan/configuration
             ./hosts/macos/sapokanikan/configuration/macos-settings.nix
-            home-manager.darwinModules.home-manager
+            home-manager-darwin.darwinModules.home-manager
             {
               nix.registry.nixpkgs.flake = inputs.nixpkgs-darwin;
             }

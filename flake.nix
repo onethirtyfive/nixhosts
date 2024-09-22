@@ -6,11 +6,11 @@
 
     darwin.url = "github:lnl7/nix-darwin";
     nixpkgs-darwin.follows = "darwin/nixpkgs";
-    home-manager-darwin.url = "github:nix-community/home-manager/release-24.05";
+    home-manager-darwin.url = "github:nix-community/home-manager";
     home-manager-darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     rust-overlay.url = "github:oxalica/rust-overlay";
@@ -50,12 +50,12 @@
           inherit system inputs;
 
           modules = [
+            {
+              system.stateVersion = 5;
+            }
             ./hosts/macos/sapokanikan/configuration
             ./hosts/macos/sapokanikan/configuration/macos-settings.nix
             home-manager-darwin.darwinModules.home-manager
-            {
-              nix.registry.nixpkgs.flake = inputs.nixpkgs-darwin;
-            }
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;

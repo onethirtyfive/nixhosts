@@ -59,8 +59,6 @@ function hm-switch() {
 # disable freeze on ctrl-s
 stty -ixon
 
-eval "$(direnv hook zsh)"
-
 unsetopt AUTO_MENU
 unsetopt correct
 setopt NO_MENU_COMPLETE BASH_AUTO_LIST

@@ -1581,11 +1581,11 @@
         "which-key-nvim": "which-key-nvim"
       },
       "locked": {
-        "lastModified": 1725220855,
-        "narHash": "sha256-4ex9xtM/rdwUzKFAzaZvK5FMQM1YrOYWlrKT539Je18=",
+        "lastModified": 1727559442,
+        "narHash": "sha256-Jbf1R6W6j2BNFc7rxTnqxxrcoU1vlBdXLiCJlVrar3U=",
         "owner": "onethirtyfive",
         "repo": "neovim-nix",
-        "rev": "599a129a8623826f1c976b4a8303d6dbcff4f84b",
+        "rev": "2e1dd433f92589f7395b7cbd9e1555449f36adfb",
         "type": "github"
       },
       "original": {

@@ -43,6 +43,11 @@
     modules = import ./modules;
     overlays = import ./overlays;
   in {
+    nixConfig = {
+      extra-trusted-public-keys = "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= onethirtyfive.cachix.org-1:w+zBnwl7vHfxNHawEN6Ej2zQ2ejgi8oqCxqVZ8wGYCg=";
+      extra-substituters = "https://nix-community.cachix.org https://onethirtyfive.cachix.org";
+    };
+
     darwinConfigurations =
       let
         system = "aarch64-darwin";

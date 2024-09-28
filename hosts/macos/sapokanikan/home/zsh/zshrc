@@ -63,6 +63,7 @@ stty -ixon
 unsetopt AUTO_MENU
 unsetopt correct
 setopt NO_MENU_COMPLETE BASH_AUTO_LIST
+setopt globdots
 
 unalias find
 

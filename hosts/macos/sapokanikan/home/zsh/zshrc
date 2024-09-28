@@ -17,6 +17,7 @@ alias gs="git status"
 alias vim="nvim"
 alias rmswp="find . -name *.swp | xargs rm"
 alias strl="history -d $((HISTCMD-1))"
+alias nix="noglob nix"
 
 # Ruby:
 alias be="bundle exec"

@@ -56,10 +56,7 @@
 
           overlays = [
             rust-overlay.overlays.default
-            (self: super: {
-              # TODO: make the upstream overlay do this to pkgs:
-              onethirtyfive.neovim = onethirtyfive-neovim.packages.${system}.default;
-            })
+            onethirtyfive-neovim.overlays.default
             overlays.default
           ];
         };

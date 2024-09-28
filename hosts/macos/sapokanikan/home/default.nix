@@ -24,6 +24,7 @@ in {
         ./git
         ./tmux
         ./zsh
+        ./starship
       ];
     in map withCustomPkgs paths;
 
@@ -60,9 +61,6 @@ in {
     CLICLOLOR = 1;
     EDITOR = "nvim";
   };
-
-  # shells
-  programs.starship.enable = true;
 
   # quality of life
   programs.direnv.enable = true;

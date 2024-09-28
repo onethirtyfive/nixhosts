@@ -1,7 +1,7 @@
 self: super:
 {
-  joshua-devenv = {
-    python3 = super.callPackage ./python3 {};
-    ruby = super.callPackage ./ruby {};
+  onethirtyfive = super.onethirtyfive //{
+    python3 = self.callPackage ./python3 {};
+    ruby = self.callPackage ./ruby {};
   };
 }

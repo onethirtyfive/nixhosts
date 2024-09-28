@@ -1,5 +1,4 @@
-pkgs:
-{ ... }:
+{ pkgs, ... }:
 let
   alacritty-theme = pkgs.fetchFromGitHub {
     owner = "alacritty";

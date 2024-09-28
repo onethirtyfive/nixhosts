@@ -1,4 +1,3 @@
-pkgs:
 { lib, ... }:
 let
   lang = icon: color: {

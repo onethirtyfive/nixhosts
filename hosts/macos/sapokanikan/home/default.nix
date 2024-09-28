@@ -1,32 +1,15 @@
-{ system, inputs, ... }:
+{ pkgs, ... }:
 let
-  inherit (inputs) nixpkgs-darwin onethirtyfive-neovim rust-overlay;
-
-  pkgs' = import nixpkgs-darwin {
-    inherit system;
-    overlays = [
-      (import ./overlay { rubyPackagePath = ./ruby; })
-      rust-overlay.overlays.default
-    ];
-
-    config.permittedInsecurePackages = [
-    ];
-  };
-
-  inherit (pkgs') stdenv;
+  inherit (pkgs) stdenv;
 in {
-  imports =
-    let
-      withCustomPkgs = path: import path pkgs';
-      paths = [
-        ./alacritty
-        ./darwin-application-activation
-        ./git
-        ./tmux
-        ./zsh
-        ./starship
-      ];
-    in map withCustomPkgs paths;
+  imports = [
+    ./alacritty
+    ./darwin-application-activation
+    ./git
+    ./tmux
+    ./zsh
+    ./starship
+  ];
 
   home.file.".config/karabiner" =
     let
@@ -44,17 +27,10 @@ in {
       target = ".config/karabiner";
     };
 
-  home.packages = (with pkgs'; [
-    curl
-    fd
-    lazydocker
-    less
-    ripgrep
-    coreutils
-    gnused
-
-    pkgs.rust-bin.stable.latest.complete
-  ]) ++ (with pkgs'.joshua; [ ]);
+  home.packages = (builtins.attrValues {
+    inherit (pkgs) curl fd lazydocker less ripgrep coreutils gnused;
+  })
+    ++ [ pkgs.onethirtyfive.python3 pkgs.onethirtyfive.ruby ];
 
   home.sessionVariables = {
     PAGER = "less";
@@ -82,7 +58,7 @@ in {
   programs.fzf.enable = true;
   programs.neovim = {
     enable = true;
-    package = onethirtyfive-neovim.packages.${system}.default;
+    package = pkgs.onethirtyfive.neovim;
   };
 
   home.stateVersion = "22.11"; # rarely changed

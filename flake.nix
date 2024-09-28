@@ -37,6 +37,7 @@
     , home-manager
     , home-manager-darwin
     , onethirtyfive-neovim
+    , rust-overlay
     , ...
   }: let
     modules = import ./modules;
@@ -45,9 +46,21 @@
     darwinConfigurations =
       let
         system = "aarch64-darwin";
+        pkgs = import nixpkgs-darwin {
+          inherit system;
+
+          overlays = [
+            rust-overlay.overlays.default
+            (self: super: {
+              # TODO: make the upstream overlay do this to pkgs:
+              onethirtyfive.neovim = onethirtyfive-neovim.packages.${system}.default;
+            })
+            overlays.default
+          ];
+        };
       in {
         sapokanikan = darwin.lib.darwinSystem {
-          inherit system inputs;
+          inherit pkgs;
 
           modules = [
             {

@@ -73,8 +73,6 @@
 
   news.display = "show"; # home-manager news
 
-  nixpkgs.config.allowUnfree = true;
-
   home.stateVersion = "23.11"; # rarely changed
 }
 

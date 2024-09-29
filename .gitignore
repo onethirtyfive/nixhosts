@@ -1,3 +1,6 @@
+# Ignoring .git for telecope compat
+.git
+
 *.swp
 .DS_Store
 result

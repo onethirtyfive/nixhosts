@@ -9,9 +9,8 @@
     home-manager-darwin.url = "github:nix-community/home-manager";
     home-manager-darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
+    nixpkgs.follows = "home-manager/nixpkgs";
 
     rust-overlay.url = "github:oxalica/rust-overlay";
     nixos-hardware.url = "github:NixOS/nixos-hardware";

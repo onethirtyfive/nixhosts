@@ -135,67 +135,73 @@
             ];
           in map (module: toPath "${./nixos/modules/home-manager}/${module}") modulePaths;
       in rec {
-        ozymandian = nixpkgs.lib.nixosSystem {
-          inherit system;
+        ozymandian =
+          let
+            hostname = "ozymandian";
+            ssh-identities = [ "joshua@ozymandian" ];
+          in nixpkgs.lib.nixosSystem {
+            inherit system;
 
-          modules = [
-            {
-              imports = system-imports ++ [
-                ./nixos/hosts/ozymandian/hardware-configuration.nix
-                ./nixos/hosts/ozymandian/configuration.nix
-                ./nixos/modules/system/users/joshua.nix
-              ];
-            }
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                verbose = true;
-                users.joshua = {
-                  imports = home-manager-imports;
+            modules = [
+              {
+                imports = system-imports ++ [
+                  ./nixos/hosts/${hostname}/hardware-configuration.nix
+                  ./nixos/hosts/${hostname}/configuration.nix
+                  ./nixos/modules/system/users/joshua.nix
+                ];
+              }
+              home-manager.nixosModules.home-manager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  verbose = true;
+                  users.joshua = {
+                    imports = home-manager-imports;
+                  };
+                  extraSpecialArgs = {
+                    inherit inputs system nixpkgs;
+                    inherit homedir ssh-identities;
+                  };
                 };
-                extraSpecialArgs = {
-                  inherit inputs system nixpkgs;
-                  inherit homedir;
-                  ssh-identities = [ "joshua@ozymandian" ];
-                };
-              };
-            }
-          ];
-          specialArgs = { inherit inputs overlays; };
-        };
+              }
+            ];
+            specialArgs = { inherit inputs overlays; };
+          };
 
-        meadowlark = nixpkgs.lib.nixosSystem {
-          inherit system;
+        meadowlark =
+          let
+            hostname = "meadowlark";
+            ssh-identities = [ "joshua@meadowlark" ];
+          in nixpkgs.lib.nixosSystem {
+            inherit system;
 
-          modules = [
-            {
-              imports = system-imports ++ [
-                ./nixos/hosts/meadowlark/hardware-configuration.nix
-                ./nixos/hosts/meadowlark/configuration.nix
-                ./nixos/modules/system/users/joshua.nix
-              ];
-            }
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                verbose = true;
-                users.joshua = {
-                  imports = home-manager-imports;
+            modules = [
+              {
+                imports = system-imports ++ [
+                  ./nixos/hosts/${hostname}/hardware-configuration.nix
+                  ./nixos/hosts/${hostname}/configuration.nix
+                  ./nixos/modules/system/users/joshua.nix
+                ];
+              }
+              home-manager.nixosModules.home-manager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  verbose = true;
+                  users.joshua = {
+                    imports = home-manager-imports;
+                  };
+                  extraSpecialArgs = {
+                    inherit inputs system nixpkgs;
+                    inherit homedir ssh-identities;
+                  };
                 };
-                extraSpecialArgs = {
-                  inherit inputs system nixpkgs;
-                  inherit homedir;
-                  ssh-identities = [ "joshua@meadowlark" ];
-                };
-              };
-            }
-          ];
-          specialArgs = { inherit inputs overlays; };
-        };
+              }
+            ];
+            specialArgs = { inherit inputs overlays; };
+          };
 
         neutrino = meadowlark; # stepping stone
       };

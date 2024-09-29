@@ -15,6 +15,20 @@ let
       nix.extraOptions = ''
         extra-platforms = x86_64-darwin aarch64-darwin
       '';
+
+      nix.linux-builder = {
+        enable = true;
+        maxJobs = 4;
+        config = {
+          virtualisation = {
+            darwin-builder = {
+              diskSize = 40 * 1024;
+              memorySize = 16 * 1024;
+            };
+            cores = 6;
+          };
+        };
+      };
     };
   };
 in

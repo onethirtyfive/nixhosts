@@ -6,11 +6,11 @@ function setgpgprogram {
 }
 
 function hm-build() {
-  nixos-rebuild -L --show-trace "$NIXHOSTS#nixosConfigurations.$(hostname -s).system"
+  nixos-rebuild --show-trace --flake "$NIXHOSTS#$(hostname -s)" build
 }
 
 function _hm-doswitch() {
-  nixos-rebuild switch -L --show-trace --flake "$NIXHOSTS"
+  sudo nixos-rebuild --show-trace --flake "$NIXHOSTS#$(hostname -s)" switch
 }
 
 function hm-switch() {

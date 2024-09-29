@@ -7,15 +7,15 @@ function hm-nukeapps() {
 function hm-firstswitch() {
   nix build "$NIXHOSTS#darwinConfigurations.$(hostname -s).system" &&
   hm-nukeapps &&
-  ./result/sw/bin/darwin-rebuild switch -L --show-trace --flake "$NIXHOSTS"
+  ./result/sw/bin/darwin-rebuild --show-trace --flake "$NIXHOSTS" switch
 }
 
 function hm-build() {
-  darwin-rebuild -L --show-trace "$NIXHOSTS#darwinConfigurations.$(hostname -s).system"
+  darwin-rebuild --show-trace --flake "$NIXHOSTS#$(hostname -s)" build
 }
 
 function _hm-doswitch() {
-  darwin-rebuild switch -L --show-trace --flake "$NIXHOSTS"
+  darwin-rebuild --show-trace --flake "$NIXHOSTS#$(hostname -s)" switch
 }
 
 function hm-switch() {

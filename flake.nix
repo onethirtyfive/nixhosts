@@ -166,6 +166,7 @@
                 };
               }
             ];
+
             specialArgs = { inherit inputs overlays; };
           };
 
@@ -200,6 +201,7 @@
                 };
               }
             ];
+
             specialArgs = { inherit inputs overlays; };
           };
 

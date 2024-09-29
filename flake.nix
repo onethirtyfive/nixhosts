@@ -69,8 +69,8 @@
             {
               system.stateVersion = 5;
             }
-            ./macos/hosts/sapokanikan/configuration
-            ./macos/hosts/sapokanikan/configuration/macos-settings.nix
+            ./macos/hosts/sapokanikan/configuration.nix
+            ./macos/hosts/sapokanikan/macos-settings.nix
             home-manager-darwin.darwinModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

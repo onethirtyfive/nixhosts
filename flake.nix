@@ -90,16 +90,6 @@
       let
         system = "x86_64-linux";
 
-        pkgs = import nixpkgs {
-          inherit system;
-
-          overlays = [
-            rust-overlay.overlays.default
-            onethirtyfive-neovim.overlays.default
-            overlays.default
-          ];
-        };
-
         homedir = "/home/joshua";
         joshua = import ./users/joshua;
 

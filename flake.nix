@@ -77,7 +77,7 @@
               home-manager.useUserPackages = true;
               home-manager.verbose = true;
               home-manager.users.joshua = {
-                imports = [ ./macos/hosts/sapokanikan/home ];
+                imports = [ ./macos/modules/home-manager ];
               };
               home-manager.extraSpecialArgs = {
                 inherit inputs system nixpkgs-unstable;

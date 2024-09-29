@@ -51,8 +51,8 @@ function initial-hm-switch() {
 
 # This can be done anywhere:
 function hm-switch() {
-  rm -rf "$HOME/Applications/Home Manager Apps" &&
-  echo "nixhosts: $NIXHOSTS" &&
+  # rm -rf "$HOME/Applications/Home Manager Apps" &&
+  # echo "nixhosts: $NIXHOSTS" &&
   nix build "$NIXHOSTS#darwinConfigurations.$(hostname -s).system" &&
   darwin-rebuild switch --flake "$NIXHOSTS"
 }

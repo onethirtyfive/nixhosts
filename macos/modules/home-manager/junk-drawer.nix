@@ -9,7 +9,6 @@ let
         "tmux" # tmux/default.nix
         "zsh" # zsh/default.nix
         "alacritty.nix"
-        "darwin-application-activation.nix"
         "git.nix"
         # "junk-drawer.nix" # exclude self
         "starship.nix"

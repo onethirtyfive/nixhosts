@@ -8,6 +8,8 @@
     nixpkgs-darwin.follows = "darwin/nixpkgs";
     home-manager-darwin.url = "github:nix-community/home-manager";
     home-manager-darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
+    mac-app-util.url = "github:hraban/mac-app-util";
+    mac-app-util.inputs.nixpkgs.follows = "nixpkgs-darwin";
 
     home-manager.url = "github:nix-community/home-manager";
     nixpkgs.follows = "home-manager/nixpkgs";
@@ -35,6 +37,7 @@
     , darwin
     , home-manager
     , home-manager-darwin
+    , mac-app-util
     , onethirtyfive-neovim
     , rust-overlay
     , nixos-hardware
@@ -76,6 +79,9 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.verbose = true;
+              home-manager.sharedModules = [
+                mac-app-util.homeManagerModules.default
+              ];
               home-manager.users.joshua = {
                 imports = [ ./macos/modules/home-manager/junk-drawer.nix ];
               };

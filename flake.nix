@@ -141,6 +141,7 @@
             {
               imports = system-imports ++ [
                 ./nixos/hosts/ozymandian/hardware-configuration.nix
+                ./nixos/hosts/ozymandian/configuration.nix
                 ./nixos/modules/system/users/joshua.nix
               ];
             }
@@ -160,7 +161,6 @@
                 };
               };
             }
-            (import ./nixos/hosts/ozymandian)
           ];
           specialArgs = { inherit inputs overlays; };
         };
@@ -172,6 +172,7 @@
             {
               imports = system-imports ++ [
                 ./nixos/hosts/meadowlark/hardware-configuration.nix
+                ./nixos/hosts/meadowlark/configuration.nix
                 ./nixos/modules/system/users/joshua.nix
               ];
             }
@@ -191,7 +192,6 @@
                 };
               };
             }
-            (import ./nixos/hosts/meadowlark)
           ];
           specialArgs = { inherit inputs overlays; };
         };

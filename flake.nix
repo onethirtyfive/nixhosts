@@ -70,10 +70,16 @@
 
           modules = [
             {
+              imports = [
+                ./macos/hosts/sapokanikan/configuration.nix
+                ./macos/hosts/sapokanikan/macos-settings.nix
+                ./macos/modules/nix-darwin/users/joshua.nix
+                ./macos/modules/nix-darwin/homebrew.nix
+                ./macos/modules/nix-darwin/nix.nix
+                ./macos/modules/nix-darwin/nixpkgs.nix
+              ];
               system.stateVersion = 5;
             }
-            ./macos/hosts/sapokanikan/configuration.nix
-            ./macos/hosts/sapokanikan/macos-settings.nix
             home-manager-darwin.darwinModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

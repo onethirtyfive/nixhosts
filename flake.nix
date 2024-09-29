@@ -90,7 +90,7 @@
         system = "x86_64-linux";
 
         homedir = "/home/joshua";
-        joshua = import ./users/joshua;
+        joshua = import ./nixos/modules/system/users/joshua;
 
         bespoke = { inherit modules overlays; };
       in rec {

@@ -15,7 +15,7 @@
         "packages.nix"
         "starship.nix"
       ];
-    in map (module: toPath "${../../nixos/modules/home-manager}/${module}") modules;
+    in map (module: toPath "${../../../home-manager}/${module}") modules;
 
   home.sessionVariables = {
     QT_XCB_GL_INTEGRATION = "none"; # kde-connect

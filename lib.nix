@@ -82,6 +82,9 @@ in
       }
     ];
 
-    specialArgs = { inherit inputs overlays; };
+    specialArgs = {
+      inherit inputs overlays;
+      nixpkgs = inputs.nixpkgs; # eg. not nixpkgs-darwin
+    };
   };
 }

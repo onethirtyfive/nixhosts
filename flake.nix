@@ -96,6 +96,10 @@
               };
             }
           ];
+
+          specialArgs = {
+            nixpkgs = inputs.nixpkgs-darwin;
+          };
         };
       };
 

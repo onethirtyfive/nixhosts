@@ -74,9 +74,10 @@ in {
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
   ];
-  nixpkgs.overlays = [
+  nixpkgs.overlays = with inputs; [
     rust-overlay.overlays.default
-    bespoke.overlays.joshua-devenv
+    onethirtyfive-neovim.overlays.default
+    bespoke.overlays.default
   ];
 
   security.polkit = {

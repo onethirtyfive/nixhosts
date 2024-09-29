@@ -27,6 +27,6 @@
     coreutils
     pinentry
     git-lfs
-  ] ++ (with pkgs.joshua-devenv; [ python3 ruby ]);
+  ] ++ (with pkgs.onethirtyfive; [ neovim python3 ruby ]);
 }
 

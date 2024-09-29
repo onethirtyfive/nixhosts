@@ -10,7 +10,7 @@
     home-manager-darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     rust-overlay.url = "github:oxalica/rust-overlay";
@@ -89,6 +89,17 @@
     nixosConfigurations =
       let
         system = "x86_64-linux";
+
+        pkgs = import nixpkgs {
+          inherit system;
+
+          overlays = [
+            rust-overlay.overlays.default
+            onethirtyfive-neovim.overlays.default
+            overlays.default
+          ];
+        };
+
         homedir = "/home/joshua";
         joshua = import ./users/joshua;
 

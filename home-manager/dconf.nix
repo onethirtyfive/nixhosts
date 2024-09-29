@@ -96,6 +96,9 @@
       edge-tiling = true;
       num-workspaces = 5;
       workspaces-only-on-primary = true;
+      experimental-features = [
+        "scale-monitor-framebuffer"
+      ];
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {

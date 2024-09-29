@@ -112,7 +112,7 @@
                 };
               };
             }
-            (import ./hosts/nixos/ozymandian)
+            (import ./nixos/hosts/ozymandian)
           ];
           specialArgs = { inherit inputs bespoke; };
         };
@@ -135,7 +135,7 @@
                 };
               };
             }
-            (import ./hosts/nixos/meadowlark)
+            (import ./nixos/hosts/meadowlark)
           ];
           specialArgs = { inherit inputs bespoke; };
         };

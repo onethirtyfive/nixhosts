@@ -92,9 +92,8 @@
         system = "x86_64-linux";
         homedir = "/home/joshua";
         system-user = ./nixos/modules/system/users/joshua/system-user.nix;
-        managed-home = ./nixos/modules/system/users/joshua/managed-home.nix;
 
-        common-imports = (with nixos-hardware.nixosModules; [
+        system-imports = (with nixos-hardware.nixosModules; [
           common-cpu-amd
           common-gpu-amd
           common-pc-ssd
@@ -115,12 +114,33 @@
           in
             map (module: toPath "${./nixos/modules/system}/${module}") modulePaths
         );
+
+        home-manager-imports =
+          let
+            inherit (builtins) map toPath;
+            modules = [
+              "tmux" # tmux/default.nix
+              "zsh" # zsh/default.nix
+              "alacritty.nix"
+              "browser.nix"
+              "dconf.nix"
+              "direnv.nix"
+              "env.nix"
+              "git.nix"
+              "gnome.nix"
+              "meta.nix"
+              "packages.nix"
+              "services.nix"
+              "ssh.nix"
+              "starship.nix"
+            ];
+          in map (module: toPath "${./nixos/modules/home-manager}/${module}") modules;
       in rec {
         ozymandian = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
             {
-              imports = common-imports ++ [
+              imports = system-imports ++ [
                 ./nixos/hosts/ozymandian/hardware-configuration.nix
               ];
             }
@@ -131,7 +151,9 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 verbose = true;
-                users.joshua = import managed-home;
+                users.joshua = {
+                  imports = home-manager-imports;
+                };
                 extraSpecialArgs = {
                   inherit inputs system nixpkgs;
                   inherit homedir;
@@ -149,7 +171,7 @@
 
           modules = [
             {
-              imports = common-imports ++ [
+              imports = system-imports ++ [
                 ./nixos/hosts/meadowlark/hardware-configuration.nix
               ];
             }
@@ -160,7 +182,9 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 verbose = true;
-                users.joshua = import managed-home;
+                users.joshua = {
+                  imports = home-manager-imports;
+                };
                 extraSpecialArgs = {
                   inherit inputs system nixpkgs;
                   inherit homedir;

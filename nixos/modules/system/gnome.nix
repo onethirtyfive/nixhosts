@@ -31,7 +31,7 @@
     ]);
 
     gnome.excludePackages = (with pkgs; [
-      gnome-text-editor
+      # gnome-text-editor
       gnome-photos
       gnome-tour
       gnome-connections

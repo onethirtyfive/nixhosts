@@ -86,7 +86,7 @@
                 imports = [ ./macos/modules/home-manager/junk-drawer.nix ];
               };
               home-manager.extraSpecialArgs = {
-                inherit inputs system nixpkgs-unstable;
+                inherit inputs system;
               };
             }
           ];

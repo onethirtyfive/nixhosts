@@ -117,7 +117,7 @@
         home-manager-imports =
           let
             inherit (builtins) map toPath;
-            modules = [
+            modulePaths = [
               "tmux" # tmux/default.nix
               "zsh" # zsh/default.nix
               "alacritty.nix"
@@ -133,7 +133,7 @@
               "ssh.nix"
               "starship.nix"
             ];
-          in map (module: toPath "${./nixos/modules/home-manager}/${module}") modules;
+          in map (module: toPath "${./nixos/modules/home-manager}/${module}") modulePaths;
       in rec {
         ozymandian = nixpkgs.lib.nixosSystem {
           inherit system;

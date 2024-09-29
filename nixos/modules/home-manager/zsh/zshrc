@@ -38,22 +38,6 @@ function test-truecolor-support() {
       printf "\n";
   }'
 }
-#
-# This must be done from within the cloned nixhosts dir:
-function initial-hm-switch() {
-  rm -rf "$HOME/Applications/Home Manager Apps" &&
-  echo "nixhosts: $NIXHOSTS" &&
-  nix build "$NIXHOSTS#darwinConfigurations.$(hostname -s).system" &&
-  ./result/sw/bin/darwin-rebuild switch --flake "$NIXHOSTS"
-}
-
-# This can be done anywhere:
-function hm-switch() {
-  rm -rf "$HOME/Applications/Home Manager Apps" &&
-  echo "nixhosts: $NIXHOSTS" &&
-  nix build "$NIXHOSTS#darwinConfigurations.$(hostname -s).system" &&
-  darwin-rebuild switch --flake "$NIXHOSTS"
-}
 
 function setgpgprogram {
   git config --global gpg.program $(which gpg)

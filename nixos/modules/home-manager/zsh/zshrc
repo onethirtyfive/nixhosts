@@ -5,3 +5,21 @@ function setgpgprogram {
   git config --global gpg.program $(which gpg)
 }
 
+function hm-build() {
+  nixos-rebuild -L --show-trace "$NIXHOSTS#nixosConfigurations.$(hostname -s).system"
+}
+
+function _hm-doswitch() {
+  nixos-rebuild switch -L --show-trace --flake "$NIXHOSTS"
+}
+
+function hm-switch() {
+  local with_build=${1:-nobuild}
+
+  if [ "$with_build" = "build" ]; then
+    hm-build && _hm-doswitch
+  else
+    echo "INFO: to build first: hm-switch build" >&2
+    _hm-do-switch
+  fi
+}

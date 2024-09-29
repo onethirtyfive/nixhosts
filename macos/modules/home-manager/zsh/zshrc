@@ -1,18 +1,30 @@
 export GPG_TTY=$(tty)
 
-# This must be done from within the cloned nixhosts dir:
-function initial-hm-switch() {
-  rm -rf "$HOME/Applications/Home Manager Apps" &&
-  echo "nixhosts: $NIXHOSTS" &&
-  nix build ".#darwinConfigurations.$(hostname -s).system" &&
-  ./result/sw/bin/darwin-rebuild switch --flake "$NIXHOSTS"
+function hm-nukeapps() {
+  rm -rf "$HOME/Applications/Home Manager Apps"
 }
 
-# This can be done anywhere:
-function hm-switch() {
-  # rm -rf "$HOME/Applications/Home Manager Apps" &&
-  # echo "nixhosts: $NIXHOSTS" &&
+function hm-firstswitch() {
   nix build "$NIXHOSTS#darwinConfigurations.$(hostname -s).system" &&
-  darwin-rebuild switch --flake "$NIXHOSTS"
+  hm-nukeapps &&
+  ./result/sw/bin/darwin-rebuild switch -L --show-trace --flake "$NIXHOSTS"
 }
 
+function hm-build() {
+  darwin-rebuild -L --show-trace "$NIXHOSTS#darwinConfigurations.$(hostname -s).system"
+}
+
+function _hm-doswitch() {
+  darwin-rebuild switch -L --show-trace --flake "$NIXHOSTS"
+}
+
+function hm-switch() {
+  local with_build=${1:-nobuild}
+
+  if [ "$with_build" = "build" ]; then
+    hm-build && hm-nukeapps && _hm-doswitch
+  else
+    echo "INFO: to build first: hm-switch build" >&2
+    hm-nukeapps && _hm-doswitch
+  fi
+}

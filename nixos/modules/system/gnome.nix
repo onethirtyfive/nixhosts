@@ -25,7 +25,6 @@
       qogir-icon-theme
       d-spy
       icon-library
-    ]) ++ (with pkgs.gnome; [
       nautilus-python
       dconf-editor
     ]);
@@ -36,7 +35,6 @@
       gnome-tour
       gnome-connections
       # snapshot
-    ]) ++ (with pkgs; [
       cheese # webcam tool
       gnome-music
       epiphany # web browser

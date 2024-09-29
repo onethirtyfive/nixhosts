@@ -1,35 +1,8 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-{ pkgs, inputs, lib, ... }:
-let
-  inherit (inputs) nixos-hardware;
-in {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ] ++ (with nixos-hardware.nixosModules; [
-      common-cpu-amd
-      common-gpu-amd
-      common-pc-ssd
-    ]) ++ (
-      let
-        inherit (builtins) map toPath;
-        modules = [
-          "audio.nix"
-          "encrypted-zfs.nix"
-          "firmware.nix"
-          "fonts.nix"
-          "gnome.nix"
-          "locale.nix"
-          "nix.nix"
-          "nixpkgs.nix"
-          "packages.nix"
-        ];
-      in
-        map (module: toPath "${../../modules/system}/${module}") modules
-    );
-
+{ pkgs, lib, ... }:
+{
   hardware.enableAllFirmware = true;
   hardware.bluetooth = {
     enable = true;

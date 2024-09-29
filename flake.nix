@@ -37,6 +37,7 @@
     , home-manager-darwin
     , onethirtyfive-neovim
     , rust-overlay
+    , nixos-hardware
     , ...
   }: let
     overlays = {
@@ -92,11 +93,37 @@
         homedir = "/home/joshua";
         system-user = ./nixos/modules/system/users/joshua/system-user.nix;
         managed-home = ./nixos/modules/system/users/joshua/managed-home.nix;
+
+        common-imports = (with nixos-hardware.nixosModules; [
+          common-cpu-amd
+          common-gpu-amd
+          common-pc-ssd
+        ]) ++ (
+          let
+            inherit (builtins) map toPath;
+            modulePaths = [
+              "audio.nix"
+              "encrypted-zfs.nix"
+              "firmware.nix"
+              "fonts.nix"
+              "gnome.nix"
+              "locale.nix"
+              "nix.nix"
+              "nixpkgs.nix"
+              "packages.nix"
+            ];
+          in
+            map (module: toPath "${./nixos/modules/system}/${module}") modulePaths
+        );
       in rec {
         ozymandian = nixpkgs.lib.nixosSystem {
           inherit system;
-
           modules = [
+            {
+              imports = common-imports ++ [
+                ./nixos/hosts/ozymandian/hardware-configuration.nix
+              ];
+            }
             system-user
             home-manager.nixosModules.home-manager
             {
@@ -121,6 +148,11 @@
           inherit system;
 
           modules = [
+            {
+              imports = common-imports ++ [
+                ./nixos/hosts/meadowlark/hardware-configuration.nix
+              ];
+            }
             system-user
             home-manager.nixosModules.home-manager
             {

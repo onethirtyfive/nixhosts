@@ -1,9 +1,9 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-{ pkgs, inputs, bespoke, ... }:
+{ pkgs, inputs, ... }:
 let
-  inherit (inputs) nixos-hardware rust-overlay;
+  inherit (inputs) nixos-hardware;
 in {
   imports =
     [
@@ -60,17 +60,21 @@ in {
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
     warn-dirty = false;
-  };
 
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-25.9.0"
-  ];
-  nixpkgs.overlays = with inputs; [
-    rust-overlay.overlays.default
-    onethirtyfive-neovim.overlays.default
-    bespoke.overlays.default
-  ];
+    substituters = [
+      "https://cache.nixos.org"
+      "https://nix-community.cachix.org"
+    ];
+
+    trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+
+    trusted-users = [
+      "@wheel"
+    ];
+  };
 
   security.polkit = {
     enable = true;
@@ -86,6 +90,7 @@ in {
   # services.printing.enable = true;
 
   environment.systemPackages = [
+    pkgs.microsoft-edge
   ];
 
   services = {

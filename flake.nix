@@ -39,7 +39,6 @@
     , rust-overlay
     , ...
   }: let
-    modules = import ./modules;
     overlays = import ./overlays;
   in {
     nixConfig = {
@@ -88,23 +87,36 @@
     nixosConfigurations =
       let
         system = "x86_64-linux";
-
         homedir = "/home/joshua";
-        joshua = import ./nixos/modules/system/users/joshua;
+        bespoke = { inherit overlays; };
 
-        bespoke = { inherit modules overlays; };
+        system-user = ./nixos/modules/system/users/joshua/system-user.nix;
+        managed-home = ./nixos/modules/system/users/joshua/managed-home.nix;
+
+        nixpkgsConfig = {
+          nixpkgs.config.allowUnfree = true;
+          nixpkgs.config.permittedInsecurePackages = [
+            "electron-25.9.0"
+          ];
+          nixpkgs.overlays = [
+            rust-overlay.overlays.default
+            onethirtyfive-neovim.overlays.default
+            overlays.default
+          ];
+        };
       in rec {
         ozymandian = nixpkgs.lib.nixosSystem {
           inherit system;
+
           modules = [
-            joshua.system-user
+            system-user
             home-manager.nixosModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 verbose = true;
-                users.joshua = joshua.managed-home;
+                users.joshua = import managed-home;
                 extraSpecialArgs = {
                   inherit inputs system nixpkgs;
                   inherit homedir;
@@ -112,6 +124,7 @@
                 };
               };
             }
+            nixpkgsConfig
             (import ./nixos/hosts/ozymandian)
           ];
           specialArgs = { inherit inputs bespoke; };
@@ -119,15 +132,16 @@
 
         meadowlark = nixpkgs.lib.nixosSystem {
           inherit system;
+
           modules = [
-            joshua.system-user
+            system-user
             home-manager.nixosModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 verbose = true;
-                users.joshua = joshua.managed-home;
+                users.joshua = import managed-home;
                 extraSpecialArgs = {
                   inherit inputs system nixpkgs;
                   inherit homedir;
@@ -135,6 +149,7 @@
                 };
               };
             }
+            nixpkgsConfig
             (import ./nixos/hosts/meadowlark)
           ];
           specialArgs = { inherit inputs bespoke; };

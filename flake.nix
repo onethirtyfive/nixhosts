@@ -90,8 +90,6 @@
       let
         system = "x86_64-linux";
         homedir = "/home/joshua";
-        bespoke = { inherit overlays; };
-
         system-user = ./nixos/modules/system/users/joshua/system-user.nix;
         managed-home = ./nixos/modules/system/users/joshua/managed-home.nix;
 
@@ -129,7 +127,7 @@
             nixpkgsConfig
             (import ./nixos/hosts/ozymandian)
           ];
-          specialArgs = { inherit inputs bespoke; };
+          specialArgs = { inherit inputs; };
         };
 
         meadowlark = nixpkgs.lib.nixosSystem {
@@ -154,7 +152,7 @@
             nixpkgsConfig
             (import ./nixos/hosts/meadowlark)
           ];
-          specialArgs = { inherit inputs bespoke; };
+          specialArgs = { inherit inputs; };
         };
 
         neutrino = meadowlark; # stepping stone

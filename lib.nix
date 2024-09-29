@@ -29,8 +29,7 @@ in
           "nixpkgs.nix"
           "packages.nix"
         ];
-      in
-        map (module: toPath "${./nixos/modules/system}/${module}") modulePaths
+      in map (module: ./nixos/modules/system/${module}) modulePaths
     );
 
   home-manager-imports =
@@ -52,7 +51,7 @@ in
         "ssh.nix"
         "starship.nix"
       ];
-    in map (module: toPath "${./nixos/modules/home-manager}/${module}") modulePaths;
+    in map (module: ./nixos/modules/home-manager/${module}) modulePaths;
 
 
   in nixpkgs.lib.nixosSystem {

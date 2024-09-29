@@ -1,15 +1,22 @@
 { pkgs, ... }:
 let
   inherit (pkgs) stdenv;
+
+  home-manager-imports =
+    let
+      inherit (builtins) map toPath;
+      modulePaths = [
+        "tmux" # tmux/default.nix
+        "zsh" # zsh/default.nix
+        "alacritty.nix"
+        "darwin-application-activation.nix"
+        "git.nix"
+        # "junk-drawer.nix" # exclude self
+        "starship.nix"
+      ];
+    in map (module: ./${module}) modulePaths;
 in {
-  imports = [
-    ./alacritty
-    ./darwin-application-activation
-    ./git
-    ./tmux
-    ./zsh
-    ./starship
-  ];
+  imports = home-manager-imports;
 
   home.file.".config/karabiner" =
     let

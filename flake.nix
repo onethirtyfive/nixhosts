@@ -77,7 +77,7 @@
               home-manager.useUserPackages = true;
               home-manager.verbose = true;
               home-manager.users.joshua = {
-                imports = [ ./macos/modules/home-manager ];
+                imports = [ ./macos/modules/home-manager/junk-drawer.nix ];
               };
               home-manager.extraSpecialArgs = {
                 inherit inputs system nixpkgs-unstable;

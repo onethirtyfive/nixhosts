@@ -1,12 +1,5 @@
 { pkgs, ... }:
-let
-  alacritty-theme = pkgs.fetchFromGitHub {
-    owner = "alacritty";
-    repo = "alacritty-theme";
-    rev = "9f769d54eccc0b43bb1ae600575baddea15aae56";
-    sha256 = "sha256-MWXo8N19McmbQrN4IrXSp24L3elRNCOz5yDqV//Ycpo=";
-  };
-in {
+{
   programs.alacritty = {
     enable = true;
 
@@ -19,7 +12,7 @@ in {
       };
 
       import = [
-        "${alacritty-theme}/themes/carbonfox.toml"
+        "${pkgs.alacritty-theme}/themes/carbonfox.toml"
       ];
 
       keyboard = {

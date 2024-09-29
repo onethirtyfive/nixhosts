@@ -91,7 +91,6 @@
       let
         system = "x86_64-linux";
         homedir = "/home/joshua";
-        system-user = ./nixos/modules/system/users/joshua/system-user.nix;
 
         system-imports = (with nixos-hardware.nixosModules; [
           common-cpu-amd
@@ -142,9 +141,9 @@
             {
               imports = system-imports ++ [
                 ./nixos/hosts/ozymandian/hardware-configuration.nix
+                ./nixos/modules/system/users/joshua.nix
               ];
             }
-            system-user
             home-manager.nixosModules.home-manager
             {
               home-manager = {
@@ -173,9 +172,9 @@
             {
               imports = system-imports ++ [
                 ./nixos/hosts/meadowlark/hardware-configuration.nix
+                ./nixos/modules/system/users/joshua.nix
               ];
             }
-            system-user
             home-manager.nixosModules.home-manager
             {
               home-manager = {

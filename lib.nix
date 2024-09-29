@@ -4,8 +4,8 @@ let
 in
 {
   nixosSystem = {
-    system ? "x86_64-linux",
     homedir ? "/home/joshua",
+    system,
     hostname,
     ssh-identities,
     overlays,

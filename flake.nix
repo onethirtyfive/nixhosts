@@ -93,6 +93,7 @@
       rec {
         ozymandian =
           self.lib.nixosSystem {
+            system = "x86_64-linux";
             hostname = "ozymandian";
             ssh-identities = [ "joshua@ozymandian" ];
             inherit overlays;
@@ -100,6 +101,7 @@
 
         meadowlark =
           self.lib.nixosSystem {
+            system = "x86_64-linux";
             hostname = "meadowlark";
             ssh-identities = [ "joshua@meadowlark" ];
             inherit overlays;

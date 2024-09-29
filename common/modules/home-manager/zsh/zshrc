@@ -1,0 +1,51 @@
+if [ -n "$IN_NIX_SHELL" ]; then
+  echo "In nix shell."
+fi
+
+export EDITOR=vim
+
+# General usefulness:
+alias is="env | grep -i NIX_SHELL"
+alias gs="git status"
+alias vim="nvim"
+alias rmswp="find . -name *.swp | xargs rm"
+alias strl="history -d $((HISTCMD-1))"
+alias nix="noglob nix" # allow native flake syntax
+
+# Ruby:
+alias be="bundle exec"
+alias bert="bundle exec rake"
+
+# Test true color support
+
+function test-truecolor-support() {
+  awk 'BEGIN{
+      s="/\\/\\/\\/\\/\\"; s=s s s s s s s s;
+      for (colnum = 0; colnum<77; colnum++) {
+          r = 255-(colnum*255/76);
+          g = (colnum*510/76);
+          b = (colnum*255/76);
+          if (g>255) g = 510-g;
+          printf "\033[48;2;%d;%d;%dm", r,g,b;
+          printf "\033[38;2;%d;%d;%dm", 255-r,255-g,255-b;
+          printf "%s\033[0m", substr(s,colnum+1,1);
+      }
+      printf "\n";
+  }'
+}
+
+# disable freeze on ctrl-s
+stty -ixon
+
+unsetopt AUTO_MENU
+unsetopt correct
+setopt NO_AUTO_MENU NO_MENU_COMPLETE BASH_AUTO_LIST NO_COMPLETE_IN_WORD
+setopt globdots
+
+unalias find
+
+if [ -f ~/.zshrc.local ]; then
+  source ~/.zshrc.local
+fi
+
+

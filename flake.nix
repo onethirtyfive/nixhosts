@@ -69,15 +69,15 @@
             {
               system.stateVersion = 5;
             }
-            ./hosts/macos/sapokanikan/configuration
-            ./hosts/macos/sapokanikan/configuration/macos-settings.nix
+            ./macos/hosts/sapokanikan/configuration
+            ./macos/hosts/sapokanikan/configuration/macos-settings.nix
             home-manager-darwin.darwinModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.verbose = true;
               home-manager.users.joshua = {
-                imports = [ ./hosts/macos/sapokanikan/home ];
+                imports = [ ./macos/hosts/sapokanikan/home ];
               };
               home-manager.extraSpecialArgs = {
                 inherit inputs system nixpkgs-unstable;

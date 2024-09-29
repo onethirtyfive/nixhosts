@@ -2,24 +2,20 @@
 {
   imports =
     let
-      bespoke-home-manager-modules = import ../../home-manager;
-    in (with bespoke-home-manager-modules; [
-      # universal
-      alacritty
-      direnv
-      git
-      starship
-      tmux
-      zsh
-
-      # possibly universal
-      browser
-
-      # linux-only
-      dconf
-      mimelist
-      packages
-    ]);
+      inherit (builtins) map toPath;
+      modules = [
+        "tmux" # tmux/default.nix
+        "zsh" # zsh/default.nix
+        "alacritty.nix"
+        "browser.nix"
+        "dconf.nix"
+        "direnv.nix"
+        "git.nix"
+        "mimelist.nix"
+        "packages.nix"
+        "starship.nix"
+      ];
+    in map (module: toPath "${../../nixos/modules/home-manager}/${module}") modules;
 
   home.sessionVariables = {
     QT_XCB_GL_INTEGRATION = "none"; # kde-connect

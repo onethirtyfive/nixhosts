@@ -12,15 +12,21 @@ in {
       common-cpu-amd
       common-gpu-amd
       common-pc-ssd
-    ]) ++ (with bespoke.modules.nixos; [
-      audio
-      encrypted-zfs
-      firmware
-      fonts
-      gnome
-      locale
-      packages
-    ]);
+    ]) ++ (
+      let
+        inherit (builtins) map toPath;
+        modules = [
+          "audio.nix"
+          "encrypted-zfs.nix"
+          "firmware.nix"
+          "fonts.nix"
+          "gnome.nix"
+          "locale.nix"
+          "packages.nix"
+        ];
+      in
+        map (module: toPath "${../../modules/system}/${module}") modules
+    );
 
   hardware.enableAllFirmware = true;
   hardware.bluetooth = {

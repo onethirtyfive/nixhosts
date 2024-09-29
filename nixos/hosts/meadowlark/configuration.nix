@@ -12,15 +12,21 @@ in {
       common-cpu-amd
       common-gpu-amd
       common-pc-ssd
-    ]) ++ (with bespoke.modules.nixos; [
-      audio
-      encrypted-zfs
-      fonts
-      gnome
-      firmware
-      locale
-      packages
-    ]);
+    ]) ++ (
+      let
+        inherit (builtins) map toPath;
+        modules = [
+          "audio.nix"
+          "encrypted-zfs.nix"
+          "firmware.nix"
+          "fonts.nix"
+          "gnome.nix"
+          "locale.nix"
+          "packages.nix"
+        ];
+      in
+        map (module: toPath "${../../modules/system}/${module}") modules
+    );
 
   hardware.enableAllFirmware = true;
   hardware.bluetooth = {
@@ -60,9 +66,10 @@ in {
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
   ];
-  nixpkgs.overlays = [
+  nixpkgs.overlays = with inputs; [
     rust-overlay.overlays.default
-    bespoke.overlays.joshua-devenv
+    onethirtyfive-neovim.overlays.default
+    bespoke.overlays.default
   ];
 
   security.polkit = {

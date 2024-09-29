@@ -1,4 +1,4 @@
-{ config, system, pkgs, lib, homedir, ssh-identities, ... }:
+{ pkgs, homedir, ssh-identities, ... }:
 {
   imports =
     let

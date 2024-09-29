@@ -92,18 +92,6 @@
         homedir = "/home/joshua";
         system-user = ./nixos/modules/system/users/joshua/system-user.nix;
         managed-home = ./nixos/modules/system/users/joshua/managed-home.nix;
-
-        nixpkgsConfig = {
-          nixpkgs.config.allowUnfree = true;
-          nixpkgs.config.permittedInsecurePackages = [
-            "electron-25.9.0"
-          ];
-          nixpkgs.overlays = [
-            rust-overlay.overlays.default
-            onethirtyfive-neovim.overlays.default
-            overlays.onethirtyfive
-          ];
-        };
       in rec {
         ozymandian = nixpkgs.lib.nixosSystem {
           inherit system;
@@ -124,10 +112,9 @@
                 };
               };
             }
-            nixpkgsConfig
             (import ./nixos/hosts/ozymandian)
           ];
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs overlays; };
         };
 
         meadowlark = nixpkgs.lib.nixosSystem {
@@ -149,10 +136,9 @@
                 };
               };
             }
-            nixpkgsConfig
             (import ./nixos/hosts/meadowlark)
           ];
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs overlays; };
         };
 
         neutrino = meadowlark; # stepping stone

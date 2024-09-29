@@ -1,8 +1,17 @@
-{ ... }:
+{ pkgs, ... }:
 {
+  nix.package = pkgs.nixVersions.nix_2_22;
+
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
     warn-dirty = false;
+    auto-optimise-store = false;
+
+    netrc-file = "/etc/nix/netrc";
+
+    extra-sandbox-paths = [
+      "/etc/nix/netrc"
+    ];
 
     substituters = [
       "https://cache.nixos.org"

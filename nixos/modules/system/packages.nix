@@ -2,10 +2,36 @@
 {
   # available universally on machine
   environment.systemPackages = with pkgs; [
-    git
-    wget
-    tree
+    # processes and machine
+    acpi
+    killall
+    htop
+
+    # network tools
     curl
-    home-manager
+    socat
+    wget
+
+    # daily drivers
+    bat
+    coreutils
+    fd
+    fzf
+    git
+    git-lfs
+    gnused
+    jq
+    lazydocker
+    less
+    pinentry
+    ripgrep
+    tree
+    unzip
+    zip
+
+    # misc
+    ffmpeg
+    inotify-tools
+    libnotify
   ];
 }

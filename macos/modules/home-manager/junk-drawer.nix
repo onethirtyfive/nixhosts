@@ -6,12 +6,13 @@ let
     let
       inherit (builtins) map toPath;
       modulePaths = [
-        "tmux" # tmux/default.nix
         "zsh" # zsh/default.nix
         "alacritty.nix"
+        "direnv.nix"
         "git.nix"
         # "junk-drawer.nix" # exclude self
         "starship.nix"
+        "tmux.nix"
       ];
     in map (module: ./${module}) modulePaths;
 in {

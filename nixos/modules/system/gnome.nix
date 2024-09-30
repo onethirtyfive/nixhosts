@@ -9,6 +9,11 @@
     ];
   };
 
+  # For Gnome extensions, apparently, via NixOS GNOME wiki
+  services.udev.packages = [
+    pkgs.gnome-settings-daemon
+  ];
+
   environment = {
     sessionVariables = {
       NAUTILUS_EXTENSION_DIR = "${config.system.path}/lib/nautilus/extensions-4";
@@ -27,6 +32,7 @@
       icon-library
       nautilus-python
       dconf-editor
+      gnomeExtensions.astra-monitor
     ]);
 
     gnome.excludePackages = (with pkgs; [

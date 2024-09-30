@@ -20,6 +20,6 @@ function hm-switch() {
     hm-build && _hm-doswitch
   else
     echo "INFO: to build first: hm-switch build" >&2
-    _hm-do-switch
+    _hm-doswitch
   fi
 }

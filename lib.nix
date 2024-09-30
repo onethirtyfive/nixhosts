@@ -36,7 +36,6 @@ in
     let
       inherit (builtins) map toPath;
       modulePaths = [
-        "tmux" # tmux/default.nix
         "zsh" # zsh/default.nix
         "alacritty.nix"
         "browser.nix"
@@ -50,6 +49,7 @@ in
         "services.nix"
         "ssh.nix"
         "starship.nix"
+        "tmux.nix"
       ];
     in map (module: ./nixos/modules/home-manager/${module}) modulePaths;
 

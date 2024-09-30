@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
   inherit (pkgs) tmuxPlugins;
 in {
@@ -14,7 +14,7 @@ in {
 
     customPaneNavigationAndResize = true;
 
-    shell = "${pkgs.zsh}/bin/zsh";
+    shell = "${config.programs.zsh.package}/bin/zsh";
 
     plugins = with tmuxPlugins; [
       tmux-fzf
@@ -35,3 +35,4 @@ in {
     extraConfig = builtins.readFile ./tmux-extra.conf;
   };
 }
+

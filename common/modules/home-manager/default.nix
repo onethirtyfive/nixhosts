@@ -1,0 +1,11 @@
+[
+  ./packages.nix
+  ./programs/git.nix
+  ./programs/direnv.nix
+  ./programs/git.nix
+  ./programs/neovim.nix
+  ./programs/simple.nix
+  ./programs/starship.nix
+  ./programs/tmux
+  ./programs/zsh
+]

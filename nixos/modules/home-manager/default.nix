@@ -1,0 +1,12 @@
+[
+  ./dconf.nix
+  ./env.nix
+  ./gnome.nix
+  ./meta.nix
+  ./programs/nushell
+  ./programs/zsh
+  ./programs/alacritty.nix
+  ./programs/browser.nix
+  ./programs/ssh.nix
+  ./services.nix
+]

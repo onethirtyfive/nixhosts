@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   # Changing this may render machine not-bootable.
   boot.kernelPackages = pkgs.linuxPackages_6_10;

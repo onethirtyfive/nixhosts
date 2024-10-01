@@ -19,4 +19,3 @@
 
   home.stateVersion = "23.11"; # rarely changed
 }
-

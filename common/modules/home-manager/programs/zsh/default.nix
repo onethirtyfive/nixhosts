@@ -1,6 +1,3 @@
-{
-  initExtra ? "",
-}:
 { ... }:
 {
   programs.zsh = {
@@ -19,10 +16,7 @@
     autocd = false;
     syntaxHighlighting.enable = true;
 
-    initExtra = ''
-      ${builtins.readFile ./zshrc}
-      ${initExtra}
-    '';
+    initExtra = builtins.readFile ./zshrc;
 
     shellAliases = {
       gs = "git status";

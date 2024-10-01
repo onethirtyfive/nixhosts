@@ -4,9 +4,6 @@
 
     caskArgs.appdir = "~/Applications/Homebrew";
 
-    # brews = [
-    # ];
-
     casks = [
       "bitwarden"
       "signal"

@@ -1,13 +1,9 @@
 { pkgs, ... }:
 {
-  environment = {
-    shells = with pkgs; [ bash zsh ];
-    systemPackages = with pkgs; [
-      coreutils
-      findutils
-      fd
-    ];
-  };
+  imports =
+    (import ../../../common/modules/system) ++
+    [ ./macos-settings.nix ] ++
+    (import ../../modules/nix-darwin);
 
   # Auto-upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;

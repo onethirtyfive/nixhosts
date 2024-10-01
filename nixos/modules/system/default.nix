@@ -1,0 +1,11 @@
+[
+  ./audio.nix
+  ./encrypted-zfs.nix
+  ./firmware.nix
+  ./fonts.nix
+  ./gnome.nix
+  ./locale.nix
+  ./mdns.nix
+  ./nix.nix
+  ./users/joshua.nix
+]

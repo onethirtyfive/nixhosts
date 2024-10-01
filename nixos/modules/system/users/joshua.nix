@@ -2,6 +2,7 @@
 {
   users.users.joshua = {
     isNormalUser = true;
+
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -9,7 +10,9 @@
       "video"
       "docker"
     ];
+
     initialPassword = "hellothere";
+
     packages = with pkgs; [
       # consumer
       discord
@@ -29,6 +32,7 @@
       slides
       charm
     ];
+
     openssh.authorizedKeys.keys = [
     ];
   };

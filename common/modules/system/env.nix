@@ -1,9 +1,11 @@
 { pkgs, ... }:
 {
+  environment.shells = with pkgs; [ bash zsh ];
+
   # available universally on machine
   environment.systemPackages = with pkgs; [
     # processes and machine
-    acpi
+    # acpi # linux only
     killall
     htop
 
@@ -23,19 +25,15 @@
     jq
     lazydocker
     less
-    pinentry
+    # pinentry # linux only
     ripgrep
     tree
     unzip
     zip
 
     # misc
-    inotify-tools
-    libnotify
-
-    # video conversion/playback
-    ffmpeg
-    vlc
+    # inotify-tools # linux only
+    # libnotify linux only
 
     # AirPlay mirroring
     # gst_all_1.gst-libav

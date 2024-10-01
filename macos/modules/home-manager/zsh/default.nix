@@ -1,5 +1,7 @@
+{ config, ... }:
 let
-  basis = ../../../../common/modules/home-manager/zsh;
+  cfg = config.programs.zsh;
 in
-  import basis { initExtra = builtins.readFile ./zshrc; }
-
+{
+  programs.zsh.initExtra = cfg.initExtra ++ (builtins.readFile ./zshrc);
+}

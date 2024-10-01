@@ -33,6 +33,8 @@
       nautilus-python
       dconf-editor
       gnomeExtensions.astra-monitor
+      gnomeExtensions.caffeine
+      gnomeExtensions.pano
     ]);
 
     gnome.excludePackages = (with pkgs; [

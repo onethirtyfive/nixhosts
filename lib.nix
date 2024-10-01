@@ -25,6 +25,7 @@ in
           "fonts.nix"
           "gnome.nix"
           "locale.nix"
+          "mdns.nix"
           "nix.nix"
           "nixpkgs.nix"
           "packages.nix"

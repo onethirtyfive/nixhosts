@@ -1,26 +1,25 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; with nodePackages_latest; [
-    bitwarden
-    microsoft-edge
-    signal-desktop
-
+  home.packages = with pkgs; [
     # video conversion/playback
     ffmpeg
-    vlc
 
     # fun
+    jp2a
+    glow
+    vhs
+    gum
     slides
+    charm
 
     # languages (relocate?)
     rust-bin.stable.latest.complete
   ] ++ (with pkgs.onethirtyfive; [
     colorscript
+    neovim
 
     # NB. unsure if rb/py versions are needed:
     python3
     ruby
-
-    # NB. neovim installed by `programs.neovim.package`
   ]);
 }

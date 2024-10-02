@@ -1,10 +1,5 @@
 { pkgs, ... }:
 {
-  imports =
-    (import ../../../common/modules/system) ++
-    [ ./macos-settings.nix ] ++
-    (import ../../modules/nix-darwin);
-
   # Auto-upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
@@ -21,5 +16,7 @@
 
   # Add ability to used TouchID for sudo authentication
   security.pam.enableSudoTouchIdAuth = true;
+
+  system.stateVersion = 5;
 }
 

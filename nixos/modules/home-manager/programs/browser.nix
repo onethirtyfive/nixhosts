@@ -1,7 +1,5 @@
 { ... }:
 {
-  programs.google-chrome.enable = true;
-
   programs.firefox = {
     enable = true;
     profiles.default = {

@@ -3,6 +3,7 @@
   ./env.nix
   ./gnome.nix
   ./meta.nix
+  ./packages.nix
   ./programs/nushell
   ./programs/zsh
   ./programs/alacritty.nix

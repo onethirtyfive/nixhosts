@@ -5,7 +5,7 @@
   services.xserver.desktopManager.gnome = {
     enable = true;
     extraGSettingsOverridePackages = [
-        pkgs.nautilus-open-any-terminal
+      pkgs.nautilus-open-any-terminal
     ];
   };
 

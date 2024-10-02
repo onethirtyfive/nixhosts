@@ -42,11 +42,14 @@
     , rust-overlay
     , nixos-hardware
     , ...
-  }: let
-    overlays = {
-      onethirtyfive = (import ./overlays/onethirtyfive);
-    };
-  in {
+  }:
+  let
+    overlays = [
+      rust-overlay.overlays.default
+      onethirtyfive-neovim.overlays.default
+      (import ./overlays/onethirtyfive)
+    ];
+  in  {
     nixConfig = {
       extra-trusted-public-keys = "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= onethirtyfive.cachix.org-1:w+zBnwl7vHfxNHawEN6Ej2zQ2ejgi8oqCxqVZ8wGYCg=";
       extra-substituters = "https://nix-community.cachix.org https://onethirtyfive.cachix.org";
@@ -55,25 +58,23 @@
     darwinConfigurations =
       let
         system = "aarch64-darwin";
-        pkgs = import nixpkgs-darwin {
-          inherit system;
-
-          overlays = [
-            rust-overlay.overlays.default
-            onethirtyfive-neovim.overlays.default
-            overlays.onethirtyfive
-          ];
-        };
+        pkgs = import nixpkgs-darwin { inherit system overlays; };
       in {
         sapokanikan = darwin.lib.darwinSystem {
           inherit pkgs;
 
           modules = [
             {
-              imports = [
-                ./macos/hosts/sapokanikan/configuration.nix
-              ];
-              system.stateVersion = 5;
+              imports =
+                [
+                  ./macos/hosts/sapokanikan/configuration.nix
+                  ./macos/hosts/sapokanikan/macos-settings.nix
+                ]
+                ++ (import ./common/modules/system)
+                ++ (import ./macos/modules/system);
+
+              nixpkgs.config.allowUnfree = true;
+              nixpkgs.overlays = overlays;
             }
             home-manager-darwin.darwinModules.home-manager
             {

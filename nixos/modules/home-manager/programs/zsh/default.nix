@@ -1,6 +1,7 @@
-{ config, ... }:
-let
-  cfg = config.programs.zsh;
-in {
-  config.programs.zsh.initExtra = cfg.initExtra ++ (builtins.readFile ./zshrc);
+{ lib, ... }:
+{
+  programs.zsh.initExtra =
+    let
+      zshrc = builtins.readFile ./zshrc;
+    in lib.mkMerge (lib.splitString "\n" zshrc);
 }

@@ -1,4 +1,4 @@
-{ inputs, common, ... }:
+{ inputs, ... }:
 {
   nixosSystem = {
     homedir ? "/home/joshua",
@@ -8,11 +8,75 @@
     overlays,
   }:
   let
-    inherit (inputs) home-manager nixpkgs;
+    inherit (inputs) home-manager nixos-hardware;
   in inputs.nixpkgs.lib.nixosSystem {
     inherit system;
 
     modules = [
+      {
+        imports =
+          (with nixos-hardware.nixosModules; [
+            common-cpu-amd
+            common-gpu-amd
+            common-pc-ssd
+          ])
+          ++ [
+            ./nixos/hosts/${hostname}/configuration.nix
+            ./nixos/hosts/${hostname}/hardware-configuration.nix
+          ]
+          ++ (import ./common/modules/system)
+          ++ (import ./nixos/modules/system);
+
+        nixpkgs.config.allowUnfree = true;
+        nixpkgs.overlays = overlays;
+
+        hardware.enableAllFirmware = true;
+        hardware.bluetooth = {
+          enable = true;
+          powerOnBoot = false;
+          settings.General.Experimental = true; # for gnome-bluetooth percentage
+        };
+
+        boot.consoleLogLevel = 3;
+        boot.tmp.cleanOnBoot = true;
+        boot.supportedFilesystems = [ "zfs" "ntfs" ];
+
+        boot.loader.grub = {
+          enable = true;
+          devices = [ "nodev" ];
+          efiInstallAsRemovable = true;
+          efiSupport = true;
+          useOSProber = true;
+        };
+
+        networking.networkmanager.enable = true;
+        networking.firewall.enable = false;
+
+        security.polkit = {
+          enable = true;
+          debug = true;
+        };
+
+        programs.gnupg.agent = {
+          enable = true;
+          enableSSHSupport = true;
+        };
+
+        # Enable CUPS to print documents.
+        # services.printing.enable = true;
+
+        services.openssh.enable = true;
+        services.keybase.enable = true;
+
+        services.logind.extraConfig = ''
+          HandlePowerKey=suspend
+        '';
+
+        virtualisation.docker.enable = true;
+
+        # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
+        system.stateVersion = "23.11";
+      }
       home-manager.nixosModules.home-manager
       {
         home-manager = {
@@ -21,19 +85,16 @@
           verbose = true;
           users.joshua = {
             imports =
-              common.home-manager ++ [ ./nixos/home-manager ];
+              (import ./common/modules/home-manager) ++
+              (import ./nixos/modules/home-manager);
           };
           extraSpecialArgs = {
-            inherit inputs system nixpkgs;
-            inherit homedir ssh-identities;
+            inherit inputs homedir ssh-identities;
           };
         };
       }
     ];
 
-    specialArgs = {
-      inherit inputs overlays;
-      nixpkgs = inputs.nixpkgs; # eg. not nixpkgs-darwin
-    };
+    specialArgs = { inherit inputs; };
   };
 }

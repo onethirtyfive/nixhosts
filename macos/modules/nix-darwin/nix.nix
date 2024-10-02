@@ -1,6 +1,6 @@
-{ nixpkgs, ... }:
+{ pkgs, ... }:
 {
-  nix.package = nixpkgs.legacyPackages.aarch64-darwin.nixVersions.nix_2_22;
+  nix.package = pkgs.nixVersions.nix_2_22;
   nix.configureBuildUsers = true;
   nix.settings.sandbox = false;
   nix.settings.trusted-users = [ "@admin" ];

@@ -67,11 +67,11 @@
             {
               imports =
                 [
-                  ./macos/hosts/sapokanikan/configuration.nix
-                  ./macos/hosts/sapokanikan/macos-settings.nix
+                  ./hosts/sapokanikan/configuration.nix
+                  ./hosts/sapokanikan/macos-settings.nix
                 ]
-                ++ (import ./common/modules/system)
-                ++ (import ./macos/modules/nix-darwin);
+                ++ (import ./modules/common)
+                ++ (import ./modules/nix-darwin);
 
               nixpkgs.config.allowUnfree = true;
               nixpkgs.overlays = overlays;
@@ -86,8 +86,8 @@
               ];
               home-manager.users.joshua = {
                 imports =
-                  (import ./common/modules/home-manager) ++
-                  (import ./macos/modules/home-manager);
+                  (import ./hm-modules/common) ++
+                  (import ./hm-modules/macos);
               };
               home-manager.extraSpecialArgs = {
                 inherit inputs system;

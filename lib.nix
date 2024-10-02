@@ -21,11 +21,11 @@
             common-pc-ssd
           ])
           ++ [
-            ./nixos/hosts/${hostname}/configuration.nix
-            ./nixos/hosts/${hostname}/hardware-configuration.nix
+            ./hosts/${hostname}/configuration.nix
+            ./hosts/${hostname}/hardware-configuration.nix
           ]
-          ++ (import ./common/modules/system)
-          ++ (import ./nixos/modules/system);
+          ++ (import ./modules/common)
+          ++ (import ./modules/nixos);
 
         nixpkgs.config.allowUnfree = true;
         nixpkgs.overlays = overlays;
@@ -85,8 +85,8 @@
           verbose = true;
           users.joshua = {
             imports =
-              (import ./common/modules/home-manager) ++
-              (import ./nixos/modules/home-manager);
+              (import ./hm-modules/common) ++
+              (import ./hm-modules/nixos);
           };
           extraSpecialArgs = {
             inherit inputs homedir ssh-identities;

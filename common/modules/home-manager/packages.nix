@@ -5,7 +5,7 @@
     ffmpeg
 
     # fun
-    jp2a
+    # jp2a # marked as broken, 10/02/2024
     glow
     vhs
     gum

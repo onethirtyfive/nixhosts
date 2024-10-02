@@ -71,7 +71,7 @@
                   ./macos/hosts/sapokanikan/macos-settings.nix
                 ]
                 ++ (import ./common/modules/system)
-                ++ (import ./macos/modules/system);
+                ++ (import ./macos/modules/nix-darwin);
 
               nixpkgs.config.allowUnfree = true;
               nixpkgs.overlays = overlays;
@@ -85,7 +85,9 @@
                 mac-app-util.homeManagerModules.default
               ];
               home-manager.users.joshua = {
-                imports = import ./macos/modules/home-manager;
+                imports =
+                  (import ./common/modules/home-manager) ++
+                  (import ./macos/modules/home-manager);
               };
               home-manager.extraSpecialArgs = {
                 inherit inputs system;

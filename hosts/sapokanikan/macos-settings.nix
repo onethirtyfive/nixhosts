@@ -40,7 +40,7 @@
 
   system.defaults.NSGlobalDomain.NSAutomaticWindowAnimationsEnabled = false;
   system.defaults.NSGlobalDomain.NSScrollAnimationEnabled = true;
-  system.defaults.NSGlobalDomain.NSWindowResizeTime = 0.01;
+  system.defaults.NSGlobalDomain.NSWindowResizeTime = 1.0e-2;
   system.defaults.NSGlobalDomain.NSTableViewDefaultSizeMode = 2;
   system.defaults.NSGlobalDomain.NSTextShowsControlCharacters = true;
   system.defaults.NSGlobalDomain.NSUseAnimatedFocusRing = false;
@@ -110,4 +110,3 @@
     # };
   };
 }
-

@@ -1,7 +1,12 @@
 { pkgs, ... }:
 {
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraCode" ]; })
+    (nerdfonts.override {
+      fonts = [
+        "JetBrainsMono"
+        "FiraCode"
+      ];
+    })
     fira
     font-awesome
     noto-fonts-cjk
@@ -10,4 +15,3 @@
     liberation_ttf
   ];
 }
-

@@ -2,7 +2,10 @@
 .git
 
 .devenv
-*.swp
+.pre-commit-config.yaml
+
+# turds
 .DS_Store
+*.swp
 result
 

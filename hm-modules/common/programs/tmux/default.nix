@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
 let
   inherit (pkgs) tmuxPlugins;
-in {
+in
+{
   programs.fzf.tmux.enableShellIntegration = true;
 
   programs.tmux = {
@@ -35,4 +36,3 @@ in {
     extraConfig = builtins.readFile ./tmux-extra.conf;
   };
 }
-

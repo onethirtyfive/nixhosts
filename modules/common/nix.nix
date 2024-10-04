@@ -1,6 +1,9 @@
 { ... }:
 {
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   nix.settings.warn-dirty = false;
   nix.settings.auto-optimise-store = false;
   nix.settings.netrc-file = "/etc/nix/netrc";

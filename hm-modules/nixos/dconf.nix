@@ -1,4 +1,6 @@
-{ lib, ... }: with lib.hm.gvariant; {
+{ lib, ... }:
+with lib.hm.gvariant;
+{
   dconf.settings = {
     "org/gnome/desktop/peripherals/keyboard" = {
       repeat-interval = lib.gvariant.mkUint32 14;
@@ -6,7 +8,12 @@
     };
 
     "org/gnome/desktop/input-sources" = {
-      sources = [ (mkTuple [ "xkb" "en" ]) ];
+      sources = [
+        (mkTuple [
+          "xkb"
+          "en"
+        ])
+      ];
       xkb-options = [ "terminate:ctrl_alt_bksp,caps:escape" ];
     };
 
@@ -77,11 +84,11 @@
     };
 
     "org/gnome/shell/keybindings" = {
-      switch-to-application-1 = [];
-      switch-to-application-2 = [];
-      switch-to-application-3 = [];
-      switch-to-application-4 = [];
-      switch-to-application-5 = [];
+      switch-to-application-1 = [ ];
+      switch-to-application-2 = [ ];
+      switch-to-application-3 = [ ];
+      switch-to-application-4 = [ ];
+      switch-to-application-5 = [ ];
     };
 
     "org/gnome/desktop/wm/preferences" = {
@@ -102,7 +109,9 @@
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" ];
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+      ];
       mic-mute = [ "AudioMicMute" ];
       next = [ "AudioNext" ];
       play = [ "AudioPlay" ];

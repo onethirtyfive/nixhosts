@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
-  environment.shells = with pkgs; [ bash zsh ];
+  environment.shells = with pkgs; [
+    bash
+    zsh
+  ];
 
   # available universally on machine
   environment.systemPackages = with pkgs; [

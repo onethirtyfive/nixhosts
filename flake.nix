@@ -28,121 +28,116 @@
     alacritty-theme.flake = false;
   };
 
-  outputs = inputs@{
-      self
-    , systems
+  outputs =
+    inputs@{
+      self,
+      systems,
 
-    # macos
-    , darwin
-    , nixpkgs-darwin
-    , home-manager-darwin
-    , mac-app-util
-    , devenv-darwin
+      # macos
+      darwin,
+      nixpkgs-darwin,
+      home-manager-darwin,
+      mac-app-util,
+      devenv-darwin,
 
-    # nixos
-    , nixpkgs
-    , devenv
+      # nixos
+      nixpkgs,
+      devenv,
 
-    # common
-    , rust-overlay
-    , nixos-hardware
-    , onethirtyfive-neovim
-    , ...
-  }:
-  let
-    forEachSystem = nixpkgs.lib.genAttrs (import systems);
+      # common
+      rust-overlay,
+      onethirtyfive-neovim,
+      ...
+    }:
+    let
+      forEachSystem = nixpkgs.lib.genAttrs (import systems);
 
-    overlays = [
-      rust-overlay.overlays.default
-      onethirtyfive-neovim.overlays.default
-      (import ./overlays/onethirtyfive)
-    ];
-  in  {
-    nixConfig = {
-      extra-trusted-public-keys = "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= onethirtyfive.cachix.org-1:w+zBnwl7vHfxNHawEN6Ej2zQ2ejgi8oqCxqVZ8wGYCg= devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
-      extra-substituters = "https://nix-community.cachix.org https://onethirtyfive.cachix.org https://devenv.cachix.org";
-    };
-
-    darwinConfigurations =
-      let
-        system = "aarch64-darwin";
-        pkgs = import nixpkgs-darwin { inherit system overlays; };
-      in {
-        sapokanikan = darwin.lib.darwinSystem {
-          inherit pkgs;
-
-          modules = [
-            {
-              imports =
-                [
-                  ./hosts/sapokanikan/configuration.nix
-                  ./hosts/sapokanikan/macos-settings.nix
-                ]
-                ++ (import ./modules/common)
-                ++ (import ./modules/nix-darwin);
-
-              nixpkgs.config.allowUnfree = true;
-              nixpkgs.overlays = overlays;
-            }
-            home-manager-darwin.darwinModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.verbose = true;
-              home-manager.sharedModules = [
-                mac-app-util.homeManagerModules.default
-              ];
-              home-manager.users.joshua = {
-                imports =
-                  (import ./hm-modules/common) ++
-                  (import ./hm-modules/macos);
-              };
-              home-manager.extraSpecialArgs = {
-                inherit inputs system;
-              };
-            }
-          ];
-
-          specialArgs = {
-            nixpkgs = inputs.nixpkgs-darwin;
-          };
-        };
+      overlays = [
+        rust-overlay.overlays.default
+        onethirtyfive-neovim.overlays.default
+        (import ./overlays/onethirtyfive)
+      ];
+    in
+    {
+      nixConfig = {
+        extra-trusted-public-keys = "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= onethirtyfive.cachix.org-1:w+zBnwl7vHfxNHawEN6Ej2zQ2ejgi8oqCxqVZ8wGYCg= devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
+        extra-substituters = "https://nix-community.cachix.org https://onethirtyfive.cachix.org https://devenv.cachix.org";
       };
 
-    lib = import ./lib.nix { inherit inputs; };
+      darwinConfigurations =
+        let
+          system = "aarch64-darwin";
+          pkgs = import nixpkgs-darwin { inherit system overlays; };
+        in
+        {
+          sapokanikan = darwin.lib.darwinSystem {
+            inherit pkgs;
 
-    nixosConfigurations =
-      rec {
-        ozymandian =
-          self.lib.nixosSystem {
-            system = "x86_64-linux";
-            hostname = "ozymandian";
-            ssh-identities = [ "joshua@ozymandian" ];
-            inherit overlays;
-          };
+            modules = [
+              {
+                imports = [
+                  ./hosts/sapokanikan/configuration.nix
+                  ./hosts/sapokanikan/macos-settings.nix
+                ] ++ (import ./modules/common) ++ (import ./modules/nix-darwin);
 
-        meadowlark =
-          self.lib.nixosSystem {
-            system = "x86_64-linux";
-            hostname = "meadowlark";
-            ssh-identities = [ "joshua@meadowlark" ];
-            inherit overlays;
+                nixpkgs.config.allowUnfree = true;
+                nixpkgs.overlays = overlays;
+              }
+              home-manager-darwin.darwinModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.verbose = true;
+                home-manager.sharedModules = [
+                  mac-app-util.homeManagerModules.default
+                ];
+                home-manager.users.joshua = {
+                  imports = (import ./hm-modules/common) ++ (import ./hm-modules/macos);
+                };
+                home-manager.extraSpecialArgs = {
+                  inherit inputs system;
+                };
+              }
+            ];
+
+            specialArgs = {
+              nixpkgs = inputs.nixpkgs-darwin;
+            };
           };
+        };
+
+      lib = import ./lib.nix { inherit inputs; };
+
+      nixosConfigurations = rec {
+        ozymandian = self.lib.nixosSystem {
+          system = "x86_64-linux";
+          hostname = "ozymandian";
+          ssh-identities = [ "joshua@ozymandian" ];
+          inherit overlays;
+        };
+
+        meadowlark = self.lib.nixosSystem {
+          system = "x86_64-linux";
+          hostname = "meadowlark";
+          ssh-identities = [ "joshua@meadowlark" ];
+          inherit overlays;
+        };
 
         neutrino = meadowlark; # stepping stone
       };
 
-    packages = forEachSystem (system: {
-      devenv-up = self.devShells.${system}.default.config.procfileScript;
-    });
+      packages = forEachSystem (system: {
+        devenv-up = self.devShells.${system}.default.config.procfileScript;
+      });
 
-    devShells = forEachSystem
-      (system:
+      devShells = forEachSystem (
+        system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
+          devenv' = if pkgs.stdenv.isDarwin then devenv-darwin else devenv;
         in
         {
-          default = devenv.lib.mkShell {
+          default = devenv'.lib.mkShell {
             inherit inputs pkgs;
             modules = [
               {
@@ -154,10 +149,12 @@
                 '';
 
                 processes.hello.exec = "hello";
+                pre-commit.hooks.nixfmt-rfc-style.enable = true;
+                pre-commit.hooks.deadnix.enable = true;
               }
             ];
           };
-        });
-  };
+        }
+      );
+    };
 }
-

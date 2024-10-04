@@ -1,7 +1,8 @@
 { pkgs, ... }:
 let
   inherit (pkgs) stdenv;
-in {
+in
+{
   home.file.".config/karabiner" =
     let
       configStore = stdenv.mkDerivation {
@@ -13,7 +14,8 @@ in {
           cp -r $src/karabiner $out/.
         '';
       };
-    in {
+    in
+    {
       source = "${configStore}/karabiner";
       target = ".config/karabiner";
     };

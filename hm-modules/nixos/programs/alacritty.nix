@@ -1,7 +1,8 @@
 { inputs, config, ... }:
 let
   inherit (inputs) alacritty-theme;
-in {
+in
+{
   programs.alacritty = {
     enable = true;
 

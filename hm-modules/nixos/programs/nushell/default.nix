@@ -7,4 +7,3 @@
     configFile.source = ./confignu;
   };
 }
-

@@ -35,13 +35,17 @@ in
         "[#](bold purple)"
         ''''${custom.space}''
       ];
-      character = { disabled = true; };
+      character = {
+        disabled = true;
+      };
       custom.space = {
         when = ''! test $env'';
         format = " ";
       };
       continuation_prompt = "[∙](bright-black) ";
-      line_break = { disabled = false; };
+      line_break = {
+        disabled = false;
+      };
       status = {
         symbol = "✗";
         not_found_symbol = "󰍉 Not Found";

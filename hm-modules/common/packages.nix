@@ -1,24 +1,27 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    # video conversion/playback
-    ffmpeg
+  home.packages =
+    with pkgs;
+    [
+      # video conversion/playback
+      ffmpeg
 
-    # fun
-    # jp2a # marked as broken, 10/02/2024
-    glow
-    vhs
-    gum
-    slides
-    charm
+      # fun
+      # jp2a # marked as broken, 10/02/2024
+      glow
+      vhs
+      gum
+      slides
+      charm
 
-    # languages (relocate?)
-    rust-bin.stable.latest.complete
-  ] ++ (with pkgs.onethirtyfive; [
-    neovim
+      # languages (relocate?)
+      rust-bin.stable.latest.complete
+    ]
+    ++ (with pkgs.onethirtyfive; [
+      neovim
 
-    # NB. unsure if rb/py versions are needed:
-    python3
-    ruby
-  ]);
+      # NB. unsure if rb/py versions are needed:
+      python3
+      ruby
+    ]);
 }

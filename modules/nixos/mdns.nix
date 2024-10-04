@@ -8,4 +8,3 @@
   # services.avahi.nssmdns4 = true;
   # services.avahi.reflector = true;
 }
-

@@ -1,5 +1,6 @@
 [
   ./audio.nix
+  ./cross.nix
   ./encrypted-zfs.nix
   ./firmware.nix
   ./fonts.nix

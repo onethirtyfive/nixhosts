@@ -2,8 +2,7 @@
   description = "All host configurations for Joshua's computers.";
 
   inputs = {
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
+    # macos
     darwin.url = "github:lnl7/nix-darwin";
     nixpkgs-darwin.follows = "darwin/nixpkgs";
     home-manager-darwin.url = "github:nix-community/home-manager";
@@ -11,27 +10,20 @@
     mac-app-util.url = "github:hraban/mac-app-util";
     mac-app-util.inputs.nixpkgs.follows = "nixpkgs-darwin";
 
+    # linux
     home-manager.url = "github:nix-community/home-manager";
     nixpkgs.follows = "home-manager/nixpkgs";
 
+    # common
     rust-overlay.url = "github:oxalica/rust-overlay";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     alacritty-theme.url = "github:alacritty/alacritty-theme";
     alacritty-theme.flake = false;
-
-    # This does not follow nixpkgs for now.
     onethirtyfive-neovim.url = "github:onethirtyfive/neovim-nix";
-    # onethirtyfive-neovim.inputs.nixpkgs.follows = "nixpkgs";
-
-    # https://discourse.nixos.org/t/how-to-get-codelldb-on-nixos/30401/5
-    # lldb-nix-fix = {
-    #   url = "github:mstone/nixpkgs/darwin-fix-vscode-lldb";
-    # };
   };
 
   outputs = inputs@{
       self
-    , nixpkgs-unstable
     , nixpkgs-darwin
     , nixpkgs
     , darwin

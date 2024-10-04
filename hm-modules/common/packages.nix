@@ -15,7 +15,6 @@
     # languages (relocate?)
     rust-bin.stable.latest.complete
   ] ++ (with pkgs.onethirtyfive; [
-    colorscript
     neovim
 
     # NB. unsure if rb/py versions are needed:

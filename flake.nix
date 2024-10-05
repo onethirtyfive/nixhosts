@@ -52,6 +52,21 @@
     let
       forEachSystem = nixpkgs.lib.genAttrs (import systems);
 
+      inherit (nixpkgs.lib) hasSuffix;
+
+      deriveInputs =
+        system:
+        if (hasSuffix system "-darwin") then
+          {
+            nixpkgs' = nixpkgs-darwin;
+            devenv' = devenv-darwin;
+          }
+        else
+          {
+            nixpkgs' = nixpkgs;
+            devenv' = devenv;
+          };
+
       overlays = [
         rust-overlay.overlays.default
         onethirtyfive-neovim.overlays.default
@@ -60,8 +75,16 @@
     in
     {
       nixConfig = {
-        extra-trusted-public-keys = "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= onethirtyfive.cachix.org-1:w+zBnwl7vHfxNHawEN6Ej2zQ2ejgi8oqCxqVZ8wGYCg= devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
-        extra-substituters = "https://nix-community.cachix.org https://onethirtyfive.cachix.org https://devenv.cachix.org";
+        extra-trusted-public-keys = builtins.concatStringsSep " " [
+          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+          "onethirtyfive.cachix.org-1:w+zBnwl7vHfxNHawEN6Ej2zQ2ejgi8oqCxqVZ8wGYCg="
+          "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+        ];
+        extra-substituters = builtins.concatStringsSep " " [
+          "https://nix-community.cachix.org"
+          "https://onethirtyfive.cachix.org"
+          "https://devenv.cachix.org"
+        ];
       };
 
       darwinConfigurations =
@@ -126,35 +149,29 @@
         neutrino = meadowlark; # stepping stone
       };
 
-      packages = forEachSystem (system: {
-        devenv-up = self.devShells.${system}.default.config.procfileScript;
-      });
-
       devShells = forEachSystem (
         system:
         let
-          pkgs = nixpkgs.legacyPackages.${system};
-          devenv' = if pkgs.stdenv.isDarwin then devenv-darwin else devenv;
+          inherit (deriveInputs system) nixpkgs' devenv';
+
+          pkgs = import nixpkgs' {
+            overlays = [
+              (_: _: {
+                devenv = devenv'.packages.${system}.default;
+              })
+            ];
+          };
         in
         {
           default = devenv'.lib.mkShell {
             inherit inputs pkgs;
-            modules = [
-              {
-                # https://devenv.sh/reference/options/
-                packages = [ pkgs.hello ];
-
-                enterShell = ''
-                  hello
-                '';
-
-                processes.hello.exec = "hello";
-                pre-commit.hooks.nixfmt-rfc-style.enable = true;
-                pre-commit.hooks.deadnix.enable = true;
-              }
-            ];
+            modules = [ ./devenv.nix ];
           };
         }
       );
+
+      packages = forEachSystem (system: {
+        devenv-up = self.devShells.${system}.default.config.procfileScript;
+      });
     };
 }

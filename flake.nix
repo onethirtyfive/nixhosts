@@ -28,6 +28,19 @@
     alacritty-theme.flake = false;
   };
 
+  nixConfig = {
+    extra-trusted-public-keys = ''
+      nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
+      onethirtyfive.cachix.org-1:w+zBnwl7vHfxNHawEN6Ej2zQ2ejgi8oqCxqVZ8wGYCg=
+      devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
+    '';
+    extra-substituters = ''
+      https://nix-community.cachix.org
+      https://onethirtyfive.cachix.org
+      https://devenv.cachix.org
+    '';
+  };
+
   outputs =
     inputs@{
       self,
@@ -74,19 +87,6 @@
       ];
     in
     {
-      nixConfig = {
-        extra-trusted-public-keys = builtins.concatStringsSep " " [
-          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-          "onethirtyfive.cachix.org-1:w+zBnwl7vHfxNHawEN6Ej2zQ2ejgi8oqCxqVZ8wGYCg="
-          "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
-        ];
-        extra-substituters = builtins.concatStringsSep " " [
-          "https://nix-community.cachix.org"
-          "https://onethirtyfive.cachix.org"
-          "https://devenv.cachix.org"
-        ];
-      };
-
       darwinConfigurations =
         let
           system = "aarch64-darwin";

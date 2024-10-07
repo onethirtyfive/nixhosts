@@ -1,5 +1,8 @@
 [
+  ./fonts.nix
   ./homebrew.nix
+  ./keyboard.nix
   ./nix.nix
-  ./users/joshua.nix
+  ./programs.nix
+  ./security.nix
 ]

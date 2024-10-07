@@ -101,6 +101,7 @@
                 imports = [
                   ./hosts/sapokanikan/configuration.nix
                   ./hosts/sapokanikan/macos-settings.nix
+                  ./hosts/sapokanikan/users/joshua.nix
                 ] ++ (import ./modules/common) ++ (import ./modules/nix-darwin);
 
                 nixpkgs.config.allowUnfree = true;
@@ -115,7 +116,10 @@
                   mac-app-util.homeManagerModules.default
                 ];
                 home-manager.users.joshua = {
-                  imports = (import ./hm-modules/common) ++ (import ./hm-modules/macos);
+                  imports =
+                    (import ./hm-modules/common)
+                    ++ (import ./hm-modules/macos)
+                    ++ [ (import ./hosts/sapokanikan/home.nix) ];
                 };
                 home-manager.extraSpecialArgs = {
                   inherit inputs system;

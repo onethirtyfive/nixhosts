@@ -5,25 +5,16 @@
     caskArgs.appdir = "~/Applications/Homebrew";
 
     casks = [
+      "docker"
       "bitwarden"
-      "signal"
       "gpg-suite-no-mail"
-      "nordvpn"
 
-      "keycastr"
-
-      "istat-menus"
       "fluor"
-
+      "istat-menus"
+      "keycastr"
       "keyboardcleantool"
 
-      "obsidian"
-      "karabiner-elements"
-
-      "keybase"
       "microsoft-edge"
-
-      "docker"
     ];
   };
 }

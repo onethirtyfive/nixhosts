@@ -1,21 +1,22 @@
-{ pkgs, ... }:
+{ ... }:
 {
-  # Auto-upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
+  homebrew = {
+    enable = true;
 
-  programs.zsh.enable = true;
-  programs.nix-index.enable = false;
+    caskArgs.appdir = "~/Applications/Homebrew";
 
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-  ];
+    casks = [
+      "nordvpn"
+      "signal"
 
-  # Keyboard
-  system.keyboard.enableKeyMapping = true;
-  system.keyboard.remapCapsLockToEscape = true;
+      "keycastr"
 
-  # Add ability to used TouchID for sudo authentication
-  security.pam.enableSudoTouchIdAuth = true;
+      "obsidian"
+      "karabiner-elements"
+
+      "keybase"
+    ];
+  };
 
   system.stateVersion = 5;
 }

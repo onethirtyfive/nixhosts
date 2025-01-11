@@ -13,6 +13,7 @@
     mac-app-util.inputs.nixpkgs.follows = "nixpkgs-darwin";
     devenv-darwin.url = "github:cachix/devenv";
     devenv-darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
+    macos-config.url = "github:mrkuz/macos-config";
 
     # linux
     home-manager.url = "github:nix-community/home-manager";
@@ -52,6 +53,7 @@
       home-manager-darwin,
       mac-app-util,
       devenv-darwin,
+      macos-config,
 
       # nixos
       nixpkgs,
@@ -84,6 +86,15 @@
         rust-overlay.overlays.default
         onethirtyfive-neovim.overlays.default
         (import ./overlays/onethirtyfive)
+        (
+          _: _:
+          let
+            root = macos-config.packages.aarch64-darwin;
+          in
+          {
+            macos.socket_vmnet = root.macos.socket_vmnet;
+          }
+        )
       ];
     in
     {
@@ -102,7 +113,10 @@
                   ./hosts/sapokanikan/configuration.nix
                   ./hosts/sapokanikan/macos-settings.nix
                   ./hosts/sapokanikan/users/joshua.nix
+                  "${macos-config}/modules/darwin/socket-vmnet.nix"
                 ] ++ (import ./modules/common) ++ (import ./modules/nix-darwin);
+
+                modules.socketVmnet.enable = true;
 
                 nixpkgs.config.allowUnfree = true;
                 nixpkgs.overlays = overlays;

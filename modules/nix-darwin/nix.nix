@@ -1,13 +1,12 @@
 { pkgs, ... }:
 {
-  nix.package = pkgs.nixVersions.nix_2_22;
-  nix.configureBuildUsers = true;
+  nix.package = pkgs.nixVersions.stable;
   nix.settings.sandbox = false;
   nix.settings.trusted-users = [ "@admin" ];
 
   # Enable experimental nix command and flakes
   nix.extraOptions = ''
-    extra-platforms = x86_64-darwin aarch64-darwin
+    extra-platforms = aarch64-linux
   '';
 
   nix.linux-builder = {
@@ -24,7 +23,4 @@
       };
     };
   };
-
-  # Auto-upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
 }

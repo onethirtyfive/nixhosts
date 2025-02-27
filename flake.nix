@@ -12,13 +12,13 @@
     mac-app-util.url = "github:hraban/mac-app-util";
     mac-app-util.inputs.nixpkgs.follows = "nixpkgs-darwin";
     devenv-darwin.url = "github:cachix/devenv";
-    devenv-darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
+    # devenv-darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
 
     # linux
     home-manager.url = "github:nix-community/home-manager";
     nixpkgs.follows = "home-manager/nixpkgs";
     devenv.url = "github:cachix/devenv";
-    devenv.inputs.nixpkgs.follows = "nixpkgs";
+    # devenv.inputs.nixpkgs.follows = "nixpkgs";
 
     # common
     rust-overlay.url = "github:oxalica/rust-overlay";
@@ -98,11 +98,14 @@
 
             modules = [
               {
-                imports = [
-                  ./hosts/futureproof/configuration.nix
-                  ./hosts/futureproof/macos-settings.nix
-                  ./hosts/futureproof/users/joshua.nix
-                ] ++ (import ./modules/common) ++ (import ./modules/nix-darwin);
+                imports =
+                  [
+                    ./hosts/futureproof/configuration.nix
+                    ./hosts/futureproof/macos-settings.nix
+                    ./hosts/futureproof/users/joshua.nix
+                  ]
+                  ++ (import ./modules/common)
+                  ++ (import ./modules/nix-darwin);
 
                 nixpkgs.config.allowUnfree = true;
                 nixpkgs.overlays = overlays;
@@ -136,11 +139,14 @@
 
             modules = [
               {
-                imports = [
-                  ./hosts/sapokanikan/configuration.nix
-                  ./hosts/sapokanikan/macos-settings.nix
-                  ./hosts/sapokanikan/users/joshua.nix
-                ] ++ (import ./modules/common) ++ (import ./modules/nix-darwin);
+                imports =
+                  [
+                    ./hosts/sapokanikan/configuration.nix
+                    ./hosts/sapokanikan/macos-settings.nix
+                    ./hosts/sapokanikan/users/joshua.nix
+                  ]
+                  ++ (import ./modules/common)
+                  ++ (import ./modules/nix-darwin);
 
                 nixpkgs.config.allowUnfree = true;
                 nixpkgs.overlays = overlays;

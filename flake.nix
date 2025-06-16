@@ -9,7 +9,6 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-darwin.follows = "darwin/nixpkgs";
     home-manager-darwin.url = "github:nix-community/home-manager";
-    # home-manager-darwin.inputs.nixpkgs.follows = "nixpkgs-unstable";
     mac-app-util.url = "github:hraban/mac-app-util";
     mac-app-util.inputs.nixpkgs.follows = "nixpkgs-darwin";
 
@@ -23,6 +22,7 @@
     onethirtyfive-neovim.url = "github:onethirtyfive/neovim-nix";
     alacritty-theme.url = "github:alacritty/alacritty-theme";
     alacritty-theme.flake = false;
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
   nixConfig = {
@@ -53,6 +53,7 @@
       # common
       rust-overlay,
       onethirtyfive-neovim,
+      treefmt-nix,
       ...
     }:
     let
@@ -76,8 +77,22 @@
         onethirtyfive-neovim.overlays.default
         (import ./overlays/onethirtyfive)
       ];
+
+      treefmtEval = forEachSystem (system:
+        let
+          inherit (deriveInputs system) nixpkgs';
+          pkgs = nixpkgs'.legacyPackages.${system};
+        in
+        treefmt-nix.lib.evalModule pkgs ./treefmt.nix
+      );
     in
     {
+      formatter = forEachSystem (system: treefmtEval.${system}.config.build.wrapper);
+
+      checks = forEachSystem (system: {
+        formatting = treefmtEval.${system}.config.build.check self;
+      });
+
       darwinConfigurations =
         let
           system = "aarch64-darwin";

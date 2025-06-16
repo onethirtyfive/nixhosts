@@ -3,8 +3,9 @@
   fonts.packages = with pkgs; [
     (nerdfonts.override {
       fonts = [
+        "AtkynsonMono"
+        "CascadiaCode"
         "JetBrainsMono"
-        "FiraCode"
       ];
     })
     fira

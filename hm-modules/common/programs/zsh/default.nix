@@ -15,7 +15,7 @@
   programs.zsh.autocd = false;
   programs.zsh.syntaxHighlighting.enable = true;
 
-  programs.zsh.initExtra =
+  programs.zsh.initContent =
     let
       zshrc = builtins.readFile ./zshrc;
     in

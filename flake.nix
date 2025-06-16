@@ -6,19 +6,16 @@
 
     # macos
     darwin.url = "github:lnl7/nix-darwin";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-darwin.follows = "darwin/nixpkgs";
     home-manager-darwin.url = "github:nix-community/home-manager";
-    home-manager-darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
+    # home-manager-darwin.inputs.nixpkgs.follows = "nixpkgs-unstable";
     mac-app-util.url = "github:hraban/mac-app-util";
     mac-app-util.inputs.nixpkgs.follows = "nixpkgs-darwin";
-    devenv-darwin.url = "github:cachix/devenv";
-    # devenv-darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
 
     # linux
     home-manager.url = "github:nix-community/home-manager";
     nixpkgs.follows = "home-manager/nixpkgs";
-    devenv.url = "github:cachix/devenv";
-    # devenv.inputs.nixpkgs.follows = "nixpkgs";
 
     # common
     rust-overlay.url = "github:oxalica/rust-overlay";
@@ -32,12 +29,10 @@
     extra-trusted-public-keys = ''
       nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
       onethirtyfive.cachix.org-1:w+zBnwl7vHfxNHawEN6Ej2zQ2ejgi8oqCxqVZ8wGYCg=
-      devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
     '';
     extra-substituters = ''
       https://nix-community.cachix.org
       https://onethirtyfive.cachix.org
-      https://devenv.cachix.org
     '';
   };
 
@@ -51,11 +46,9 @@
       nixpkgs-darwin,
       home-manager-darwin,
       mac-app-util,
-      devenv-darwin,
 
       # nixos
       nixpkgs,
-      devenv,
 
       # common
       rust-overlay,
@@ -72,12 +65,10 @@
         if (hasSuffix system "-darwin") then
           {
             nixpkgs' = nixpkgs-darwin;
-            devenv' = devenv-darwin;
           }
         else
           {
             nixpkgs' = nixpkgs;
-            devenv' = devenv;
           };
 
       overlays = [
@@ -90,7 +81,10 @@
       darwinConfigurations =
         let
           system = "aarch64-darwin";
-          pkgs = import nixpkgs-darwin { inherit system overlays; };
+          pkgs = import nixpkgs-darwin {
+            inherit system overlays;
+            config.allowUnfree = true;
+          };
         in
         {
           futureproof = darwin.lib.darwinSystem {
@@ -200,26 +194,21 @@
       devShells = forEachSystem (
         system:
         let
-          inherit (deriveInputs system) nixpkgs' devenv';
-
-          pkgs = import nixpkgs' {
-            overlays = [
-              (_: _: {
-                devenv = devenv'.packages.${system}.default;
-              })
-            ];
-          };
+          inherit (deriveInputs system) nixpkgs';
+          pkgs = nixpkgs'.legacyPackages.${system};
         in
         {
-          default = devenv'.lib.mkShell {
-            inherit inputs pkgs;
-            modules = [ ./devenv.nix ];
+          default = pkgs.mkShell {
+            name = "onethirtyfive-nixhosts-devshell";
+
+            buildInputs = [
+              pkgs.claude-code
+            ];
           };
         }
       );
 
-      packages = forEachSystem (system: {
-        devenv-up = self.devShells.${system}.default.config.procfileScript;
+      packages = forEachSystem (_system: {
       });
     };
 }

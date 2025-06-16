@@ -85,7 +85,7 @@
         home-manager.nixosModules.home-manager
         {
           home-manager = {
-            useGlobalPkgs = true;
+            useGlobalPkgs = false;
             useUserPackages = true;
             verbose = true;
             users.joshua = {

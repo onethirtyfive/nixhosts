@@ -1,7 +1,7 @@
 [
   ./packages.nix
+  ./programs/default.nix
   ./programs/git.nix
-  ./programs/direnv.nix
   ./programs/git.nix
   ./programs/starship.nix
   ./programs/tmux

@@ -1,8 +1,6 @@
 # Ignoring .git for telecope compat
 .git
-
-.devenv*
-.pre-commit-config.yaml
+.direnv
 
 # turds
 .DS_Store

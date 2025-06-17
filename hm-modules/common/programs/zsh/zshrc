@@ -37,9 +37,22 @@ function test-truecolor-support() {
 # disable freeze on ctrl-s
 stty -ixon
 
+# none of zsh's autocomplete behavior, please
 unsetopt AUTO_MENU
-unsetopt correct
-setopt NO_AUTO_MENU NO_MENU_COMPLETE BASH_AUTO_LIST NO_COMPLETE_IN_WORD
+unsetopt AUTO_LIST
+unsetopt CORRECT
+unsetopt CORRECT_ALL
+
+# bash-style autocomplete
+setopt NO_AUTO_MENU
+setopt NO_MENU_COMPLETE
+setopt BASH_AUTO_LIST
+setopt NO_COMPLETE_IN_WORD
+setopt LIST_AMBIGUOUS
+
+# Two tabs to show list
+bindkey '^I' expand-or-complete
+
 setopt globdots
 
 unalias find

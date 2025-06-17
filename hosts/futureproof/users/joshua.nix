@@ -3,8 +3,7 @@
   users.users.${primaryUser} = {
     home = "/Users/${primaryUser}";
 
-    openssh.authorizedKeys.keys =
-      [
-      ];
+    openssh.authorizedKeys.keys = [
+    ];
   };
 }

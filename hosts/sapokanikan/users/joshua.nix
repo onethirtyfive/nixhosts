@@ -3,8 +3,7 @@
   users.users.joshua = {
     home = "/Users/joshua";
 
-    openssh.authorizedKeys.keys =
-      [
-      ];
+    openssh.authorizedKeys.keys = [
+    ];
   };
 }

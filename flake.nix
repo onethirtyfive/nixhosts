@@ -78,7 +78,8 @@
         (import ./overlays/onethirtyfive)
       ];
 
-      treefmtEval = forEachSystem (system:
+      treefmtEval = forEachSystem (
+        system:
         let
           inherit (deriveInputs system) nixpkgs';
           pkgs = nixpkgs'.legacyPackages.${system};

@@ -38,7 +38,8 @@
     };
   };
 
-  system.defaults.".GlobalPreferences"."com.apple.sound.beep.sound" = "/System/Library/Sounds/Basso.aiff";
+  system.defaults.".GlobalPreferences"."com.apple.sound.beep.sound" =
+    "/System/Library/Sounds/Basso.aiff";
 
   system.defaults.NSGlobalDomain.NSAutomaticWindowAnimationsEnabled = false;
   system.defaults.NSGlobalDomain.NSScrollAnimationEnabled = true;

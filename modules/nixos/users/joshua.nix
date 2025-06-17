@@ -13,13 +13,10 @@
 
     initialPassword = "hellothere";
 
-    packages =
-      with pkgs;
-      [
-      ];
+    packages = with pkgs; [
+    ];
 
-    openssh.authorizedKeys.keys =
-      [
-      ];
+    openssh.authorizedKeys.keys = [
+    ];
   };
 }

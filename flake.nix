@@ -103,49 +103,58 @@
           };
         in
         {
-          futureproof = darwin.lib.darwinSystem {
-            inherit pkgs;
-
-            modules = [
-              {
-                imports =
-                  [
-                    ./hosts/futureproof/configuration.nix
-                    ./hosts/futureproof/macos-settings.nix
-                    ./hosts/futureproof/users/joshua.nix
-                  ]
-                  ++ (import ./modules/common)
-                  ++ (import ./modules/nix-darwin);
-
-                nixpkgs.config.allowUnfree = true;
-                nixpkgs.overlays = overlays;
-              }
-              home-manager-darwin.darwinModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.verbose = true;
-                home-manager.sharedModules = [
-                  mac-app-util.homeManagerModules.default
-                ];
-                home-manager.users.joshua = {
-                  imports =
-                    (import ./hm-modules/common)
-                    ++ (import ./hm-modules/macos)
-                    ++ [ (import ./hosts/futureproof/home.nix) ];
-                };
-                home-manager.extraSpecialArgs = {
-                  inherit inputs system;
-                  primaryUser = "joshua";
-                };
-              }
-            ];
-
-            specialArgs = {
-              nixpkgs = inputs.nixpkgs-darwin;
+          futureproof =
+            let
               primaryUser = "joshua";
+            in
+            darwin.lib.darwinSystem {
+              inherit pkgs;
+
+              modules = [
+                {
+                  imports =
+                    [
+                      ./hosts/futureproof/configuration.nix
+                      ./hosts/futureproof/macos-settings.nix
+                    ]
+                    ++ (import ./modules/common)
+                    ++ (import ./modules/nix-darwin);
+
+                  nixpkgs.config.allowUnfree = true;
+                  nixpkgs.overlays = overlays;
+
+                  system.primaryUser = primaryUser;
+                  users.users.${primaryUser} = {
+                    home = "/Users/${primaryUser}";
+                    openssh.authorizedKeys.keys = [
+                    ];
+                  };
+                }
+                home-manager-darwin.darwinModules.home-manager
+                {
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
+                  home-manager.verbose = true;
+                  home-manager.sharedModules = [
+                    mac-app-util.homeManagerModules.default
+                  ];
+                  home-manager.users.joshua = {
+                    imports =
+                      (import ./hm-modules/common)
+                      ++ (import ./hm-modules/macos)
+                      ++ [ (import ./hosts/futureproof/home.nix) ];
+                  };
+                  home-manager.extraSpecialArgs = {
+                    inherit inputs system;
+                    primaryUser = "joshua";
+                  };
+                }
+              ];
+
+              specialArgs = {
+                nixpkgs = inputs.nixpkgs-darwin;
+              };
             };
-          };
           sapokanikan = darwin.lib.darwinSystem {
             inherit pkgs;
 

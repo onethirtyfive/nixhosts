@@ -1,7 +1,5 @@
-{ primaryUser, ... }:
+{ ... }:
 {
-  system.primaryUser = primaryUser;
-
   # keyboard function
   system.defaults.NSGlobalDomain.InitialKeyRepeat = 10;
   system.defaults.NSGlobalDomain.KeyRepeat = 1;

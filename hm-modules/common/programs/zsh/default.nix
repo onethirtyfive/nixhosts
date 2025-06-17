@@ -4,22 +4,10 @@
 
   programs.zsh.dotDir = ".zsh-custom";
 
-  programs.zsh.prezto = {
-    enable = true;
-    extraConfig = ''
-      zstyle ':prezto:module:utility' safe-ops 'no'.
-      zstyle ':completion:*' completer _expand _complete
-    '';
-  };
-
   programs.zsh.autocd = false;
   programs.zsh.syntaxHighlighting.enable = true;
 
-  programs.zsh.initContent =
-    let
-      zshrc = builtins.readFile ./zshrc;
-    in
-    lib.mkMerge (lib.splitString "\n" zshrc);
+  programs.zsh.initContent = lib.mkOrder 1499 (builtins.readFile ./zshrc);
 
   programs.zsh.shellAliases = {
     gs = "git status";

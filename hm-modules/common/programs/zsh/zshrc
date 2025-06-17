@@ -1,20 +1,4 @@
-if [ -n "$IN_NIX_SHELL" ]; then
-  echo "In nix shell."
-fi
-
 export EDITOR=vim
-
-# General usefulness:
-alias is="env | grep -i NIX_SHELL"
-alias gs="git status"
-alias vim="nvim"
-alias rmswp="find . -name *.swp | xargs rm"
-alias strl="history -d $((HISTCMD-1))"
-alias nix="noglob nix" # allow native flake syntax
-
-# Ruby:
-alias be="bundle exec"
-alias bert="bundle exec rake"
 
 # Test true color support
 
@@ -37,28 +21,23 @@ function test-truecolor-support() {
 # disable freeze on ctrl-s
 stty -ixon
 
-# none of zsh's autocomplete behavior, please
-unsetopt AUTO_MENU
-unsetopt AUTO_LIST
-unsetopt CORRECT
-unsetopt CORRECT_ALL
-
-# bash-style autocomplete
-setopt NO_AUTO_MENU
-setopt NO_MENU_COMPLETE
-setopt BASH_AUTO_LIST
-setopt NO_COMPLETE_IN_WORD
-setopt LIST_AMBIGUOUS
-
-# Two tabs to show list
-bindkey '^I' expand-or-complete
-
-setopt globdots
-
-unalias find
-
 if [ -f ~/.zshrc.local ]; then
   source ~/.zshrc.local
 fi
 
 
+setopt HIST_FCNTL_LOCK
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt SHARE_HISTORY
+setopt BASH_AUTO_LIST
+setopt LIST_AMBIGUOUS
+setopt GLOBDOTS
+
+unsetopt AUTO_PUSHD
+unsetopt AUTO_MENU
+unsetopt MENU_COMPLETE
+unsetopt AUTO_PARAM_SLASH
+unsetopt AUTOCD
+unsetopt APPEND_HISTORY
+unsetopt EXTENDED_HISTORY

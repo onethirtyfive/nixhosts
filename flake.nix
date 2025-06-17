@@ -135,12 +135,14 @@
                 };
                 home-manager.extraSpecialArgs = {
                   inherit inputs system;
+                  primaryUser = "joshua";
                 };
               }
             ];
 
             specialArgs = {
               nixpkgs = inputs.nixpkgs-darwin;
+              primaryUser = "joshua";
             };
           };
           sapokanikan = darwin.lib.darwinSystem {

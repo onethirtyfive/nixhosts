@@ -1,7 +1,7 @@
-{ ... }:
+{ primaryUser, ... }:
 {
-  users.users.joshua = {
-    home = "/Users/joshua";
+  users.users.${primaryUser} = {
+    home = "/Users/${primaryUser}";
 
     openssh.authorizedKeys.keys =
       [

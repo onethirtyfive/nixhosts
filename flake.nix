@@ -73,12 +73,6 @@
             nixpkgs' = nixpkgs;
           };
 
-      overlays = [
-        rust-overlay.overlays.default
-        onethirtyfive-neovim.overlays.default
-        (import ./overlays/onethirtyfive)
-      ];
-
       treefmtEval = forEachSystem (
         system:
         let
@@ -98,10 +92,28 @@
       darwinConfigurations =
         let
           system = "aarch64-darwin";
+
           pkgs = import nixpkgs-darwin {
-            inherit system overlays;
+            inherit system;
             config.allowUnfree = true;
+
+            overlays = [
+              onethirtyfive-neovim.overlays.default
+            ];
           };
+
+          hm-overlays = [
+            rust-overlay.overlays.default
+            onethirtyfive-neovim.overlays.default
+            (import ./overlays/onethirtyfive)
+            (final: prev: {
+              claude-code =
+                (import inputs.nixpkgs-unstable {
+                  system = prev.system;
+                  config.allowUnfree = true;
+                }).claude-code;
+            })
+          ];
         in
         {
           futureproof =
@@ -113,16 +125,15 @@
 
               modules = [
                 {
-                  imports =
-                    [
-                      ./hosts/futureproof/configuration.nix
-                      ./hosts/futureproof/macos-settings.nix
-                    ]
-                    ++ (import ./modules/common)
-                    ++ (import ./modules/nix-darwin);
+                  imports = [
+                    ./hosts/futureproof/configuration.nix
+                    ./hosts/futureproof/macos-settings.nix
+                  ]
+                  ++ (import ./modules/common)
+                  ++ (import ./modules/nix-darwin);
 
                   nixpkgs.config.allowUnfree = true;
-                  nixpkgs.overlays = overlays;
+                  nixpkgs.overlays = hm-overlays;
 
                   system.primaryUser = primaryUser;
                   users.users.${primaryUser} = {
@@ -133,7 +144,7 @@
                 }
                 home-manager-darwin.darwinModules.home-manager
                 {
-                  home-manager.useGlobalPkgs = true;
+                  home-manager.useGlobalPkgs = false;
                   home-manager.useUserPackages = true;
                   home-manager.verbose = true;
                   home-manager.sharedModules = [
@@ -144,6 +155,9 @@
                       (import ./hm-modules/common)
                       ++ (import ./hm-modules/macos)
                       ++ [ (import ./hosts/futureproof/home.nix) ];
+
+                    nixpkgs.config.allowUnfree = true;
+                    nixpkgs.overlays = hm-overlays;
                   };
                   home-manager.extraSpecialArgs = {
                     inherit inputs system;
@@ -156,26 +170,26 @@
                 nixpkgs = inputs.nixpkgs-darwin;
               };
             };
+
           sapokanikan = darwin.lib.darwinSystem {
             inherit pkgs;
 
             modules = [
               {
-                imports =
-                  [
-                    ./hosts/sapokanikan/configuration.nix
-                    ./hosts/sapokanikan/macos-settings.nix
-                    ./hosts/sapokanikan/users/joshua.nix
-                  ]
-                  ++ (import ./modules/common)
-                  ++ (import ./modules/nix-darwin);
+                imports = [
+                  ./hosts/sapokanikan/configuration.nix
+                  ./hosts/sapokanikan/macos-settings.nix
+                  ./hosts/sapokanikan/users/joshua.nix
+                ]
+                ++ (import ./modules/common)
+                ++ (import ./modules/nix-darwin);
 
                 nixpkgs.config.allowUnfree = true;
-                nixpkgs.overlays = overlays;
+                nixpkgs.overlays = hm-overlays;
               }
               home-manager-darwin.darwinModules.home-manager
               {
-                home-manager.useGlobalPkgs = true;
+                home-manager.useGlobalPkgs = false;
                 home-manager.useUserPackages = true;
                 home-manager.verbose = true;
                 home-manager.sharedModules = [
@@ -201,23 +215,29 @@
 
       lib = import ./lib.nix { inherit inputs; };
 
-      nixosConfigurations = rec {
-        ozymandian = self.lib.nixosSystem {
-          system = "x86_64-linux";
-          hostname = "ozymandian";
-          ssh-identities = [ "joshua@ozymandian" ];
-          inherit overlays;
-        };
+      nixosConfigurations =
+        let
+          overlays = [
+            onethirtyfive-neovim.overlays.default
+          ];
+        in
+        rec {
+          ozymandian = self.lib.nixosSystem {
+            system = "x86_64-linux";
+            hostname = "ozymandian";
+            ssh-identities = [ "joshua@ozymandian" ];
+            inherit overlays;
+          };
 
-        meadowlark = self.lib.nixosSystem {
-          system = "x86_64-linux";
-          hostname = "meadowlark";
-          ssh-identities = [ "joshua@meadowlark" ];
-          inherit overlays;
-        };
+          meadowlark = self.lib.nixosSystem {
+            system = "x86_64-linux";
+            hostname = "meadowlark";
+            ssh-identities = [ "joshua@meadowlark" ];
+            inherit overlays;
+          };
 
-        neutrino = meadowlark; # stepping stone
-      };
+          neutrino = meadowlark; # stepping stone
+        };
 
       devShells = forEachSystem (
         system:

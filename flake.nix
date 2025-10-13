@@ -165,10 +165,6 @@
                   };
                 }
               ];
-
-              specialArgs = {
-                nixpkgs = inputs.nixpkgs-darwin;
-              };
             };
 
           sapokanikan = darwin.lib.darwinSystem {
@@ -206,10 +202,6 @@
                 };
               }
             ];
-
-            specialArgs = {
-              nixpkgs = inputs.nixpkgs-darwin;
-            };
           };
         };
 

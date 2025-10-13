@@ -1,8 +1,8 @@
-{ lib, ... }:
+{ config, lib, ... }:
 {
   programs.zsh.enable = true;
 
-  programs.zsh.dotDir = ".zsh-custom";
+  programs.zsh.dotDir = "${config.home.homeDirectory}/.zsh-custom";
 
   programs.zsh.autocd = false;
   programs.zsh.syntaxHighlighting.enable = true;

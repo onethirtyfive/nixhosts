@@ -26,6 +26,7 @@ if [ -f ~/.zshrc.local ]; then
 fi
 
 
+setopt IGNORE_EOF
 setopt HIST_FCNTL_LOCK
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE

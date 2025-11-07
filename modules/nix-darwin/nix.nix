@@ -6,8 +6,9 @@
 
   # Enable experimental nix command and flakes
   nix.extraOptions = ''
-    extra-platforms = aarch64-linux
   '';
+
+  nix.distributedBuilds = true;
 
   nix.linux-builder = {
     enable = true;

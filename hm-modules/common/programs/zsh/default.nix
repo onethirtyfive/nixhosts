@@ -1,37 +1,50 @@
 { config, lib, ... }:
-{
-  programs.zsh.enable = true;
+let
+  zsh-custom = "${config.home.homeDirectory}/.zsh-custom";
+in {
+  programs.zsh = {
+    enable = true;
+    dotDir = zsh-custom;
 
-  programs.zsh.dotDir = "${config.home.homeDirectory}/.zsh-custom";
+    history = {
+      size = 50000;
+      save = 50000;
+      path = "${zsh-custom}/.zsh_history";
+      share = true;
+      ignoreDups = true;
+      ignoreSpace = true;
+      extended = false;
+    };
 
-  programs.zsh.autocd = false;
-  programs.zsh.syntaxHighlighting.enable = true;
+    autocd = false;
+    syntaxHighlighting.enable = true;
 
-  programs.zsh.initContent = lib.mkOrder 1499 (builtins.readFile ./zshrc);
+    initContent = lib.mkOrder 1499 (builtins.readFile ./zshrc);
 
-  programs.zsh.shellAliases = {
-    gs = "git status";
-  };
+    shellAliases = {
+      gs = "git status";
+    };
 
-  programs.zsh.oh-my-zsh = {
-    plugins = [
-      "aws"
-      "bundler"
-      "command-not-found"
-      "direnv"
-      "docker"
-      "docker-compose"
-      "fzf"
-      "gitfast"
-      "jira"
-      "keychain"
-      "kubectl"
-      "minikube"
-      "nmap"
-      "ssh-agent"
-      "sudo"
-      "tmux"
-      "yarn"
-    ];
+    oh-my-zsh = {
+      plugins = [
+        "aws"
+        "bundler"
+        "command-not-found"
+        "direnv"
+        "docker"
+        "docker-compose"
+        "fzf"
+        "gitfast"
+        "jira"
+        "keychain"
+        "kubectl"
+        "minikube"
+        "nmap"
+        "ssh-agent"
+        "sudo"
+        "tmux"
+        "yarn"
+      ];
+    };
   };
 }

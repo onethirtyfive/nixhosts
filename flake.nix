@@ -102,18 +102,21 @@
             ];
           };
 
-          hm-overlays = [
-            rust-overlay.overlays.default
-            onethirtyfive-neovim.overlays.default
-            (import ./overlays/onethirtyfive)
-            (final: prev: {
-              claude-code =
-                (import inputs.nixpkgs-unstable {
-                  system = prev.system;
+          commonOverlays =
+            let
+              unstableNixpkgsWithUnfree =
+                import inputs.nixpkgs-unstable {
+                  inherit system;
                   config.allowUnfree = true;
-                }).claude-code;
-            })
-          ];
+                };
+            in [
+              rust-overlay.overlays.default
+              onethirtyfive-neovim.overlays.default
+              (import ./overlays/onethirtyfive)
+              (final: prev: {
+                inherit (unstableNixpkgsWithUnfree) claude-code opencode;
+              })
+            ];
         in
         {
           futureproof =
@@ -133,7 +136,7 @@
                   ++ (import ./modules/nix-darwin);
 
                   nixpkgs.config.allowUnfree = true;
-                  nixpkgs.overlays = hm-overlays;
+                  nixpkgs.overlays = commonOverlays;
 
                   system.primaryUser = primaryUser;
                   users.users.${primaryUser} = {
@@ -157,7 +160,7 @@
                       ++ [ (import ./hosts/futureproof/home.nix) ];
 
                     nixpkgs.config.allowUnfree = true;
-                    nixpkgs.overlays = hm-overlays;
+                    nixpkgs.overlays = commonOverlays;
                   };
                   home-manager.extraSpecialArgs = {
                     inherit inputs system;
@@ -181,7 +184,7 @@
                 ++ (import ./modules/nix-darwin);
 
                 nixpkgs.config.allowUnfree = true;
-                nixpkgs.overlays = hm-overlays;
+                nixpkgs.overlays = commonOverlays;
               }
               home-manager-darwin.darwinModules.home-manager
               {

@@ -4,6 +4,7 @@
     with pkgs;
     [
       claude-code
+      opencode
 
       # video conversion/playback
       ffmpeg

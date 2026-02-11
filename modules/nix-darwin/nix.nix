@@ -5,8 +5,7 @@
   nix.settings.trusted-users = [ "@admin" ];
 
   # Enable experimental nix command and flakes
-  nix.extraOptions = ''
-  '';
+  nix.extraOptions = '''';
 
   nix.distributedBuilds = true;
 

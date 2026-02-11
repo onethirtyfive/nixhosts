@@ -1,7 +1,8 @@
 { config, lib, ... }:
 let
   zsh-custom = "${config.home.homeDirectory}/.zsh-custom";
-in {
+in
+{
   programs.zsh = {
     enable = true;
     dotDir = zsh-custom;

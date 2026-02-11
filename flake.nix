@@ -115,7 +115,57 @@
             })
           ];
         in
-        {
+        rec {
+          grt-mbp =
+            let
+              primaryUser = "joshuamorris";
+            in
+            darwin.lib.darwinSystem {
+              inherit pkgs;
+
+              modules = [
+                {
+                  imports = [
+                    ./hosts/grt-mbp/configuration.nix
+                  ]
+                  ++ (import ./modules/common)
+                  ++ (import ./modules/nix-darwin);
+
+                  nixpkgs.config.allowUnfree = true;
+                  nixpkgs.overlays = hm-overlays;
+
+                  system.primaryUser = primaryUser;
+                  users.users.${primaryUser} = {
+                    home = "/Users/${primaryUser}";
+                    openssh.authorizedKeys.keys = [
+                    ];
+                  };
+                }
+                home-manager-darwin.darwinModules.home-manager
+                {
+                  home-manager.useGlobalPkgs = false;
+                  home-manager.useUserPackages = true;
+                  home-manager.verbose = true;
+                  home-manager.sharedModules = [
+                    mac-app-util.homeManagerModules.default
+                  ];
+                  home-manager.users.joshuamorris = {
+                    imports =
+                      (import ./hm-modules/common)
+                      ++ (import ./hm-modules/macos)
+                      ++ [ (import ./hosts/grt-mbp/home.nix) ];
+
+                    nixpkgs.config.allowUnfree = true;
+                    nixpkgs.overlays = hm-overlays;
+                  };
+                  home-manager.extraSpecialArgs = {
+                    inherit inputs system;
+                    primaryUser = "joshua";
+                  };
+                }
+              ];
+            };
+
           futureproof =
             let
               primaryUser = "joshua";

@@ -2,11 +2,9 @@
   homebrew = {
     enable = true;
 
-    caskArgs.appdir = "~/Applications/Homebrew";
-
     casks = [
-      "docker"
-      "bitwarden"
+      "docker-desktop"
+      "ghostty"
       "gpg-suite-no-mail"
 
       "fluor"

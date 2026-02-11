@@ -38,8 +38,8 @@
 
       user = {
         name = "Joshua Morris"; # email intentionally omitted
-        email = "joshua.morris@hey.com";
-        signingKey = "FF30B1CA93CB1225";
+        email = "joshua.morris@joingroups.com";
+        signingKey = "C0C30D15";
       };
 
       commit.gpgSign = true;
@@ -57,7 +57,7 @@
 
     signing = {
       signByDefault = true;
-      key = "FF30B1CA93CB1225";
+      key = "C0C30D15";
     };
   };
 }

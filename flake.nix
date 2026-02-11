@@ -127,7 +127,6 @@
                 {
                   imports = [
                     ./hosts/futureproof/configuration.nix
-                    ./hosts/futureproof/macos-settings.nix
                   ]
                   ++ (import ./modules/common)
                   ++ (import ./modules/nix-darwin);
@@ -174,7 +173,6 @@
               {
                 imports = [
                   ./hosts/sapokanikan/configuration.nix
-                  ./hosts/sapokanikan/macos-settings.nix
                   ./hosts/sapokanikan/users/joshua.nix
                 ]
                 ++ (import ./modules/common)

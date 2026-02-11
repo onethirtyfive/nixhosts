@@ -4,4 +4,5 @@
   ./keyboard.nix
   ./nix.nix
   ./programs.nix
+  ./settings.nix
 ]

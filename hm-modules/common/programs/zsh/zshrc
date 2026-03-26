@@ -27,10 +27,7 @@ fi
 
 
 setopt IGNORE_EOF
-setopt HIST_FCNTL_LOCK
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_SPACE
-setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
 setopt BASH_AUTO_LIST
 setopt LIST_AMBIGUOUS
 setopt GLOBDOTS
@@ -39,6 +36,3 @@ unsetopt AUTO_PUSHD
 unsetopt AUTO_MENU
 unsetopt MENU_COMPLETE
 unsetopt AUTO_PARAM_SLASH
-unsetopt AUTOCD
-unsetopt APPEND_HISTORY
-unsetopt EXTENDED_HISTORY

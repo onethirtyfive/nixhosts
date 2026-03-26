@@ -11,6 +11,7 @@ in
       size = 50000;
       save = 50000;
       path = "${zsh-custom}/.zsh_history";
+      append = true;
       share = true;
       ignoreDups = true;
       ignoreSpace = true;

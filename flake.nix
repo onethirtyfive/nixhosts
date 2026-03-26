@@ -135,9 +135,25 @@
                   nixpkgs.overlays = hm-overlays;
 
                   system.primaryUser = primaryUser;
+                  users.knownUsers = [ "codeparty" ];
+                  users.knownGroups = [ "codepartyshare" ];
                   users.users.${primaryUser} = {
                     home = "/Users/${primaryUser}";
                     openssh.authorizedKeys.keys = [
+                    ];
+                  };
+                  users.users.codeparty = {
+                    description = "Code Party";
+                    uid = 550;
+                    home = "/Users/codeparty";
+                    createHome = true;
+                    shell = pkgs.bashInteractive;
+                    packages = [ pkgs.tmux ];
+                    openssh.authorizedKeys.keys = [
+                      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICF9i4aasbPWmrG7d72JdElzJ2/01k00yX2sP+k8lqyP anahitgulian@kero.local"
+                      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM3baklzEF1orS8G1o+tg0w5Pmqj5fPTp5gydWknR78F timothy.cummings@joingroups.com"
+                      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBxMm9gg4ApGfbX9rMSBCwSUeXTAm6qpb8IZ2hoBpmtX sean.eshbaugh@joingroups.com"
+                      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBA9311Ey6+O9l/mJOAS93H9JQLeBDd87twsZ8funCQC moorec104@gmail.com"
                     ];
                   };
                 }

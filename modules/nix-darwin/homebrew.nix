@@ -4,6 +4,10 @@
 
     caskArgs.appdir = "~/Applications/Homebrew";
 
+    brews = [
+      "codex"
+    ];
+
     casks = [
       "docker"
       "bitwarden"

@@ -6,22 +6,22 @@
   programs.git = {
     enable = true;
 
-    aliases = {
-      s = "status";
-      g = "";
-      ci = "commit";
-      br = "branch";
-      co = "checkout";
-      df = "diff";
-      dc = "diff --cached";
-      ls = "ls-files";
-      ign = "ls-files -o -i --exclude-standard";
-      brs = "branch --sort=committerdate";
-      deep-review = "log --no-merges -p --reverse -w";
-      dr = "deep-review";
-    };
+    settings = {
+      alias = {
+        s = "status";
+        g = "";
+        ci = "commit";
+        br = "branch";
+        co = "checkout";
+        df = "diff";
+        dc = "diff --cached";
+        ls = "ls-files";
+        ign = "ls-files -o -i --exclude-standard";
+        brs = "branch --sort=committerdate";
+        deep-review = "log --no-merges -p --reverse -w";
+        dr = "deep-review";
+      };
 
-    extraConfig = {
       core = {
         editor = "nvim";
         whitespace = "fix,-indent-with-non-tab,trailing-space,cr-at-eol";
@@ -57,6 +57,7 @@
 
     signing = {
       signByDefault = true;
+      format = "openpgp";
       key = "FF30B1CA93CB1225";
     };
   };

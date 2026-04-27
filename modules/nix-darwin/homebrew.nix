@@ -1,15 +1,13 @@
 {
   homebrew = {
     enable = true;
+    enableZshIntegration = true;
 
     caskArgs.appdir = "~/Applications/Homebrew";
 
-    brews = [
-      "codex"
-    ];
-
     casks = [
-      "docker"
+      "codex"
+      "docker-desktop"
       "bitwarden"
       "gpg-suite-no-mail"
 

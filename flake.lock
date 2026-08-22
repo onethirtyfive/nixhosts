@@ -807,7 +807,9 @@
         "nightfox-nvim": "nightfox-nvim",
         "nix-github-actions": "nix-github-actions",
         "nixpkgs": [
-          "nixpkgs-unstable"
+          "onethirtyfive-neovim",
+          "neovim-nightly-overlay",
+          "nixpkgs"
         ],
         "nvim-cmp": "nvim-cmp",
         "nvim-lspconfig": "nvim-lspconfig",
@@ -826,11 +828,11 @@
         "which-key-nvim": "which-key-nvim"
       },
       "locked": {
-        "lastModified": 1787356846,
-        "narHash": "sha256-eOnk+cqX6+w9poesmI+wQbl7QJzt9L1CHGpl+gBCjtc=",
+        "lastModified": 1787364890,
+        "narHash": "sha256-US1sOK+Q0m3t3bdmWR00PWWd23NxPomemBUuKnNNkDA=",
         "owner": "onethirtyfive",
         "repo": "neovim-nix",
-        "rev": "1f69c4b7443bcc6283468315a58a3c18f7b73a60",
+        "rev": "4af23bbfdfa8c6d34488b9e307249cb33a00aef2",
         "type": "github"
       },
       "original": {

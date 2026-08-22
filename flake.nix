@@ -20,7 +20,6 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     onethirtyfive-neovim.url = "github:onethirtyfive/neovim-nix";
-    onethirtyfive-neovim.inputs.nixpkgs.follows = "nixpkgs-unstable";
     alacritty-theme.url = "github:alacritty/alacritty-theme";
     alacritty-theme.flake = false;
     treefmt-nix.url = "github:numtide/treefmt-nix";

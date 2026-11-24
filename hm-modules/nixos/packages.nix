@@ -8,7 +8,6 @@
     google-chrome
     microsoft-edge
     obsidian
-    signal-desktop
     vlc
   ];
 }

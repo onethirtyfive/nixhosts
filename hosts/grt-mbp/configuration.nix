@@ -89,6 +89,7 @@ in
     PasswordAuthentication no
     KbdInteractiveAuthentication no
     PubkeyAuthentication yes
+    LogLevel VERBOSE
     AuthenticationMethods publickey
     PermitRootLogin no
     AllowUsers codeparty
@@ -137,7 +138,7 @@ in
 
   environment.systemPackages = [
     codeparty-access
-    ghostty-terminfo
+    # ghostty-terminfo
   ];
 
   users.groups.${codeparty-share-group} = {

@@ -154,6 +154,8 @@
                       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM3baklzEF1orS8G1o+tg0w5Pmqj5fPTp5gydWknR78F timothy.cummings@joingroups.com"
                       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBxMm9gg4ApGfbX9rMSBCwSUeXTAm6qpb8IZ2hoBpmtX sean.eshbaugh@joingroups.com"
                       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBA9311Ey6+O9l/mJOAS93H9JQLeBDd87twsZ8funCQC moorec104@gmail.com"
+                      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHSyClVb2GhoHg3/UsoMGtwYhDgvpoBpXxXfed/2MFIp zstearman3@gmail.com"
+                      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIiRe0k+C0skHnI/ZTN/HDo0qtfnCStc5dtm8kDmNIah pete.broderick@joingroups.com"
                     ];
                   };
                 }

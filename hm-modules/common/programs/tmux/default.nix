@@ -19,6 +19,7 @@ in
 
     plugins = with tmuxPlugins; [
       tmux-fzf
+      fingers
       vim-tmux-navigator
       yank
       {

@@ -3,8 +3,6 @@
   home.packages =
     with pkgs;
     [
-      claude-code
-
       # video conversion/playback
       ffmpeg
 

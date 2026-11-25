@@ -6,7 +6,6 @@
 
     # macos
     darwin.url = "github:lnl7/nix-darwin";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-darwin.follows = "darwin/nixpkgs";
     home-manager-darwin.url = "github:nix-community/home-manager";
     mac-app-util.url = "github:hraban/mac-app-util";
@@ -103,21 +102,11 @@
             ];
           };
 
-          commonOverlays =
-            let
-              unstableNixpkgsWithUnfree =
-                import inputs.nixpkgs-unstable {
-                  inherit system;
-                  config.allowUnfree = true;
-                };
-            in [
-              rust-overlay.overlays.default
-              onethirtyfive-neovim.overlays.default
-              (import ./overlays/onethirtyfive)
-              (final: prev: {
-                inherit (unstableNixpkgsWithUnfree) claude-code opencode;
-              })
-            ];
+          commonOverlays = [
+            rust-overlay.overlays.default
+            onethirtyfive-neovim.overlays.default
+            (import ./overlays/onethirtyfive)
+          ];
         in
         {
           futureproof =

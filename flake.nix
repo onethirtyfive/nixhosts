@@ -19,6 +19,8 @@
     # common
     rust-overlay.url = "github:oxalica/rust-overlay";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+    # don't override its nixpkgs: it must track neovim-nightly-overlay's, or
+    # neovim's lua env ends up with two conflicting luajits
     onethirtyfive-neovim.url = "github:onethirtyfive/neovim-nix";
     alacritty-theme.url = "github:alacritty/alacritty-theme";
     alacritty-theme.flake = false;
